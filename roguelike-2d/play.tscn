@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cs60coykb3m6p"]
+
+[ext_resource type="Texture2D" uid="uid://dj53wayu4y0yh" path="res://tlograj.png" id="1_b5e5s"]
+[ext_resource type="Texture2D" uid="uid://df8qg0kr18hhj" path="res://player.png" id="2_wnt6v"]
+[ext_resource type="Script" uid="uid://d15msjms0583k" path="res://player.gd" id="2_yuxfv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wnt6v"]
+texture = ExtResource("1_b5e5s")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuxfv"]
+size = Vector2(13.199982, 15.200019)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yuxfv"]
+a = Vector2(129, 541)
+b = Vector2(129, 125)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2jglr"]
+a = Vector2(123, 466)
+b = Vector2(1021, 471)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ca36m"]
+a = Vector2(1021, 120)
+b = Vector2(1024, 547)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_j5m8q"]
+a = Vector2(128, 125)
+b = Vector2(1022, 122)
+
+[node name="Play" type="Node2D" unique_id=623902144]
+
+[node name="Panel" type="Panel" parent="." unique_id=1898062486]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_wnt6v")
+
+[node name="player" type="CharacterBody2D" parent="Panel" unique_id=972955787]
+scale = Vector2(5, 5)
+script = ExtResource("2_yuxfv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/player" unique_id=1471962422]
+position = Vector2(114.999985, 66.39999)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_yuxfv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/player" unique_id=1125746900]
+position = Vector2(115.00001, 66.4)
+scale = Vector2(0.07081082, 0.07081082)
+texture = ExtResource("2_wnt6v")
+
+[node name="lewa_sciana" type="StaticBody2D" parent="." unique_id=2013252879]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lewa_sciana" unique_id=1552609322]
+shape = SubResource("SegmentShape2D_yuxfv")
+
+[node name="dolna_sciana" type="StaticBody2D" parent="." unique_id=1564132919]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dolna_sciana" unique_id=538554205]
+position = Vector2(4, 74)
+shape = SubResource("SegmentShape2D_2jglr")
+
+[node name="prawa_sciana" type="StaticBody2D" parent="." unique_id=1458912652]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prawa_sciana" unique_id=147435475]
+shape = SubResource("SegmentShape2D_ca36m")
+
+[node name="gorna_sciana" type="StaticBody2D" parent="." unique_id=1011833550]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gorna_sciana" unique_id=9472614]
+shape = SubResource("SegmentShape2D_j5m8q")
