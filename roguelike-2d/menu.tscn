@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cpcksn4dyy8j7"]
 
 [ext_resource type="Texture2D" uid="uid://cfcna5w6q11vy" path="res://tlomenu.png" id="1_4hy44"]
-[ext_resource type="Script" uid="uid://bitwwo68gc6mc" path="res://menu.gd" id="1_ytr4m"]
+[ext_resource type="Script" uid="uid://dw1vxd13udugm" path="res://Menu.cs" id="1_ytr4m"]
 [ext_resource type="Texture2D" uid="uid://bnt1p1h8010he" path="res://graj.png" id="2_ytr4m"]
 [ext_resource type="Texture2D" uid="uid://bp754dqnmvogj" path="res://ustawienia.png" id="3_l48gv"]
 [ext_resource type="Texture2D" uid="uid://wl8in286vvco" path="res://wyjdz.png" id="4_ecwwl"]
@@ -73,4 +73,4 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_h1wq0")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_h1wq0")
 theme_override_styles/hover = SubResource("StyleBoxTexture_h1wq0")
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="graj_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="graj"]
