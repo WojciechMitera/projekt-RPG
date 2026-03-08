@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://deftye1bw6foo" path="res://Pauza.cs" id="1_42et7"]
 [ext_resource type="Texture2D" uid="uid://dj53wayu4y0yh" path="res://tlograj.png" id="2_cv7l6"]
-[ext_resource type="Texture2D" uid="uid://308sobdakhor" path="res://pauza.png" id="3_wvh26"]
+[ext_resource type="FontFile" uid="uid://qe6kaif2gfol" path="res://MedievalSharp-Regular.ttf" id="3_42et7"]
+[ext_resource type="Texture2D" uid="uid://wgjnff4tqiw7" path="res://koniec.png" id="4_cv7l6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h81ir"]
 texture = ExtResource("2_cv7l6")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0bhag"]
-texture = ExtResource("3_wvh26")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wvh26"]
+texture = ExtResource("4_cv7l6")
 
 [node name="Pauza" type="Control" unique_id=1001750486]
 layout_mode = 3
@@ -34,28 +35,34 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_h81ir")
 
 [node name="Button" type="Button" parent="." unique_id=18361990]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = 517.0
-offset_right = 576.0
-offset_bottom = 59.0
+anchor_bottom = 0.5
+offset_left = -127.25
+offset_top = 17.0
+offset_right = 127.25
+offset_bottom = 76.0
 grow_horizontal = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_0bhag")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_0bhag")
-theme_override_styles/hover = SubResource("StyleBoxTexture_0bhag")
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_42et7")
+theme_override_font_sizes/font_size = 35
+text = "Wróć do menu"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1862658304]
-layout_mode = 0
-offset_left = 528.0
-offset_top = 317.0
-offset_right = 689.0
-offset_bottom = 478.0
+[node name="Panel2" type="Panel" parent="." unique_id=144338987]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -204.0
+offset_right = 240.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wvh26")
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=2073854608]
-layout_mode = 2
-
-[node name="Button3" type="Button" parent="VBoxContainer" unique_id=749082335]
-layout_mode = 2
-
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="menu"]
+[connection signal="pressed" from="Button" to="." method="menu"]
