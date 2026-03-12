@@ -4,7 +4,7 @@ using System;
 public partial class Projectile : CharacterBody2D
 {
 	public int _damage = 10;
-
+	public float _time = 0.1f;
 	public float speed = 300;
 	public Vector2 direction;
 
@@ -16,9 +16,12 @@ public partial class Projectile : CharacterBody2D
 			QueueFree();
 
 		}
-		if (IsOnWallOnly() || IsOnFloorOnly() || IsOnCeilingOnly())
+		if (IsOnWallOnly() || IsOnFloorOnly() || IsOnCeilingOnly() || IsOnWall() || IsOnFloor() || IsOnCeiling())
 		{
 			QueueFree();
+		}
+		else{
+			Destroy(_time);
 		}
 	}
 	
@@ -28,5 +31,9 @@ public partial class Projectile : CharacterBody2D
 		
 		MoveAndSlide();
 	}
-	
+	public async void Destroy(float time)
+	{
+		await ToSignal(GetTree().CreateTimer(time), "timeout");
+		QueueFree();
+	}
 }

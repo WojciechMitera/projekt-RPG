@@ -18,9 +18,10 @@ texture = ExtResource("1_b5e5s")
 bg_color = Color(0.6666667, 0.078431375, 0.12156863, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ib3j"]
-size = Vector2(12.375, 10.875)
+size = Vector2(30, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y08r1"]
+size = Vector2(34, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuxfv"]
 size = Vector2(13.199982, 15.200019)
@@ -78,14 +79,14 @@ show_percentage = false
 collision_layer = 2
 script = ExtResource("3_y08r1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy" unique_id=2115165360]
-position = Vector2(757, 312)
-shape = SubResource("RectangleShape2D_3ib3j")
-
 [node name="Sprite2D" type="Sprite2D" parent="Panel/enemy" unique_id=904239324]
 position = Vector2(755, 306)
 scale = Vector2(0.104815885, 0.104815885)
 texture = ExtResource("5_y08r1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy" unique_id=2115165360]
+position = Vector2(757, 312)
+shape = SubResource("RectangleShape2D_3ib3j")
 
 [node name="Area2D" type="Area2D" parent="Panel/enemy" unique_id=2011647264]
 
