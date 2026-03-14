@@ -7,6 +7,8 @@ public partial class Enemy : CharacterBody2D
 	public int _damage = 10;
 	public int max_health = 50;
 	private int health;
+	public bool contact = false;
+	public float damagetime = 1f;
 	public override void _Ready(){
 		health = max_health;
 		
@@ -30,13 +32,28 @@ public partial class Enemy : CharacterBody2D
 		
 		GD.Print(health);
 	}
-	private void BodyCollision(Node body)
+	private async void BodyCollision(Node body)
+	{d
+		if(body is Player player)
+		{
+			contact = true;
+			while (contact)
+			{
+				await ToSignal(GetTree().CreateTimer(damagetime), "timeout");
+				if(contact == true)
+					player.Damage(_damage);
+			}
+
+		}
+	}
+	private void BodyCollisionOut(Node body)
 	{
 		if(body is Player player)
 		{
-			player.Damage(_damage);
-			
+			contact = false;
+			//GD.Print("afa");
 		}
 	}
 	
-}
+
+	}

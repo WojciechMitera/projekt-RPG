@@ -4,7 +4,7 @@ using System;
 public partial class Projectile : CharacterBody2D
 {
 	public int _damage = 10;
-	public float _time = 0.1f;
+	public float _time = 0.01f;
 	public float speed = 300;
 	public Vector2 direction;
 

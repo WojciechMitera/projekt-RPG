@@ -152,4 +152,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y08r1")
 theme_override_styles/hover = SubResource("StyleBoxTexture_y08r1")
 
 [connection signal="body_entered" from="Panel/enemy/Area2D" to="Panel/enemy" method="BodyCollision"]
+[connection signal="body_exited" from="Panel/enemy/Area2D" to="Panel/enemy" method="BodyCollisionOut"]
 [connection signal="pressed" from="Button" to="." method="pauza"]
