@@ -33,7 +33,7 @@ public partial class Enemy : CharacterBody2D
 		GD.Print(health);
 	}
 	private async void BodyCollision(Node body)
-	{d
+	{
 		if(body is Player player)
 		{
 			contact = true;

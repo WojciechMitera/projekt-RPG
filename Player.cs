@@ -50,16 +50,40 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		var sprite = GetNode<Sprite2D>("sprite_player");
 		if (direction != Vector2.Zero)
 		{
+			if(direction == Vector2.Right)
+			{
+				//GD.Print("r");
+				sprite.Texture = GD.Load<Texture2D>("res://player.png");
+			}
+			else if(direction == Vector2.Left)
+			{
+				//GD.Print("l");
+				sprite.Texture = GD.Load<Texture2D>("res://player2.png");
+			}
 			velocity.X = direction.X * Speed;
+
+
 		}
 		else
 		{
+			
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
 		if (direction != Vector2.Zero)
 		{
+			if (direction == Vector2.Right)
+			{
+				//GD.Print("r");
+				sprite.Texture = GD.Load<Texture2D>("res://player.png");
+			}
+			else if (direction == Vector2.Left)
+			{
+				//GD.Print("l");
+				sprite.Texture = GD.Load<Texture2D>("res://player2.png");
+			}
 			velocity.Y = direction.Y * Speed;
 		}
 		else
