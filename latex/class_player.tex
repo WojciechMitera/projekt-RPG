@@ -1,0 +1,239 @@
+\doxysection{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+Controls the player character behavior.  
+
+
+
+
+Inheritance diagram for Player:\+
+% FIG 0
+
+
+Collaboration diagram for Player:\+
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ \+\_\+\+Ready} ()
+\begin{DoxyCompactList}\small\item\em Called when the node enters the scene tree. \end{DoxyCompactList}\item 
+void \textbf{ Damage} (int damage)
+\begin{DoxyCompactList}\small\item\em Applies damage to the player. \end{DoxyCompactList}\item 
+void \textbf{ Shoot} ()
+\begin{DoxyCompactList}\small\item\em Spawns and shoots a projectile toward the mouse position. \end{DoxyCompactList}\item 
+override void \textbf{ \+\_\+\+Physics\+Process} (double delta)
+\begin{DoxyCompactList}\small\item\em Handles player movement and input every physics frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ max\+\_\+health} = 100
+\begin{DoxyCompactList}\small\item\em Maximum health value of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const float \textbf{ Speed} = 180.\+0f
+\begin{DoxyCompactList}\small\item\em Movement speed of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Packed\+Scene \textbf{ projectiletscn} = GD.\+Load$<$Packed\+Scene$>$("{}res:\+/\+/\+projectile.\+tscn"{})
+\begin{DoxyCompactList}\small\item\em Packed scene used to instantiate projectiles. \end{DoxyCompactList}\item 
+int \textbf{ health}
+\begin{DoxyCompactList}\small\item\em Current health value of the player. \end{DoxyCompactList}\item 
+Progress\+Bar \textbf{ healthbar}
+\begin{DoxyCompactList}\small\item\em Reference to the UI health bar. \end{DoxyCompactList}\item 
+Marker2D \textbf{ point}
+\begin{DoxyCompactList}\small\item\em Marker indicating where projectiles spawn. \end{DoxyCompactList}\item 
+Character\+Body2D \textbf{ \+\_\+player}
+\begin{DoxyCompactList}\small\item\em Reference to the player node (may be redundant depending on scene structure). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controls the player character behavior. 
+
+This class handles player movement, shooting, health management, and interaction with the game world. It extends Character\+Body2D to utilize built-\/in physics-\/based movement. 
+
+Definition at line \textbf{ 12} of file \textbf{ Player.\+cs}.
+
+
+
+\label{doc-func-members}
+\doxysubsection{Member Function Documentation}
+\index{Player@{Player}!\_PhysicsProcess@{\_PhysicsProcess}}
+\index{\_PhysicsProcess@{\_PhysicsProcess}!Player@{Player}}
+\doxysubsubsection{\_PhysicsProcess()}
+{\footnotesize\ttfamily \label{class_player_a58bb8488c42d336b1ba8b3f796ba67f0} 
+override void Player.\+\_\+\+Physics\+Process (\begin{DoxyParamCaption}\item[{double}]{delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Handles player movement and input every physics frame. 
+
+Processes directional input, updates velocity, changes player sprite based on movement direction, and handles shooting input.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & Time elapsed since last frame (in seconds). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 99} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!\_Ready@{\_Ready}}
+\index{\_Ready@{\_Ready}!Player@{Player}}
+\doxysubsubsection{\_Ready()}
+{\footnotesize\ttfamily \label{class_player_ae192a478a80f0e93e01339d62cdd6f6d} 
+override void Player.\+\_\+\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Called when the node enters the scene tree. 
+
+Initializes player health, UI references, and important nodes. 
+
+Definition at line \textbf{ 41} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!Damage@{Damage}}
+\index{Damage@{Damage}!Player@{Player}}
+\doxysubsubsection{Damage()}
+{\footnotesize\ttfamily \label{class_player_a2138018b963e6b4bde9336ed8f6a1218} 
+void Player.\+Damage (\begin{DoxyParamCaption}\item[{int}]{damage}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Applies damage to the player. 
+
+Reduces the player\textquotesingle{}s health by the specified amount. If health reaches zero, the scene is changed to the pause (or game over) scene.
+
+
+\begin{DoxyParams}{Parameters}
+{\em damage} & Amount of damage to apply. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 57} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!Shoot@{Shoot}}
+\index{Shoot@{Shoot}!Player@{Player}}
+\doxysubsubsection{Shoot()}
+{\footnotesize\ttfamily \label{class_player_aceeeea8a88642a67284dbfb1e435bd23} 
+void Player.\+Shoot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Spawns and shoots a projectile toward the mouse position. 
+
+Instantiates a projectile scene, sets its position to the spawn marker, and assigns a normalized direction vector toward the mouse cursor. 
+
+Definition at line \textbf{ 80} of file \textbf{ Player.\+cs}.
+
+
+
+\label{doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\index{Player@{Player}!\_player@{\_player}}
+\index{\_player@{\_player}!Player@{Player}}
+\doxysubsubsection{\_player}
+{\footnotesize\ttfamily \label{class_player_ae6492ae468dbcad57d64710918dfb1b2} 
+Character\+Body2D Player.\+\_\+player\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reference to the player node (may be redundant depending on scene structure). 
+
+
+
+Definition at line \textbf{ 34} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!health@{health}}
+\index{health@{health}!Player@{Player}}
+\doxysubsubsection{health}
+{\footnotesize\ttfamily \label{class_player_ab064f330cef84e2e062fd6446db24184} 
+int Player.\+health\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current health value of the player. 
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!healthbar@{healthbar}}
+\index{healthbar@{healthbar}!Player@{Player}}
+\doxysubsubsection{healthbar}
+{\footnotesize\ttfamily \label{class_player_a7953b3f3c83a1ec2da9c3fccb2290621} 
+Progress\+Bar Player.\+healthbar\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reference to the UI health bar. 
+
+
+
+Definition at line \textbf{ 28} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!max\_health@{max\_health}}
+\index{max\_health@{max\_health}!Player@{Player}}
+\doxysubsubsection{max\_health}
+{\footnotesize\ttfamily \label{class_player_a476e50ca93caedf705b340e2e32a2a6b} 
+int Player.\+max\+\_\+health = 100}
+
+
+
+Maximum health value of the player. 
+
+
+
+Definition at line \textbf{ 22} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!point@{point}}
+\index{point@{point}!Player@{Player}}
+\doxysubsubsection{point}
+{\footnotesize\ttfamily \label{class_player_a70b963210fabe2b2e46f9fcf3e4c2bf1} 
+Marker2D Player.\+point\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Marker indicating where projectiles spawn. 
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!projectiletscn@{projectiletscn}}
+\index{projectiletscn@{projectiletscn}!Player@{Player}}
+\doxysubsubsection{projectiletscn}
+{\footnotesize\ttfamily \label{class_player_a2aa9ce56753b35d6c5ee6c301975d49b} 
+Packed\+Scene Player.\+projectiletscn = GD.\+Load$<$Packed\+Scene$>$("{}res:\+/\+/\+projectile.\+tscn"{})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Packed scene used to instantiate projectiles. 
+
+
+
+Definition at line \textbf{ 15} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!Speed@{Speed}}
+\index{Speed@{Speed}!Player@{Player}}
+\doxysubsubsection{Speed}
+{\footnotesize\ttfamily \label{class_player_a00a7dd9a26e618fbd3b455b3c1122348} 
+const float Player.\+Speed = 180.\+0f\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Movement speed of the player. 
+
+
+
+Definition at line \textbf{ 18} of file \textbf{ Player.\+cs}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Player.\+cs}\end{DoxyCompactItemize}

@@ -1,0 +1,53 @@
+\doxysection{Bullet Class Reference}
+\label{class_bullet}\index{Bullet@{Bullet}}
+
+
+Inheritance diagram for Bullet:\+
+% FIG 0
+
+
+Collaboration diagram for Bullet:\+
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ \+\_\+\+Ready} ()
+\item 
+override void \textbf{ \+\_\+\+Process} (double delta)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \textbf{ 4} of file \textbf{ Bullet.\+cs}.
+
+
+
+\label{doc-func-members}
+\doxysubsection{Member Function Documentation}
+\index{Bullet@{Bullet}!\_Process@{\_Process}}
+\index{\_Process@{\_Process}!Bullet@{Bullet}}
+\doxysubsubsection{\_Process()}
+{\footnotesize\ttfamily \label{class_bullet_a0da009b85bce8b36427bd70ed7ea1c91} 
+override void Bullet.\+\_\+\+Process (\begin{DoxyParamCaption}\item[{double}]{delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \textbf{ 12} of file \textbf{ Bullet.\+cs}.
+
+\index{Bullet@{Bullet}!\_Ready@{\_Ready}}
+\index{\_Ready@{\_Ready}!Bullet@{Bullet}}
+\doxysubsubsection{\_Ready()}
+{\footnotesize\ttfamily \label{class_bullet_a7440252224e0bd6d5dbae3a29c41bdf3} 
+override void Bullet.\+\_\+\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \textbf{ 7} of file \textbf{ Bullet.\+cs}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Bullet.\+cs}\end{DoxyCompactItemize}
