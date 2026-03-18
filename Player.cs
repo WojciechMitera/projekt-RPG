@@ -54,41 +54,41 @@ public partial class Player : CharacterBody2D
 	 * 
 	 * @param damage Amount of damage to apply.
 	 */
-    public void Damage(int damage)
-    {
-        health -= damage;
+	public void Damage(int damage)
+	{
+		health -= damage;
 
-        if (health < 0)
-        {
-            health = 0;
-        }
-        else if (health == 0)
-        {
-            GetTree().CallDeferred("change_scene_to_file", "res://pauza.tscn");
-        }
+		if (health < 0)
+		{
+			health = 0;
+		}
+		else if (health == 0)
+		{
+			GetTree().CallDeferred("change_scene_to_file", "res://pauza.tscn");
+		}
 
-        healthbar.Value = health;
-        GD.Print(health);
-    }
+		healthbar.Value = health;
+		GD.Print(health);
+	}
 
-    /**
+	/**
 	 * @brief Spawns and shoots a projectile toward the mouse position.
 	 * 
 	 * Instantiates a projectile scene, sets its position to the spawn marker,
 	 * and assigns a normalized direction vector toward the mouse cursor.
 	 */
-    public void Shoot()
-    {
-        Projectile projectile = projectiletscn.Instantiate<Projectile>();
-        projectile.GlobalPosition = point.GlobalPosition;
+	public void Shoot()
+	{
+		Projectile projectile = projectiletscn.Instantiate<Projectile>();
+		projectile.GlobalPosition = point.GlobalPosition;
 
-        Vector2 direction = (GetGlobalMousePosition() - point.GlobalPosition).Normalized();
-        projectile.direction = direction;
+		Vector2 direction = (GetGlobalMousePosition() - point.GlobalPosition).Normalized();
+		projectile.direction = direction;
 
-        GetParent().AddChild(projectile);
-    }
+		GetParent().AddChild(projectile);
+	}
 
-    /**
+	/**
 	 * @brief Handles player movement and input every physics frame.
 	 * 
 	 * Processes directional input, updates velocity, changes player sprite
@@ -96,52 +96,52 @@ public partial class Player : CharacterBody2D
 	 * 
 	 * @param delta Time elapsed since last frame (in seconds).
 	 */
-    public override void _PhysicsProcess(double delta)
-    {
-        Vector2 velocity = Velocity;
-        Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-        var sprite = GetNode<Sprite2D>("sprite_player");
+	public override void _PhysicsProcess(double delta)
+	{
+		Vector2 velocity = Velocity;
+		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		var sprite = GetNode<Sprite2D>("sprite_player");
 
-        if (direction != Vector2.Zero)
-        {
-            if (direction == Vector2.Right)
-            {
-                sprite.Texture = GD.Load<Texture2D>("res://player.png");
-            }
-            else if (direction == Vector2.Left)
-            {
-                sprite.Texture = GD.Load<Texture2D>("res://player2.png");
-            }
-            velocity.X = direction.X * Speed;
-        }
-        else
-        {
-            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-        }
+		if (direction != Vector2.Zero)
+		{
+			if (direction == Vector2.Right)
+			{
+				sprite.Texture = GD.Load<Texture2D>("res://player.png");
+			}
+			else if (direction == Vector2.Left)
+			{
+				sprite.Texture = GD.Load<Texture2D>("res://player2.png");
+			}
+			velocity.X = direction.X * Speed;
+		}
+		else
+		{
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+		}
 
-        if (direction != Vector2.Zero)
-        {
-            if (direction == Vector2.Right)
-            {
-                sprite.Texture = GD.Load<Texture2D>("res://player.png");
-            }
-            else if (direction == Vector2.Left)
-            {
-                sprite.Texture = GD.Load<Texture2D>("res://player2.png");
-            }
-            velocity.Y = direction.Y * Speed;
-        }
-        else
-        {
-            velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
-        }
+		if (direction != Vector2.Zero)
+		{
+			if (direction == Vector2.Right)
+			{
+				sprite.Texture = GD.Load<Texture2D>("res://player.png");
+			}
+			else if (direction == Vector2.Left)
+			{
+				sprite.Texture = GD.Load<Texture2D>("res://player2.png");
+			}
+			velocity.Y = direction.Y * Speed;
+		}
+		else
+		{
+			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
+		}
 
-        Velocity = velocity;
-        MoveAndSlide();
+		Velocity = velocity;
+		MoveAndSlide();
 
-        if (Input.IsActionJustPressed("ui_accept"))
-        {
-            Shoot();
-        }
-    }
+		if (Input.IsActionJustPressed("ui_accept"))
+		{
+			Shoot();
+		}
+	}
 }
