@@ -35,6 +35,11 @@ public partial class Enemy : CharacterBody2D
 	 */
 	public float damagetime = 1f;
 
+	public float respawntime = 1f;
+
+	PackedScene enemyscene;
+	Vector2 spawnposition;
+
 	/**
 	 * @brief Initializes the enemy.
 	 * 
@@ -43,7 +48,10 @@ public partial class Enemy : CharacterBody2D
 	public override void _Ready()
 	{
 		health = max_health;
+		enemyscene = GD.Load<PackedScene>("res://enemyrespawn.tscn");
+		spawnposition = GetRandomPosition();
 	}
+
 
 	/**
 	 * @brief Applies damage to the enemy.
@@ -60,12 +68,15 @@ public partial class Enemy : CharacterBody2D
 		if (health < 0)
 		{
 			health = 0;
+			
 		}
-		else if (health == 0)
+		else if(health == 0)
 		{
-			QueueFree();
-		}
 
+			CallDeferred(nameof(SpawnEnemy));
+			//SpawnEnemy();
+			QueueFree();
+		} 
 		GD.Print(health);
 	}
 
@@ -107,4 +118,22 @@ public partial class Enemy : CharacterBody2D
 			contact = false;
 		}
 	}
+	public void SpawnEnemy()
+	{
+		//await ToSignal(GetTree().CreateTimer(respawntime), "timeout");
+		var enemy = enemyscene.Instantiate<CharacterBody2D>();
+		enemy.GlobalPosition = spawnposition;
+		GetParent().AddChild(enemy);
+		GD.Print("1");
+
+
+	}
+	public Vector2 GetRandomPosition()
+	{
+		float x = GD.RandRange(175, 975);
+		float y = GD.RandRange(190, 500);
+
+		return new Vector2(x, y);
+	}
+
 }

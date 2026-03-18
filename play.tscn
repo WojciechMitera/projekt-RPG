@@ -76,22 +76,24 @@ value = 100.0
 show_percentage = false
 
 [node name="enemy" type="CharacterBody2D" parent="Panel" unique_id=1006073770]
+position = Vector2(807, 322)
 collision_layer = 2
 script = ExtResource("3_y08r1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/enemy" unique_id=904239324]
-position = Vector2(755, 306)
+position = Vector2(-3.5748901, -6.05661)
 scale = Vector2(0.104815885, 0.104815885)
 texture = ExtResource("5_y08r1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy" unique_id=2115165360]
-position = Vector2(757, 312)
+position = Vector2(-1.5749512, -0.056640625)
 shape = SubResource("RectangleShape2D_3ib3j")
 
 [node name="Area2D" type="Area2D" parent="Panel/enemy" unique_id=2011647264]
+position = Vector2(0.42504883, 0.9433594)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy/Area2D" unique_id=1624074373]
-position = Vector2(757, 312)
+position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_y08r1")
 
 [node name="player" type="CharacterBody2D" parent="Panel" unique_id=972955787]
