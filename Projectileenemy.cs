@@ -8,7 +8,7 @@ using System;
  * This class handles projectile movement, collision detection,
  * damage application, and automatic destruction after a short time.
  */
-public partial class Projectile : CharacterBody2D
+public partial class Projectileenemy : CharacterBody2D
 {
 	/** @brief Damage dealt to enemies on hit. */
 	public int _damage = 10;
@@ -32,23 +32,13 @@ public partial class Projectile : CharacterBody2D
 	 * 
 	 * @param body The node that the projectile collided with.
 	 */
-	private void BodyCollision(Node body)
+	private void BodyCollision2(Node body)
 	{
-		if (body is Enemy enemy)
+		if (body is Player player)
 		{
-			enemy.Damage(_damage);
-			QueueFree();
+			player.Damage(_damage);
 		}
-		else if(body is Enemy2 enemy2)
-		{
-			enemy2.Damage(_damage);
-			QueueFree();
-		}
-		else if (body is Enemy3 enemy3)
-		{
-			enemy3.Damage(_damage);
-			QueueFree();
-		}
+		
 		if (IsOnWallOnly() || IsOnFloorOnly() || IsOnCeilingOnly() ||
 			IsOnWall() || IsOnFloor() || IsOnCeiling())
 		{

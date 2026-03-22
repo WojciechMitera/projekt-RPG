@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using static Godot.TextServer;
 
 /**
  * @class Enemy
@@ -9,17 +8,17 @@ using static Godot.TextServer;
  * This class handles enemy behavior such as taking damage,
  * tracking health, and dealing damage to the player upon contact.
  */
-public partial class Enemy : CharacterBody2D
+public partial class Enemy2 : CharacterBody2D
 {
 	/**
 	 * @brief Damage dealt to the player on contact.
 	 */
-	public int _damage = 10;
+	public int _damage = 25;
 
 	/**
 	 * @brief Maximum health of the enemy.
 	 */
-	public int max_health = 50;
+	public int max_health = 100;
 
 	/**
 	 * @brief Current health of the enemy.
@@ -34,15 +33,14 @@ public partial class Enemy : CharacterBody2D
 	/**
 	 * @brief Time interval between damage ticks while in contact.
 	 */
-	public float damagetime = 1f;
+	public float damagetime = 1.4f;
 
 	public float respawntime = 1f;
 
-	PackedScene enemyscene;
+	PackedScene enemy2scene;
 	Vector2 spawnposition;
-	public const float Speed = 80.0f;
+	public const float Speed = 50.0f;
 	private CharacterBody2D player;
-	//public float mindist = 65f;
 
 	/**
 	 * @brief Initializes the enemy.
@@ -52,7 +50,7 @@ public partial class Enemy : CharacterBody2D
 	public override void _Ready()
 	{
 		health = max_health;
-		enemyscene = GD.Load<PackedScene>("res://enemyrespawn.tscn");
+		enemy2scene = GD.Load<PackedScene>("res://enemy2respawn.tscn");
 		spawnposition = GetRandomPosition();
 		player = GetNode<CharacterBody2D>("../player");
 		
@@ -60,24 +58,12 @@ public partial class Enemy : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (player == null)
+		if(player == null)
 		{
 			return;
 		}
 		Vector2 Direction = (player.GlobalPosition - GlobalPosition).Normalized();
 		Velocity = Direction * Speed;
-		//float distance = Direction.Length();
-
-		/*if (distance > mindist)
-		{
-			Direction = Direction.Normalized();
-			Velocity = Direction * Speed;
-		}
-		else
-		{
-			Velocity = Vector2.Zero;
-			//Velocity = (GlobalPosition - player.GlobalPosition).Normalized() * Speed * 0.5f;
-		}*/
 		MoveAndSlide();
 	}
 
@@ -101,7 +87,7 @@ public partial class Enemy : CharacterBody2D
 		else if(health == 0)
 		{
 
-			CallDeferred(nameof(SpawnEnemy));
+			CallDeferred(nameof(SpawnEnemy2));
 			//SpawnEnemy();
 			QueueFree();
 		} 
@@ -146,12 +132,12 @@ public partial class Enemy : CharacterBody2D
 			contact = false;
 		}
 	}
-	public void SpawnEnemy()
+	public void SpawnEnemy2()
 	{
 		//await ToSignal(GetTree().CreateTimer(respawntime), "timeout");
-		var enemy = enemyscene.Instantiate<CharacterBody2D>();
-		enemy.GlobalPosition = spawnposition;
-		GetParent().AddChild(enemy);
+		var enemy2 = enemy2scene.Instantiate<CharacterBody2D>();
+		enemy2.GlobalPosition = spawnposition;
+		GetParent().AddChild(enemy2);
 		GD.Print("1");
 
 

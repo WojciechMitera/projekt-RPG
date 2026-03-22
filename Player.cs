@@ -33,6 +33,7 @@ public partial class Player : CharacterBody2D
 	/** @brief Reference to the player node (may be redundant depending on scene structure). */
 	CharacterBody2D _player;
 
+
 	/**
 	 * @brief Called when the node enters the scene tree.
 	 * 
@@ -98,45 +99,27 @@ public partial class Player : CharacterBody2D
 	 */
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		var sprite = GetNode<Sprite2D>("sprite_player");
 
 		if (direction != Vector2.Zero)
 		{
-			if (direction == Vector2.Right)
+			direction = direction.Normalized();
+			Velocity = direction * Speed;
+			if (direction.X > 0)
 			{
 				sprite.Texture = GD.Load<Texture2D>("res://player.png");
 			}
-			else if (direction == Vector2.Left)
+			else if (direction.X < 0)
 			{
 				sprite.Texture = GD.Load<Texture2D>("res://player2.png");
 			}
-			velocity.X = direction.X * Speed;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			Velocity = Vector2.Zero;
 		}
-
-		if (direction != Vector2.Zero)
-		{
-			if (direction == Vector2.Right)
-			{
-				sprite.Texture = GD.Load<Texture2D>("res://player.png");
-			}
-			else if (direction == Vector2.Left)
-			{
-				sprite.Texture = GD.Load<Texture2D>("res://player2.png");
-			}
-			velocity.Y = direction.Y * Speed;
-		}
-		else
-		{
-			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
-		}
-
-		Velocity = velocity;
+		
 		MoveAndSlide();
 
 		if (Input.IsActionJustPressed("ui_accept"))

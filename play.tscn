@@ -8,6 +8,10 @@
 [ext_resource type="Script" uid="uid://bnscgn0vpte68" path="res://Enemy.cs" id="3_y08r1"]
 [ext_resource type="Texture2D" uid="uid://308sobdakhor" path="res://pauza.png" id="5_j5m8q"]
 [ext_resource type="Texture2D" uid="uid://b5viqr24kkx1v" path="res://enemy.png" id="5_y08r1"]
+[ext_resource type="Script" uid="uid://ds7gntfp6jlau" path="res://Enemy2.cs" id="8_6sspi"]
+[ext_resource type="Texture2D" uid="uid://fh8tijc388cm" path="res://enemy3.png" id="9_ccytq"]
+[ext_resource type="Script" uid="uid://bcfswnhcm8jyf" path="res://Enemy3.cs" id="10_ccytq"]
+[ext_resource type="Texture2D" uid="uid://bt813n5ewx0n4" path="res://enemy2.png" id="11_hkd06"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wnt6v"]
 texture = ExtResource("1_b5e5s")
@@ -25,6 +29,18 @@ size = Vector2(34, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuxfv"]
 size = Vector2(13.199982, 15.200019)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu7w4"]
+size = Vector2(88.5, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sspi"]
+size = Vector2(93.875, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccytq"]
+size = Vector2(26, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkd06"]
+size = Vector2(27.75, 45.75)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_yuxfv"]
 a = Vector2(129, 541)
@@ -116,6 +132,48 @@ position = Vector2(0.20000458, 0.20000458)
 scale = Vector2(0.07081082, 0.07081082)
 texture = ExtResource("2_wnt6v")
 
+[node name="enemy2" type="CharacterBody2D" parent="Panel" unique_id=1816297168]
+position = Vector2(674, 329)
+collision_layer = 2
+script = ExtResource("8_6sspi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/enemy2" unique_id=314244065]
+position = Vector2(2.3841858e-07, 0)
+scale = Vector2(0.08757715, 0.08757714)
+texture = ExtResource("9_ccytq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy2" unique_id=1465364815]
+position = Vector2(9, 4)
+shape = SubResource("RectangleShape2D_iu7w4")
+
+[node name="Area2D" type="Area2D" parent="Panel/enemy2" unique_id=866259323]
+position = Vector2(9, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy2/Area2D" unique_id=348379001]
+shape = SubResource("RectangleShape2D_6sspi")
+
+[node name="enemy3" type="CharacterBody2D" parent="Panel" unique_id=369304824]
+position = Vector2(464, 309)
+collision_layer = 2
+script = ExtResource("10_ccytq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/enemy3" unique_id=1512401041]
+position = Vector2(-5.722046e-06, -3.8146973e-06)
+scale = Vector2(0.077380955, 0.077380955)
+texture = ExtResource("11_hkd06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy3" unique_id=2076901519]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_ccytq")
+
+[node name="Area2D" type="Area2D" parent="Panel/enemy3" unique_id=399787618]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy3/Area2D" unique_id=15748947]
+position = Vector2(-2.875, 0.125)
+shape = SubResource("RectangleShape2D_hkd06")
+
+[node name="point" type="Marker2D" parent="Panel/enemy3" unique_id=785973338]
+
 [node name="lewa_sciana" type="StaticBody2D" parent="." unique_id=2013252879]
 collision_layer = 8
 
@@ -155,4 +213,8 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_y08r1")
 
 [connection signal="body_entered" from="Panel/enemy/Area2D" to="Panel/enemy" method="BodyCollision"]
 [connection signal="body_exited" from="Panel/enemy/Area2D" to="Panel/enemy" method="BodyCollisionOut"]
+[connection signal="body_entered" from="Panel/enemy2/Area2D" to="Panel/enemy2" method="BodyCollision"]
+[connection signal="body_exited" from="Panel/enemy2/Area2D" to="Panel/enemy2" method="BodyCollisionOut"]
+[connection signal="body_entered" from="Panel/enemy3/Area2D" to="Panel/enemy3" method="BodyCollision"]
+[connection signal="body_exited" from="Panel/enemy3/Area2D" to="Panel/enemy3" method="BodyCollisionOut"]
 [connection signal="pressed" from="Button" to="." method="pauza"]

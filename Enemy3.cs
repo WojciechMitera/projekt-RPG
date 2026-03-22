@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Drawing;
 using static Godot.TextServer;
 
 /**
@@ -9,17 +10,17 @@ using static Godot.TextServer;
  * This class handles enemy behavior such as taking damage,
  * tracking health, and dealing damage to the player upon contact.
  */
-public partial class Enemy : CharacterBody2D
+public partial class Enemy3 : CharacterBody2D
 {
 	/**
 	 * @brief Damage dealt to the player on contact.
 	 */
-	public int _damage = 10;
+	public int _damage = 5;
 
 	/**
 	 * @brief Maximum health of the enemy.
 	 */
-	public int max_health = 50;
+	public int max_health = 30;
 
 	/**
 	 * @brief Current health of the enemy.
@@ -34,13 +35,17 @@ public partial class Enemy : CharacterBody2D
 	/**
 	 * @brief Time interval between damage ticks while in contact.
 	 */
-	public float damagetime = 1f;
+	public float damagetime = 2f;
 
 	public float respawntime = 1f;
 
-	PackedScene enemyscene;
+	Marker2D point;
+
+	PackedScene projectileenemytscn = GD.Load<PackedScene>("res://projectileenemy.tscn");
+
+	PackedScene enemy3scene;
 	Vector2 spawnposition;
-	public const float Speed = 80.0f;
+	public const float Speed = -30.0f;
 	private CharacterBody2D player;
 	//public float mindist = 65f;
 
@@ -52,10 +57,12 @@ public partial class Enemy : CharacterBody2D
 	public override void _Ready()
 	{
 		health = max_health;
-		enemyscene = GD.Load<PackedScene>("res://enemyrespawn.tscn");
+		enemy3scene = GD.Load<PackedScene>("res://enemy3respawn.tscn");
 		spawnposition = GetRandomPosition();
 		player = GetNode<CharacterBody2D>("../player");
-		
+		point = GetNode<Marker2D>("point");
+		CallDeferred(nameof(Shoot));
+
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -101,7 +108,7 @@ public partial class Enemy : CharacterBody2D
 		else if(health == 0)
 		{
 
-			CallDeferred(nameof(SpawnEnemy));
+			CallDeferred(nameof(SpawnEnemy3));
 			//SpawnEnemy();
 			QueueFree();
 		} 
@@ -146,16 +153,40 @@ public partial class Enemy : CharacterBody2D
 			contact = false;
 		}
 	}
-	public void SpawnEnemy()
+	public void SpawnEnemy3()
 	{
 		//await ToSignal(GetTree().CreateTimer(respawntime), "timeout");
-		var enemy = enemyscene.Instantiate<CharacterBody2D>();
-		enemy.GlobalPosition = spawnposition;
-		GetParent().AddChild(enemy);
+		var enemy3 = enemy3scene.Instantiate<CharacterBody2D>();
+		enemy3.GlobalPosition = spawnposition;
+		GetParent().AddChild(enemy3);
 		GD.Print("1");
 
 
 	}
+
+	public async void Shoot()
+	{
+		while (true)
+		{
+			await ToSignal(GetTree().CreateTimer(damagetime), "timeout");
+
+			if (player == null)
+			{
+				return;
+			}
+
+			Projectileenemy projectile = projectileenemytscn.Instantiate<Projectileenemy>();
+			projectile.GlobalPosition = point.GlobalPosition;
+
+			Vector2 direction = (player.GlobalPosition - point.GlobalPosition).Normalized();
+			projectile.direction = direction;
+
+			GetParent().AddChild(projectile);
+
+			GD.Print("strzal");
+		}
+	}
+
 	public Vector2 GetRandomPosition()
 	{
 		float x = GD.RandRange(175, 975);
