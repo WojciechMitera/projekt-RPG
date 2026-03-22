@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using static Godot.SkeletonModifier3D;
 
 /**
  * @class Player
@@ -13,6 +14,7 @@ public partial class Player : CharacterBody2D
 {
 	/** @brief Packed scene used to instantiate projectiles. */
 	PackedScene projectiletscn = GD.Load<PackedScene>("res://projectile.tscn");
+	PackedScene projectile2tscn = GD.Load<PackedScene>("res://projectile2.tscn");
 
 	/** @brief Movement speed of the player. */
 	public const float Speed = 180.0f;
@@ -24,6 +26,8 @@ public partial class Player : CharacterBody2D
 	/** @brief Current health value of the player. */
 	private int health;
 
+	public int meleedamage = 8;
+
 	/** @brief Reference to the UI health bar. */
 	private ProgressBar healthbar;
 
@@ -32,7 +36,7 @@ public partial class Player : CharacterBody2D
 
 	/** @brief Reference to the player node (may be redundant depending on scene structure). */
 	CharacterBody2D _player;
-
+	Area2D meleeattackarrea;
 
 	/**
 	 * @brief Called when the node enters the scene tree.
@@ -45,6 +49,8 @@ public partial class Player : CharacterBody2D
 		healthbar = GetNode<ProgressBar>("../bar");
 		point = GetNode<Marker2D>("point");
 		_player = GetNode<CharacterBody2D>("../player");
+		meleeattackarrea = GetNode<Area2D>("meleeattackarea");
+		meleeattackarrea.Monitoring = false;
 	}
 
 	/**
@@ -88,7 +94,54 @@ public partial class Player : CharacterBody2D
 
 		GetParent().AddChild(projectile);
 	}
+	public void Shoot2()
+	{
+		Vector2 direction = (GetGlobalMousePosition() - point.GlobalPosition).Normalized();
+		float spread = 0.2f;
+		Vector2[] directions = 
+		{
+			direction,
+		direction.Rotated(spread),
+		direction.Rotated(-spread)
+	};
+		foreach (var dir in directions)
+		{
+			Projectile2 projectile = projectile2tscn.Instantiate<Projectile2>();
+			projectile.GlobalPosition = point.GlobalPosition;
 
+
+			projectile.direction = dir;
+
+			GetParent().AddChild(projectile);
+		}
+		
+		
+		
+		
+	}
+	public async void Meleeattack()
+	{
+		meleeattackarrea.Monitoring = true;
+		GD.Print("true");
+		await ToSignal(GetTree().CreateTimer(0.2f), "timeout");
+		meleeattackarrea.Monitoring= false;
+		GD.Print("false");
+	}
+	public void BodyCollision(Node body)
+	{
+		if(body is Enemy enemy)
+		{
+			enemy.Damage(meleedamage);
+		}
+		else if (body is Enemy2 enemy2)
+		{
+			enemy2.Damage(meleedamage);
+		}
+		else if (body is Enemy3 enemy3)
+		{
+			enemy3.Damage(meleedamage);
+		}
+	}
 	/**
 	 * @brief Handles player movement and input every physics frame.
 	 * 
@@ -122,9 +175,17 @@ public partial class Player : CharacterBody2D
 		
 		MoveAndSlide();
 
-		if (Input.IsActionJustPressed("ui_accept"))
+		if (Input.IsActionJustPressed("use_weapon_1"))
 		{
 			Shoot();
+		}
+		if (Input.IsActionJustPressed("use_weapon_2"))
+		{
+			Shoot2();
+		}
+		if (Input.IsActionJustPressed("use_weapon_3"))
+		{
+			Meleeattack();
 		}
 	}
 }

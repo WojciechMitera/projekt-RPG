@@ -35,7 +35,7 @@ public partial class Enemy3 : CharacterBody2D
 	/**
 	 * @brief Time interval between damage ticks while in contact.
 	 */
-	public float damagetime = 2f;
+	public float damagetime = 20f;
 
 	public float respawntime = 1f;
 
@@ -73,18 +73,6 @@ public partial class Enemy3 : CharacterBody2D
 		}
 		Vector2 Direction = (player.GlobalPosition - GlobalPosition).Normalized();
 		Velocity = Direction * Speed;
-		//float distance = Direction.Length();
-
-		/*if (distance > mindist)
-		{
-			Direction = Direction.Normalized();
-			Velocity = Direction * Speed;
-		}
-		else
-		{
-			Velocity = Vector2.Zero;
-			//Velocity = (GlobalPosition - player.GlobalPosition).Normalized() * Speed * 0.5f;
-		}*/
 		MoveAndSlide();
 	}
 
@@ -183,7 +171,7 @@ public partial class Enemy3 : CharacterBody2D
 
 			GetParent().AddChild(projectile);
 
-			GD.Print("strzal");
+			//GD.Print("strzal");
 		}
 	}
 

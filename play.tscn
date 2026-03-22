@@ -30,6 +30,9 @@ size = Vector2(34, 46)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuxfv"]
 size = Vector2(13.199982, 15.200019)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8u6v"]
+size = Vector2(13.499996, 7)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iu7w4"]
 size = Vector2(88.5, 56)
 
@@ -94,6 +97,7 @@ show_percentage = false
 [node name="enemy" type="CharacterBody2D" parent="Panel" unique_id=1006073770]
 position = Vector2(807, 322)
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("3_y08r1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/enemy" unique_id=904239324]
@@ -132,9 +136,19 @@ position = Vector2(0.20000458, 0.20000458)
 scale = Vector2(0.07081082, 0.07081082)
 texture = ExtResource("2_wnt6v")
 
+[node name="meleeattackarea" type="Area2D" parent="Panel/player" unique_id=268316563]
+position = Vector2(8.200011, 1.4000059)
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/player/meleeattackarea" unique_id=1658349974]
+position = Vector2(3.449997, 0)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_s8u6v")
+
 [node name="enemy2" type="CharacterBody2D" parent="Panel" unique_id=1816297168]
 position = Vector2(674, 329)
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("8_6sspi")
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/enemy2" unique_id=314244065]
@@ -155,6 +169,7 @@ shape = SubResource("RectangleShape2D_6sspi")
 [node name="enemy3" type="CharacterBody2D" parent="Panel" unique_id=369304824]
 position = Vector2(464, 309)
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("10_ccytq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/enemy3" unique_id=1512401041]
@@ -213,6 +228,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_y08r1")
 
 [connection signal="body_entered" from="Panel/enemy/Area2D" to="Panel/enemy" method="BodyCollision"]
 [connection signal="body_exited" from="Panel/enemy/Area2D" to="Panel/enemy" method="BodyCollisionOut"]
+[connection signal="body_entered" from="Panel/player/meleeattackarea" to="Panel/player/meleeattackarea" method="BodyCollision"]
 [connection signal="body_entered" from="Panel/enemy2/Area2D" to="Panel/enemy2" method="BodyCollision"]
 [connection signal="body_exited" from="Panel/enemy2/Area2D" to="Panel/enemy2" method="BodyCollisionOut"]
 [connection signal="body_entered" from="Panel/enemy3/Area2D" to="Panel/enemy3" method="BodyCollision"]
