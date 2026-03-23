@@ -8,16 +8,16 @@ using System;
  * This class handles projectile movement, collision detection,
  * damage application, and automatic destruction after a short time.
  */
-public partial class Projectile : CharacterBody2D
+public partial class Projectile2 : CharacterBody2D
 {
 	/** @brief Damage dealt to enemies on hit. */
-	public int _damage = 10;
+	public int _damage = 5;
 
 	/** @brief Lifetime before automatic destruction (in seconds). */
 	public float _time = 0.01f;
 
 	/** @brief Movement speed of the projectile. */
-	public float speed = 300;
+	public float speed = 500;
 
 	/** @brief Normalized direction vector of the projectile. */
 	public Vector2 direction;
@@ -32,14 +32,14 @@ public partial class Projectile : CharacterBody2D
 	 * 
 	 * @param body The node that the projectile collided with.
 	 */
-	private void BodyCollision(Node body)
+	private void BodyCollision2(Node body)
 	{
 		if (body is Enemy enemy)
 		{
 			enemy.Damage(_damage);
 			QueueFree();
 		}
-		else if(body is Enemy2 enemy2)
+		else if (body is Enemy2 enemy2)
 		{
 			enemy2.Damage(_damage);
 			QueueFree();

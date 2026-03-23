@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bc50ksfocslyg"]
+
+[ext_resource type="Script" uid="uid://cgyo1d63hfrd2" path="res://Projectileenemy.cs" id="1_db1br"]
+[ext_resource type="Texture2D" uid="uid://nelq7f74lglm" path="res://fireball.png" id="2_uynpe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a85iw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxf0c"]
+radius = 11.578948
+
+[node name="Projectileenemy" type="CharacterBody2D" unique_id=1155545276]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_db1br")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1330080109]
+shape = SubResource("CircleShape2D_a85iw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1169175314]
+scale = Vector2(0.027832022, 0.027832022)
+texture = ExtResource("2_uynpe")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=249529700]
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=105417711]
+scale = Vector2(0.95, 0.95)
+shape = SubResource("CircleShape2D_qxf0c")
+
+[connection signal="body_entered" from="Area2D" to="." method="BodyCollision2"]
+[connection signal="body_entered" from="Area2D" to="." method="BodyCollision"]
