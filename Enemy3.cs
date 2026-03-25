@@ -20,7 +20,7 @@ public partial class Enemy3 : CharacterBody2D
 	/**
 	 * @brief Maximum health of the enemy.
 	 */
-	public int max_health = 30;
+	public int max_health = 0;
 
 	/**
 	 * @brief Current health of the enemy.
@@ -35,7 +35,7 @@ public partial class Enemy3 : CharacterBody2D
 	/**
 	 * @brief Time interval between damage ticks while in contact.
 	 */
-	public float damagetime = 20f;
+	public float damagetime = 2.0f;
 
 	public float respawntime = 1f;
 

@@ -40,7 +40,7 @@ public partial class Enemy : CharacterBody2D
 
 	PackedScene enemyscene;
 	Vector2 spawnposition;
-	public const float Speed = 0.0f;
+	public const float Speed = 80.0f;
 	private CharacterBody2D player;
 	//public float mindist = 65f;
 

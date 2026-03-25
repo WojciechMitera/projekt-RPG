@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bji8gbpkn5xbi"]
 
 [ext_resource type="Script" uid="uid://c3s3ohk01pgfy" path="res://Projectile2.cs" id="1_hi5l2"]
-[ext_resource type="Texture2D" uid="uid://nelq7f74lglm" path="res://fireball.png" id="2_mw2g6"]
+[ext_resource type="Texture2D" uid="uid://cn587rtf2xrip" path="res://bullet.png" id="2_hi5l2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a85iw"]
 
@@ -17,8 +17,9 @@ script = ExtResource("1_hi5l2")
 shape = SubResource("CircleShape2D_a85iw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1169175314]
-scale = Vector2(0.027832022, 0.027832022)
-texture = ExtResource("2_mw2g6")
+position = Vector2(0, 5.9604645e-08)
+scale = Vector2(0.01906526, 0.019065263)
+texture = ExtResource("2_hi5l2")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=249529700]
 collision_layer = 4
@@ -28,5 +29,5 @@ collision_mask = 10
 scale = Vector2(0.95, 0.95)
 shape = SubResource("CircleShape2D_qxf0c")
 
-[connection signal="body_entered" from="Area2D" to="." method="BodyCollision2"]
 [connection signal="body_entered" from="Area2D" to="." method="BodyCollision"]
+[connection signal="body_entered" from="Area2D" to="." method="BodyCollision2"]

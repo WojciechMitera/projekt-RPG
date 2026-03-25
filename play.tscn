@@ -191,6 +191,7 @@ position = Vector2(-3, 1)
 shape = SubResource("RectangleShape2D_hkd06")
 
 [node name="point" type="Marker2D" parent="Panel/enemy3" unique_id=785973338]
+position = Vector2(-3, 1)
 
 [node name="lewa_sciana" type="StaticBody2D" parent="." unique_id=2013252879]
 collision_layer = 8

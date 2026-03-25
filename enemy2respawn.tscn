@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://fh8tijc388cm" path="res://enemy3.png" id="2_tdfdi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iu7w4"]
-size = Vector2(88.5, 56)
+size = Vector2(76, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sspi"]
-size = Vector2(93.875, 61)
+size = Vector2(80, 52)
 
 [node name="enemy2" type="CharacterBody2D" unique_id=2076462777]
 position = Vector2(674, 329)
@@ -17,7 +17,7 @@ script = ExtResource("1_tr8uo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1870721438]
 position = Vector2(2.3841858e-07, 0)
-scale = Vector2(0.08757715, 0.08757714)
+scale = Vector2(0.077, 0.077)
 texture = ExtResource("2_tdfdi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2118019158]
