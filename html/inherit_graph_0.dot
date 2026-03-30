@@ -9,7 +9,15 @@ digraph "Graphical Class Hierarchy"
   Node0 -> Node1 [id="edge1_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node1 [id="Node000001",label="Enemy",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_enemy.html",tooltip="Represents an enemy character in the game."];
   Node0 -> Node2 [id="edge2_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node2 [id="Node000002",label="Player",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_player.html",tooltip="Controls the player character behavior."];
+  Node2 [id="Node000002",label="Enemy2",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_enemy2.html",tooltip="Represents a stronger enemy variant in the game."];
   Node0 -> Node3 [id="edge3_Node000000_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node3 [id="Node000003",label="Projectile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_projectile.html",tooltip="Represents a moving projectile fired by the player."];
+  Node3 [id="Node000003",label="Enemy3",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_enemy3.html",tooltip="Represents a ranged enemy that shoots projectiles at the player."];
+  Node0 -> Node4 [id="edge4_Node000000_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Player",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_player.html",tooltip="Controls the player character behavior."];
+  Node0 -> Node5 [id="edge5_Node000000_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Projectile",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_projectile.html",tooltip="Represents a moving projectile fired by the player."];
+  Node0 -> Node6 [id="edge6_Node000000_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Projectile2",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_projectile2.html",tooltip="Represents a fast-moving projectile variant."];
+  Node0 -> Node7 [id="edge7_Node000000_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Projectileenemy",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_projectileenemy.html",tooltip="Represents a projectile fired by enemies."];
 }

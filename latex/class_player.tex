@@ -21,14 +21,22 @@ override void \textbf{ \+\_\+\+Ready} ()
 void \textbf{ Damage} (int damage)
 \begin{DoxyCompactList}\small\item\em Applies damage to the player. \end{DoxyCompactList}\item 
 void \textbf{ Shoot} ()
-\begin{DoxyCompactList}\small\item\em Spawns and shoots a projectile toward the mouse position. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Shoots a single projectile toward the mouse position. \end{DoxyCompactList}\item 
+void \textbf{ Shoot2} ()
+\begin{DoxyCompactList}\small\item\em Shoots multiple projectiles in a spread pattern. \end{DoxyCompactList}\item 
+async void \textbf{ Meleeattack} ()
+\begin{DoxyCompactList}\small\item\em Performs a melee attack. \end{DoxyCompactList}\item 
+void \textbf{ Body\+Collision} (Node body)
+\begin{DoxyCompactList}\small\item\em Handles collision with enemy bodies during melee attack. \end{DoxyCompactList}\item 
 override void \textbf{ \+\_\+\+Physics\+Process} (double delta)
 \begin{DoxyCompactList}\small\item\em Handles player movement and input every physics frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 int \textbf{ max\+\_\+health} = 100
-\begin{DoxyCompactList}\small\item\em Maximum health value of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Maximum health value of the player. \end{DoxyCompactList}\item 
+int \textbf{ meleedamage} = 8
+\begin{DoxyCompactList}\small\item\em Damage dealt by melee attacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,7 +46,9 @@ const float \textbf{ Speed} = 180.\+0f
 \begin{DoxyCompactItemize}
 \item 
 Packed\+Scene \textbf{ projectiletscn} = GD.\+Load$<$Packed\+Scene$>$("{}res:\+/\+/\+projectile.\+tscn"{})
-\begin{DoxyCompactList}\small\item\em Packed scene used to instantiate projectiles. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Packed scene used to instantiate the primary projectile. \end{DoxyCompactList}\item 
+Packed\+Scene \textbf{ projectile2tscn} = GD.\+Load$<$Packed\+Scene$>$("{}res:\+/\+/\+projectile2.\+tscn"{})
+\begin{DoxyCompactList}\small\item\em Packed scene used to instantiate the secondary projectile. \end{DoxyCompactList}\item 
 int \textbf{ health}
 \begin{DoxyCompactList}\small\item\em Current health value of the player. \end{DoxyCompactList}\item 
 Progress\+Bar \textbf{ healthbar}
@@ -46,15 +56,17 @@ Progress\+Bar \textbf{ healthbar}
 Marker2D \textbf{ point}
 \begin{DoxyCompactList}\small\item\em Marker indicating where projectiles spawn. \end{DoxyCompactList}\item 
 Character\+Body2D \textbf{ \+\_\+player}
-\begin{DoxyCompactList}\small\item\em Reference to the player node (may be redundant depending on scene structure). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Reference to the player node. \end{DoxyCompactList}\item 
+Area2D \textbf{ meleeattackarrea}
+\begin{DoxyCompactList}\small\item\em Area used to detect melee attack collisions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Controls the player character behavior. 
 
-This class handles player movement, shooting, health management, and interaction with the game world. It extends Character\+Body2D to utilize built-\/in physics-\/based movement. 
+This class handles player movement, shooting, melee attacks, health management, and interaction with enemies. It extends Character\+Body2D to utilize built-\/in physics-\/based movement. 
 
-Definition at line \textbf{ 12} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 13} of file \textbf{ Player.\+cs}.
 
 
 
@@ -70,7 +82,7 @@ override void Player.\+\_\+\+Physics\+Process (\begin{DoxyParamCaption}\item[{do
 
 Handles player movement and input every physics frame. 
 
-Processes directional input, updates velocity, changes player sprite based on movement direction, and handles shooting input.
+Processes directional input, updates velocity, changes player sprite based on movement direction, and handles weapon input.
 
 
 \begin{DoxyParams}{Parameters}
@@ -79,7 +91,7 @@ Processes directional input, updates velocity, changes player sprite based on mo
 \end{DoxyParams}
 
 
-Definition at line \textbf{ 99} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 207} of file \textbf{ Player.\+cs}.
 
 \index{Player@{Player}!\_Ready@{\_Ready}}
 \index{\_Ready@{\_Ready}!Player@{Player}}
@@ -91,9 +103,41 @@ override void Player.\+\_\+\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCa
 
 Called when the node enters the scene tree. 
 
-Initializes player health, UI references, and important nodes. 
+Initializes player health, UI references, and required nodes.
 
-Definition at line \textbf{ 41} of file \textbf{ Player.\+cs}.
+\begin{DoxyNote}{Note}
+Required nodes:\+
+\begin{DoxyItemize}
+\item "{}../\+bar"{} (Progress\+Bar)
+\item "{}point"{} (Marker2D)
+\item "{}../\+player"{} (Character\+Body2D)
+\item "{}meleeattackarea"{} (Area2D) 
+\end{DoxyItemize}
+\end{DoxyNote}
+
+
+Definition at line \textbf{ 79} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!BodyCollision@{BodyCollision}}
+\index{BodyCollision@{BodyCollision}!Player@{Player}}
+\doxysubsubsection{BodyCollision()}
+{\footnotesize\ttfamily \label{class_player_a23efc4fc12a236f14baca51bf4cc2ade} 
+void Player.\+Body\+Collision (\begin{DoxyParamCaption}\item[{Node}]{body}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Handles collision with enemy bodies during melee attack. 
+
+Detects enemy types and applies melee damage accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & The colliding node. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 182} of file \textbf{ Player.\+cs}.
 
 \index{Player@{Player}!Damage@{Damage}}
 \index{Damage@{Damage}!Player@{Player}}
@@ -105,16 +149,33 @@ void Player.\+Damage (\begin{DoxyParamCaption}\item[{int}]{damage}{}\end{DoxyPar
 
 Applies damage to the player. 
 
-Reduces the player\textquotesingle{}s health by the specified amount. If health reaches zero, the scene is changed to the pause (or game over) scene.
+Reduces the player\textquotesingle{}s health. If health reaches zero, the game switches to the pause (game over) scene.
 
 
 \begin{DoxyParams}{Parameters}
-{\em damage} & Amount of damage to apply. \\
+{\em damage} & Amount of damage to apply.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+Scene "{}res:\+/\+/\+pauza.\+tscn"{} must exist. 
+\end{DoxyNote}
 
 
-Definition at line \textbf{ 57} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 99} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!Meleeattack@{Meleeattack}}
+\index{Meleeattack@{Meleeattack}!Player@{Player}}
+\doxysubsubsection{Meleeattack()}
+{\footnotesize\ttfamily \label{class_player_a1a2aebf0d4e2983137037e6d2687e502} 
+async void Player.\+Meleeattack (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Performs a melee attack. 
+
+Temporarily enables the melee collision area to detect and damage nearby enemies. 
+
+Definition at line \textbf{ 164} of file \textbf{ Player.\+cs}.
 
 \index{Player@{Player}!Shoot@{Shoot}}
 \index{Shoot@{Shoot}!Player@{Player}}
@@ -124,11 +185,25 @@ void Player.\+Shoot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{
 
 
 
-Spawns and shoots a projectile toward the mouse position. 
+Shoots a single projectile toward the mouse position. 
 
-Instantiates a projectile scene, sets its position to the spawn marker, and assigns a normalized direction vector toward the mouse cursor. 
+Instantiates a projectile and assigns its direction based on the cursor position. 
 
-Definition at line \textbf{ 80} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 119} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!Shoot2@{Shoot2}}
+\index{Shoot2@{Shoot2}!Player@{Player}}
+\doxysubsubsection{Shoot2()}
+{\footnotesize\ttfamily \label{class_player_a75903c9a1e1a57d737fb45e599d8d4cd} 
+void Player.\+Shoot2 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Shoots multiple projectiles in a spread pattern. 
+
+Fires three projectiles:\+ one straight and two slightly rotated to create a spread shot effect. 
+
+Definition at line \textbf{ 136} of file \textbf{ Player.\+cs}.
 
 
 
@@ -142,11 +217,14 @@ Character\+Body2D Player.\+\_\+player\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-Reference to the player node (may be redundant depending on scene structure). 
+Reference to the player node. 
+
+\begin{DoxyNote}{Note}
+May be redundant depending on scene structure. 
+\end{DoxyNote}
 
 
-
-Definition at line \textbf{ 34} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 61} of file \textbf{ Player.\+cs}.
 
 \index{Player@{Player}!health@{health}}
 \index{health@{health}!Player@{Player}}
@@ -160,7 +238,7 @@ Current health value of the player.
 
 
 
-Definition at line \textbf{ 25} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 39} of file \textbf{ Player.\+cs}.
 
 \index{Player@{Player}!healthbar@{healthbar}}
 \index{healthbar@{healthbar}!Player@{Player}}
@@ -174,7 +252,7 @@ Reference to the UI health bar.
 
 
 
-Definition at line \textbf{ 28} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 49} of file \textbf{ Player.\+cs}.
 
 \index{Player@{Player}!max\_health@{max\_health}}
 \index{max\_health@{max\_health}!Player@{Player}}
@@ -188,7 +266,35 @@ Maximum health value of the player.
 
 
 
-Definition at line \textbf{ 22} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 34} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!meleeattackarrea@{meleeattackarrea}}
+\index{meleeattackarrea@{meleeattackarrea}!Player@{Player}}
+\doxysubsubsection{meleeattackarrea}
+{\footnotesize\ttfamily \label{class_player_a812accfecf723594f2d45fcaf58c954a} 
+Area2D Player.\+meleeattackarrea\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Area used to detect melee attack collisions. 
+
+
+
+Definition at line \textbf{ 66} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!meleedamage@{meleedamage}}
+\index{meleedamage@{meleedamage}!Player@{Player}}
+\doxysubsubsection{meleedamage}
+{\footnotesize\ttfamily \label{class_player_a8d569fa9e1f57424e0fcc815cb519037} 
+int Player.\+meleedamage = 8}
+
+
+
+Damage dealt by melee attacks. 
+
+
+
+Definition at line \textbf{ 44} of file \textbf{ Player.\+cs}.
 
 \index{Player@{Player}!point@{point}}
 \index{point@{point}!Player@{Player}}
@@ -202,7 +308,21 @@ Marker indicating where projectiles spawn.
 
 
 
-Definition at line \textbf{ 31} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 54} of file \textbf{ Player.\+cs}.
+
+\index{Player@{Player}!projectile2tscn@{projectile2tscn}}
+\index{projectile2tscn@{projectile2tscn}!Player@{Player}}
+\doxysubsubsection{projectile2tscn}
+{\footnotesize\ttfamily \label{class_player_a89f910957aaaf70e385eda0945bd9efd} 
+Packed\+Scene Player.\+projectile2tscn = GD.\+Load$<$Packed\+Scene$>$("{}res:\+/\+/\+projectile2.\+tscn"{})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Packed scene used to instantiate the secondary projectile. 
+
+
+
+Definition at line \textbf{ 23} of file \textbf{ Player.\+cs}.
 
 \index{Player@{Player}!projectiletscn@{projectiletscn}}
 \index{projectiletscn@{projectiletscn}!Player@{Player}}
@@ -212,11 +332,11 @@ Packed\+Scene Player.\+projectiletscn = GD.\+Load$<$Packed\+Scene$>$("{}res:\+/\
 
 
 
-Packed scene used to instantiate projectiles. 
+Packed scene used to instantiate the primary projectile. 
 
 
 
-Definition at line \textbf{ 15} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 18} of file \textbf{ Player.\+cs}.
 
 \index{Player@{Player}!Speed@{Speed}}
 \index{Speed@{Speed}!Player@{Player}}
@@ -230,7 +350,7 @@ Movement speed of the player.
 
 
 
-Definition at line \textbf{ 18} of file \textbf{ Player.\+cs}.
+Definition at line \textbf{ 28} of file \textbf{ Player.\+cs}.
 
 
 

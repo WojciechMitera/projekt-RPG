@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Roguelike-2D documentation: Projectile Class Reference</title>
+<title>roguelike 2D documentation: Projectile Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Roguelike-2D documentation
+   <div id="projectname">roguelike 2D documentation
    </div>
   </td>
  </tr>
@@ -146,7 +146,7 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Updates projectile movement every physics frame. </p>
-<p>Moves the projectile in the assigned direction with a constant speed.</p>
+<p>Moves the projectile in the assigned direction with constant velocity.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">delta</td><td>Time elapsed since last frame (in seconds). </td></tr>
@@ -154,7 +154,7 @@ Private Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00061">61</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00082">82</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
 
 </div>
 </div>
@@ -182,7 +182,8 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Handles collision with another body. </p>
-<p>If the collided object is an <a class="el" href="class_enemy.html" title="Represents an enemy character in the game.">Enemy</a>, it applies damage and destroys the projectile. The projectile is also destroyed when it collides with walls, floor, or ceiling. Otherwise, it is scheduled for delayed destruction.</p>
+<p>Applies damage to enemies and destroys the projectile on impact. Also destroys the projectile when it collides with environment surfaces such as walls, floor, or ceiling.</p>
+<p>If no immediate collision condition is met, the projectile is scheduled for delayed destruction.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">body</td><td>The node that the projectile collided with. </td></tr>
@@ -190,7 +191,7 @@ Private Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00035">35</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00045">45</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
 
 </div>
 </div>
@@ -218,7 +219,7 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destroys the projectile after a delay. </p>
-<p>Uses a timer signal to wait for a specified amount of time before removing the projectile from the scene.</p>
+<p>Waits for the specified time and then removes the projectile from the scene.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">time</td><td>Delay before destruction (in seconds). </td></tr>
@@ -226,7 +227,7 @@ Private Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00075">75</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00096">96</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
 
 </div>
 </div>
@@ -245,7 +246,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Damage dealt to enemies on hit. </p>
 
-<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00014">14</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00016">16</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
 
 </div>
 </div>
@@ -263,7 +264,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Lifetime before automatic destruction (in seconds). </p>
 
-<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00017">17</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00021">21</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
 
 </div>
 </div>
@@ -281,7 +282,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Normalized direction vector of the projectile. </p>
 
-<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00023">23</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00031">31</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
 
 </div>
 </div>
@@ -299,7 +300,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Movement speed of the projectile. </p>
 
-<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00020">20</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_projectile_8cs_source.html#l00026">26</a> of file <a class="el" href="_projectile_8cs_source.html">Projectile.cs</a>.</p>
 
 </div>
 </div>

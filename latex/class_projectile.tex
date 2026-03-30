@@ -59,7 +59,7 @@ override void Projectile.\+\_\+\+Physics\+Process (\begin{DoxyParamCaption}\item
 
 Updates projectile movement every physics frame. 
 
-Moves the projectile in the assigned direction with a constant speed.
+Moves the projectile in the assigned direction with constant velocity.
 
 
 \begin{DoxyParams}{Parameters}
@@ -68,7 +68,7 @@ Moves the projectile in the assigned direction with a constant speed.
 \end{DoxyParams}
 
 
-Definition at line \textbf{ 61} of file \textbf{ Projectile.\+cs}.
+Definition at line \textbf{ 82} of file \textbf{ Projectile.\+cs}.
 
 \index{Projectile@{Projectile}!BodyCollision@{BodyCollision}}
 \index{BodyCollision@{BodyCollision}!Projectile@{Projectile}}
@@ -80,7 +80,9 @@ void Projectile.\+Body\+Collision (\begin{DoxyParamCaption}\item[{Node}]{body}{}
 
 Handles collision with another body. 
 
-If the collided object is an \doxyref{Enemy}{p.}{class_enemy}, it applies damage and destroys the projectile. The projectile is also destroyed when it collides with walls, floor, or ceiling. Otherwise, it is scheduled for delayed destruction.
+Applies damage to enemies and destroys the projectile on impact. Also destroys the projectile when it collides with environment surfaces such as walls, floor, or ceiling.
+
+If no immediate collision condition is met, the projectile is scheduled for delayed destruction.
 
 
 \begin{DoxyParams}{Parameters}
@@ -89,7 +91,7 @@ If the collided object is an \doxyref{Enemy}{p.}{class_enemy}, it applies damage
 \end{DoxyParams}
 
 
-Definition at line \textbf{ 35} of file \textbf{ Projectile.\+cs}.
+Definition at line \textbf{ 45} of file \textbf{ Projectile.\+cs}.
 
 \index{Projectile@{Projectile}!Destroy@{Destroy}}
 \index{Destroy@{Destroy}!Projectile@{Projectile}}
@@ -101,7 +103,7 @@ async void Projectile.\+Destroy (\begin{DoxyParamCaption}\item[{float}]{time}{}\
 
 Destroys the projectile after a delay. 
 
-Uses a timer signal to wait for a specified amount of time before removing the projectile from the scene.
+Waits for the specified time and then removes the projectile from the scene.
 
 
 \begin{DoxyParams}{Parameters}
@@ -110,7 +112,7 @@ Uses a timer signal to wait for a specified amount of time before removing the p
 \end{DoxyParams}
 
 
-Definition at line \textbf{ 75} of file \textbf{ Projectile.\+cs}.
+Definition at line \textbf{ 96} of file \textbf{ Projectile.\+cs}.
 
 
 
@@ -128,7 +130,7 @@ Damage dealt to enemies on hit.
 
 
 
-Definition at line \textbf{ 14} of file \textbf{ Projectile.\+cs}.
+Definition at line \textbf{ 16} of file \textbf{ Projectile.\+cs}.
 
 \index{Projectile@{Projectile}!\_time@{\_time}}
 \index{\_time@{\_time}!Projectile@{Projectile}}
@@ -142,7 +144,7 @@ Lifetime before automatic destruction (in seconds).
 
 
 
-Definition at line \textbf{ 17} of file \textbf{ Projectile.\+cs}.
+Definition at line \textbf{ 21} of file \textbf{ Projectile.\+cs}.
 
 \index{Projectile@{Projectile}!direction@{direction}}
 \index{direction@{direction}!Projectile@{Projectile}}
@@ -156,7 +158,7 @@ Normalized direction vector of the projectile.
 
 
 
-Definition at line \textbf{ 23} of file \textbf{ Projectile.\+cs}.
+Definition at line \textbf{ 31} of file \textbf{ Projectile.\+cs}.
 
 \index{Projectile@{Projectile}!speed@{speed}}
 \index{speed@{speed}!Projectile@{Projectile}}
@@ -170,7 +172,7 @@ Movement speed of the projectile.
 
 
 
-Definition at line \textbf{ 20} of file \textbf{ Projectile.\+cs}.
+Definition at line \textbf{ 26} of file \textbf{ Projectile.\+cs}.
 
 
 

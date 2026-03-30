@@ -3,108 +3,155 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{keyword}{using\ }Godot;}
 \DoxyCodeLine{00002\ \textcolor{keyword}{using\ }System;}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00012\ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }Player\ :\ CharacterBody2D}
-\DoxyCodeLine{00013\ \{}
-\DoxyCodeLine{00015\ \ \ \ \ PackedScene\ projectiletscn\ =\ GD.Load<PackedScene>(\textcolor{stringliteral}{"{}res://projectile.tscn"{}});}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ Speed\ =\ 180.0f;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{using\ }static\ Godot.SkeletonModifier3D;}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }Player\ :\ CharacterBody2D}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ PackedScene\ projectiletscn\ =\ GD.Load<PackedScene>(\textcolor{stringliteral}{"{}res://projectile.tscn"{}});}
 \DoxyCodeLine{00019\ }
-\DoxyCodeLine{00021\ \ \ \ \ [Export]}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ max\_health\ =\ 100;}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ health;}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{private}\ ProgressBar\ healthbar;}
+\DoxyCodeLine{00023\ \ \ \ \ PackedScene\ projectile2tscn\ =\ GD.Load<PackedScene>(\textcolor{stringliteral}{"{}res://projectile2.tscn"{}});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ Speed\ =\ 180.0f;}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00031\ \ \ \ \ Marker2D\ point;}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00034\ \ \ \ \ CharacterBody2D\ \_player;}
+\DoxyCodeLine{00033\ \ \ \ \ [Export]}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ max\_health\ =\ 100;}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \_Ready()}
-\DoxyCodeLine{00042\ \ \ \ \ \{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ health\ =\ max\_health;}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ healthbar\ =\ GetNode<ProgressBar>(\textcolor{stringliteral}{"{}../bar"{}});}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ point\ =\ GetNode<Marker2D>(\textcolor{stringliteral}{"{}point"{}});}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \_player\ =\ GetNode<CharacterBody2D>(\textcolor{stringliteral}{"{}../player"{}});}
-\DoxyCodeLine{00047\ \ \ \ \ \}}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Damage(\textcolor{keywordtype}{int}\ damage)}
-\DoxyCodeLine{00058\ \ \ \ \ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ health\ -\/=\ damage;}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (health\ <\ 0)}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ health\ =\ 0;}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (health\ ==\ 0)}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ GetTree().CallDeferred(\textcolor{stringliteral}{"{}change\_scene\_to\_file"{}},\ \textcolor{stringliteral}{"{}res://pauza.tscn"{}});}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ healthbar.Value\ =\ health;}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ GD.Print(health);}
-\DoxyCodeLine{00072\ \ \ \ \ \}}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Shoot()}
-\DoxyCodeLine{00081\ \ \ \ \ \{}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ Projectile\ projectile\ =\ projectiletscn.Instantiate<Projectile>();}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ projectile.GlobalPosition\ =\ point.GlobalPosition;}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ Vector2\ direction\ =\ (GetGlobalMousePosition()\ -\/\ point.GlobalPosition).Normalized();}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ projectile.direction\ =\ direction;}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ GetParent().AddChild(projectile);}
-\DoxyCodeLine{00089\ \ \ \ \ \}}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \_PhysicsProcess(\textcolor{keywordtype}{double}\ delta)}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ health;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ meleedamage\ =\ 8;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{private}\ ProgressBar\ healthbar;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ Marker2D\ point;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ CharacterBody2D\ \_player;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \ \ Area2D\ meleeattackarrea;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \_Ready()}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ health\ =\ max\_health;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ healthbar\ =\ GetNode<ProgressBar>(\textcolor{stringliteral}{"{}../bar"{}});}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ point\ =\ GetNode<Marker2D>(\textcolor{stringliteral}{"{}point"{}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \_player\ =\ GetNode<CharacterBody2D>(\textcolor{stringliteral}{"{}../player"{}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ meleeattackarrea\ =\ GetNode<Area2D>(\textcolor{stringliteral}{"{}meleeattackarea"{}});}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ meleeattackarrea.Monitoring\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Damage(\textcolor{keywordtype}{int}\ damage)}
 \DoxyCodeLine{00100\ \ \ \ \ \{}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ Vector2\ velocity\ =\ Velocity;}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ Vector2\ direction\ =\ Input.GetVector(\textcolor{stringliteral}{"{}ui\_left"{}},\ \textcolor{stringliteral}{"{}ui\_right"{}},\ \textcolor{stringliteral}{"{}ui\_up"{}},\ \textcolor{stringliteral}{"{}ui\_down"{}});}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ var\ sprite\ =\ GetNode<Sprite2D>(\textcolor{stringliteral}{"{}sprite\_player"{}});}
-\DoxyCodeLine{00104\ }
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (direction\ !=\ Vector2.Zero)}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (direction\ ==\ Vector2.Right)}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprite.Texture\ =\ GD.Load<Texture2D>(\textcolor{stringliteral}{"{}res://player.png"{}});}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (direction\ ==\ Vector2.Left)}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprite.Texture\ =\ GD.Load<Texture2D>(\textcolor{stringliteral}{"{}res://player2.png"{}});}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ velocity.X\ =\ direction.X\ *\ Speed;}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ velocity.X\ =\ Mathf.MoveToward(Velocity.X,\ 0,\ Speed);}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (direction\ !=\ Vector2.Zero)}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (direction\ ==\ Vector2.Right)}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprite.Texture\ =\ GD.Load<Texture2D>(\textcolor{stringliteral}{"{}res://player.png"{}});}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (direction\ ==\ Vector2.Left)}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprite.Texture\ =\ GD.Load<Texture2D>(\textcolor{stringliteral}{"{}res://player2.png"{}});}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ velocity.Y\ =\ direction.Y\ *\ Speed;}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ velocity.Y\ =\ Mathf.MoveToward(Velocity.Y,\ 0,\ Speed);}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ Velocity\ =\ velocity;}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ MoveAndSlide();}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Input.IsActionJustPressed(\textcolor{stringliteral}{"{}ui\_accept"{}}))}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ Shoot();}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00146\ \ \ \ \ \}}
-\DoxyCodeLine{00147\ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ health\ -\/=\ damage;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (health\ <=\ 0)}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ GetTree().CallDeferred(\textcolor{stringliteral}{"{}change\_scene\_to\_file"{}},\ \textcolor{stringliteral}{"{}res://pauza.tscn"{}});}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ GD.Print(\textcolor{stringliteral}{"{}Game\ Over"{}});}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ healthbar.Value\ =\ health;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ GD.Print(health);}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Shoot()}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ Projectile\ projectile\ =\ projectiletscn.Instantiate<Projectile>();}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ projectile.GlobalPosition\ =\ point.GlobalPosition;}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ Vector2\ direction\ =\ (GetGlobalMousePosition()\ -\/\ point.GlobalPosition).Normalized();}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ projectile.direction\ =\ direction;}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ GetParent().AddChild(projectile);}
+\DoxyCodeLine{00128\ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Shoot2()}
+\DoxyCodeLine{00137\ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ Vector2\ direction\ =\ (GetGlobalMousePosition()\ -\/\ point.GlobalPosition).Normalized();}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ spread\ =\ 0.2f;}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ Vector2[]\ directions\ =}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ direction,}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ direction.Rotated(spread),}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ direction.Rotated(-\/spread)}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ dir\ \textcolor{keywordflow}{in}\ directions)}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ Projectile2\ projectile\ =\ projectile2tscn.Instantiate<Projectile2>();}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ projectile.GlobalPosition\ =\ point.GlobalPosition;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ projectile.direction\ =\ dir;}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ GetParent().AddChild(projectile);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keyword}{public}\ async\ \textcolor{keywordtype}{void}\ Meleeattack()}
+\DoxyCodeLine{00165\ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ meleeattackarrea.Monitoring\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ GD.Print(\textcolor{stringliteral}{"{}Melee\ ON"{}});}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ await\ ToSignal(GetTree().CreateTimer(0.5f),\ \textcolor{stringliteral}{"{}timeout"{}});}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ meleeattackarrea.Monitoring\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ GD.Print(\textcolor{stringliteral}{"{}Melee\ OFF"{}});}
+\DoxyCodeLine{00173\ \ \ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ BodyCollision(Node\ body)}
+\DoxyCodeLine{00183\ \ \ \ \ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (body\ is\ Enemy\ enemy)}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ enemy.Damage(meleedamage);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ GD.Print(\textcolor{stringliteral}{"{}Hit\ Enemy1"{}});}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (body\ is\ Enemy2\ enemy2)}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ enemy2.Damage(meleedamage);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (body\ is\ Enemy3\ enemy3)}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ enemy3.Damage(meleedamage);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \_PhysicsProcess(\textcolor{keywordtype}{double}\ delta)}
+\DoxyCodeLine{00208\ \ \ \ \ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ Vector2\ direction\ =\ Input.GetVector(\textcolor{stringliteral}{"{}ui\_left"{}},\ \textcolor{stringliteral}{"{}ui\_right"{}},\ \textcolor{stringliteral}{"{}ui\_up"{}},\ \textcolor{stringliteral}{"{}ui\_down"{}});}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ var\ sprite\ =\ GetNode<Sprite2D>(\textcolor{stringliteral}{"{}sprite\_player"{}});}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (direction\ !=\ Vector2.Zero)}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ direction\ =\ direction.Normalized();}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ Velocity\ =\ direction\ *\ Speed;}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (direction.X\ >\ 0)}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprite.Texture\ =\ GD.Load<Texture2D>(\textcolor{stringliteral}{"{}res://player.png"{}});}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (direction.X\ <\ 0)}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprite.Texture\ =\ GD.Load<Texture2D>(\textcolor{stringliteral}{"{}res://player2.png"{}});}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ Velocity\ =\ Vector2.Zero;}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ MoveAndSlide();}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Input.IsActionJustPressed(\textcolor{stringliteral}{"{}use\_weapon\_1"{}}))}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ Shoot();}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Input.IsActionJustPressed(\textcolor{stringliteral}{"{}use\_weapon\_2"{}}))}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ Shoot2();}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Input.IsActionJustPressed(\textcolor{stringliteral}{"{}use\_weapon\_3"{}}))}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ Meleeattack();}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00245\ \ \ \ \ \}}
+\DoxyCodeLine{00246\ \}}
 
 \end{DoxyCode}

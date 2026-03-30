@@ -1,0 +1,181 @@
+\doxysection{Projectileenemy Class Reference}
+\label{class_projectileenemy}\index{Projectileenemy@{Projectileenemy}}
+
+
+Represents a projectile fired by enemies.  
+
+
+
+
+Inheritance diagram for Projectileenemy:\+
+% FIG 0
+
+
+Collaboration diagram for Projectileenemy:\+
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \textbf{ \+\_\+\+Physics\+Process} (double delta)
+\begin{DoxyCompactList}\small\item\em Updates projectile movement every physics frame. \end{DoxyCompactList}\item 
+async void \textbf{ Destroy} (float time)
+\begin{DoxyCompactList}\small\item\em Destroys the projectile after a delay. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ \+\_\+damage} = 10
+\begin{DoxyCompactList}\small\item\em Damage dealt to the player on hit. \end{DoxyCompactList}\item 
+float \textbf{ \+\_\+time} = 0.\+01f
+\begin{DoxyCompactList}\small\item\em Lifetime before automatic destruction (in seconds). \end{DoxyCompactList}\item 
+float \textbf{ speed} = 300
+\begin{DoxyCompactList}\small\item\em Movement speed of the projectile. \end{DoxyCompactList}\item 
+Vector2 \textbf{ direction}
+\begin{DoxyCompactList}\small\item\em Normalized direction vector of the projectile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ Body\+Collision2} (Node body)
+\begin{DoxyCompactList}\small\item\em Handles collision with another body. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a projectile fired by enemies. 
+
+This class handles movement, collision detection, damage application to the player, and automatic destruction. 
+
+Definition at line \textbf{ 11} of file \textbf{ Projectileenemy.\+cs}.
+
+
+
+\label{doc-func-members}
+\doxysubsection{Member Function Documentation}
+\index{Projectileenemy@{Projectileenemy}!\_PhysicsProcess@{\_PhysicsProcess}}
+\index{\_PhysicsProcess@{\_PhysicsProcess}!Projectileenemy@{Projectileenemy}}
+\doxysubsubsection{\_PhysicsProcess()}
+{\footnotesize\ttfamily \label{class_projectileenemy_a7498912db947d58425cb9340ea743e25} 
+override void Projectileenemy.\+\_\+\+Physics\+Process (\begin{DoxyParamCaption}\item[{double}]{delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates projectile movement every physics frame. 
+
+Moves the projectile in the assigned direction with constant velocity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & Time elapsed since last frame (in seconds). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 71} of file \textbf{ Projectileenemy.\+cs}.
+
+\index{Projectileenemy@{Projectileenemy}!BodyCollision2@{BodyCollision2}}
+\index{BodyCollision2@{BodyCollision2}!Projectileenemy@{Projectileenemy}}
+\doxysubsubsection{BodyCollision2()}
+{\footnotesize\ttfamily \label{class_projectileenemy_a41950176c22cc2e6f5bd9fbd8706e960} 
+void Projectileenemy.\+Body\+Collision2 (\begin{DoxyParamCaption}\item[{Node}]{body}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Handles collision with another body. 
+
+Applies damage to the player when hit. Also destroys the projectile when it collides with environment surfaces such as walls, floor, or ceiling.
+
+If no immediate collision condition is met, the projectile is scheduled for delayed destruction.
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & The node that the projectile collided with. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 45} of file \textbf{ Projectileenemy.\+cs}.
+
+\index{Projectileenemy@{Projectileenemy}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!Projectileenemy@{Projectileenemy}}
+\doxysubsubsection{Destroy()}
+{\footnotesize\ttfamily \label{class_projectileenemy_abb955750f5953a8a9bfcfcbd96a60ec0} 
+async void Projectileenemy.\+Destroy (\begin{DoxyParamCaption}\item[{float}]{time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destroys the projectile after a delay. 
+
+Waits for the specified time and then removes the projectile from the scene.
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Delay before destruction (in seconds). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 85} of file \textbf{ Projectileenemy.\+cs}.
+
+
+
+\label{doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\index{Projectileenemy@{Projectileenemy}!\_damage@{\_damage}}
+\index{\_damage@{\_damage}!Projectileenemy@{Projectileenemy}}
+\doxysubsubsection{\_damage}
+{\footnotesize\ttfamily \label{class_projectileenemy_a0959db52331af51c33e5e96e5567f54d} 
+int Projectileenemy.\+\_\+damage = 10}
+
+
+
+Damage dealt to the player on hit. 
+
+
+
+Definition at line \textbf{ 16} of file \textbf{ Projectileenemy.\+cs}.
+
+\index{Projectileenemy@{Projectileenemy}!\_time@{\_time}}
+\index{\_time@{\_time}!Projectileenemy@{Projectileenemy}}
+\doxysubsubsection{\_time}
+{\footnotesize\ttfamily \label{class_projectileenemy_aae679c06f08991a520d57d3f9c44fb5a} 
+float Projectileenemy.\+\_\+time = 0.\+01f}
+
+
+
+Lifetime before automatic destruction (in seconds). 
+
+
+
+Definition at line \textbf{ 21} of file \textbf{ Projectileenemy.\+cs}.
+
+\index{Projectileenemy@{Projectileenemy}!direction@{direction}}
+\index{direction@{direction}!Projectileenemy@{Projectileenemy}}
+\doxysubsubsection{direction}
+{\footnotesize\ttfamily \label{class_projectileenemy_a3bdd5d0607c520dc6174b9a82e2c329b} 
+Vector2 Projectileenemy.\+direction}
+
+
+
+Normalized direction vector of the projectile. 
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Projectileenemy.\+cs}.
+
+\index{Projectileenemy@{Projectileenemy}!speed@{speed}}
+\index{speed@{speed}!Projectileenemy@{Projectileenemy}}
+\doxysubsubsection{speed}
+{\footnotesize\ttfamily \label{class_projectileenemy_abcac185211fe94f7c7f6d60f7582b0ba} 
+float Projectileenemy.\+speed = 300}
+
+
+
+Movement speed of the projectile. 
+
+
+
+Definition at line \textbf{ 26} of file \textbf{ Projectileenemy.\+cs}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Projectileenemy.\+cs}\end{DoxyCompactItemize}

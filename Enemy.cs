@@ -6,8 +6,8 @@ using static Godot.TextServer;
  * @class Enemy
  * @brief Represents an enemy character in the game.
  * 
- * This class handles enemy behavior such as taking damage,
- * tracking health, and dealing damage to the player upon contact.
+ * This class handles enemy behavior such as movement,
+ * taking damage, respawning, and dealing damage to the player upon contact.
  */
 public partial class Enemy : CharacterBody2D
 {
@@ -36,18 +36,38 @@ public partial class Enemy : CharacterBody2D
 	 */
 	public float damagetime = 1f;
 
+	/**
+	 * @brief Time before the enemy respawns.
+	 */
 	public float respawntime = 1f;
 
+	/**
+	 * @brief Packed scene used to respawn the enemy.
+	 */
 	PackedScene enemyscene;
+
+	/**
+	 * @brief Position where the enemy will respawn.
+	 */
 	Vector2 spawnposition;
+
+	/**
+	 * @brief Movement speed of the enemy.
+	 */
 	public const float Speed = 80.0f;
+
+	/**
+	 * @brief Reference to the player object.
+	 */
 	private CharacterBody2D player;
-	//public float mindist = 65f;
 
 	/**
 	 * @brief Initializes the enemy.
 	 * 
-	 * Sets the current health to the maximum health value.
+	 * Sets health, loads the respawn scene, assigns spawn position,
+	 * and retrieves the player reference.
+	 * 
+	 * @note Make sure the player node exists at "../player".
 	 */
 	public override void _Ready()
 	{
@@ -55,37 +75,34 @@ public partial class Enemy : CharacterBody2D
 		enemyscene = GD.Load<PackedScene>("res://enemyrespawn.tscn");
 		spawnposition = GetRandomPosition();
 		player = GetNode<CharacterBody2D>("../player");
-		
 	}
 
+	/**
+	 * @brief Handles physics updates.
+	 * 
+	 * Moves the enemy towards the player using normalized direction
+	 * and constant speed.
+	 * 
+	 * @param delta Time elapsed since last frame.
+	 */
 	public override void _PhysicsProcess(double delta)
 	{
 		if (player == null)
 		{
 			return;
 		}
+
 		Vector2 Direction = (player.GlobalPosition - GlobalPosition).Normalized();
 		Velocity = Direction * Speed;
-		//float distance = Direction.Length();
 
-		/*if (distance > mindist)
-		{
-			Direction = Direction.Normalized();
-			Velocity = Direction * Speed;
-		}
-		else
-		{
-			Velocity = Vector2.Zero;
-			//Velocity = (GlobalPosition - player.GlobalPosition).Normalized() * Speed * 0.5f;
-		}*/
 		MoveAndSlide();
 	}
 
 	/**
 	 * @brief Applies damage to the enemy.
 	 * 
-	 * Reduces the enemy's health by the given amount.
-	 * If health reaches zero, the enemy is removed from the scene.
+	 * Reduces health and triggers respawn when health reaches zero.
+	 * The enemy is removed from the scene after spawning a new instance.
 	 * 
 	 * @param damage Amount of damage to apply.
 	 */
@@ -96,10 +113,9 @@ public partial class Enemy : CharacterBody2D
 		if (health <= 0)
 		{
 			CallDeferred(nameof(SpawnEnemy));
-			//SpawnEnemy();
 			QueueFree();
-
 		}
+
 		GD.Print(health);
 	}
 
@@ -141,16 +157,29 @@ public partial class Enemy : CharacterBody2D
 			contact = false;
 		}
 	}
+
+	/**
+	 * @brief Spawns a new enemy instance.
+	 * 
+	 * Instantiates a new enemy from the packed scene and places it
+	 * at a predefined spawn position.
+	 * 
+	 * @note The scene "res://enemyrespawn.tscn" must exist.
+	 */
 	public void SpawnEnemy()
 	{
-		//await ToSignal(GetTree().CreateTimer(respawntime), "timeout");
 		var enemy = enemyscene.Instantiate<CharacterBody2D>();
 		enemy.GlobalPosition = spawnposition;
 		GetParent().AddChild(enemy);
-		GD.Print("1");
 
-
+		GD.Print("Enemy respawned");
 	}
+
+	/**
+	 * @brief Generates a random position within predefined bounds.
+	 * 
+	 * @return A Vector2 representing a random position.
+	 */
 	public Vector2 GetRandomPosition()
 	{
 		float x = GD.RandRange(175, 975);
@@ -158,5 +187,4 @@ public partial class Enemy : CharacterBody2D
 
 		return new Vector2(x, y);
 	}
-
 }
