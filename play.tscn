@@ -5,13 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://df8qg0kr18hhj" path="res://player.png" id="2_wnt6v"]
 [ext_resource type="Script" uid="uid://cj1cad6a8prwq" path="res://Player.cs" id="2_yuxfv"]
 [ext_resource type="Texture2D" uid="uid://b5cog7d1murwm" path="res://bar.png" id="3_3ib3j"]
-[ext_resource type="Script" uid="uid://bnscgn0vpte68" path="res://Enemy.cs" id="3_y08r1"]
 [ext_resource type="Texture2D" uid="uid://308sobdakhor" path="res://pauza.png" id="5_j5m8q"]
-[ext_resource type="Texture2D" uid="uid://b5viqr24kkx1v" path="res://enemy.png" id="5_y08r1"]
-[ext_resource type="Script" uid="uid://ds7gntfp6jlau" path="res://Enemy2.cs" id="8_6sspi"]
-[ext_resource type="Texture2D" uid="uid://fh8tijc388cm" path="res://enemy3.png" id="9_ccytq"]
-[ext_resource type="Script" uid="uid://bcfswnhcm8jyf" path="res://Enemy3.cs" id="10_ccytq"]
-[ext_resource type="Texture2D" uid="uid://bt813n5ewx0n4" path="res://enemy2.png" id="11_hkd06"]
+[ext_resource type="AudioStream" uid="uid://4bgvbcnk1jf5" path="res://Dark Medieval Music - Legacy of the Fallen.mp3" id="13_s8u6v"]
+[ext_resource type="Script" uid="uid://ctd6rp2wgtn8v" path="res://WaveManager.cs" id="14_off7t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wnt6v"]
 texture = ExtResource("1_b5e5s")
@@ -21,29 +17,11 @@ texture = ExtResource("1_b5e5s")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ib3j"]
 bg_color = Color(0.6666667, 0.078431375, 0.12156863, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ib3j"]
-size = Vector2(24.425049, 43.94336)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y08r1"]
-size = Vector2(27, 45.94336)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuxfv"]
 size = Vector2(10.199982, 12.000008)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8u6v"]
 size = Vector2(13.499996, 7)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu7w4"]
-size = Vector2(70.25, 46)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sspi"]
-size = Vector2(74.9375, 50.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccytq"]
-size = Vector2(23, 37)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkd06"]
-size = Vector2(24, 38)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_yuxfv"]
 a = Vector2(129, 541)
@@ -80,6 +58,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_wnt6v")
 
+[node name="WaveManager" type="Node2D" parent="Panel" unique_id=53944514]
+position = Vector2(-17, -17)
+script = ExtResource("14_off7t")
+
 [node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=1894134270]
 position = Vector2(175.00002, 40.5)
 scale = Vector2(0.1892915, 0.2682119)
@@ -95,28 +77,6 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_iu7w4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3ib3j")
 value = 100.0
 show_percentage = false
-
-[node name="enemy" type="CharacterBody2D" parent="Panel" unique_id=1006073770]
-position = Vector2(807, 322)
-collision_layer = 2
-collision_mask = 9
-script = ExtResource("3_y08r1")
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/enemy" unique_id=904239324]
-position = Vector2(2.861023e-06, 2.3841858e-07)
-scale = Vector2(0.07719166, 0.07719166)
-texture = ExtResource("5_y08r1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy" unique_id=2115165360]
-position = Vector2(1.2125244, -1.0283203)
-shape = SubResource("RectangleShape2D_3ib3j")
-
-[node name="Area2D" type="Area2D" parent="Panel/enemy" unique_id=2011647264]
-position = Vector2(0.42504883, 0.9433594)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy/Area2D" unique_id=1624074373]
-position = Vector2(1.0749512, -1.9716797)
-shape = SubResource("RectangleShape2D_y08r1")
 
 [node name="player" type="CharacterBody2D" parent="Panel" unique_id=972955787]
 position = Vector2(555.99994, 318.99997)
@@ -146,52 +106,6 @@ collision_mask = 10
 position = Vector2(-3.0994415e-06, 0)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_s8u6v")
-
-[node name="enemy2" type="CharacterBody2D" parent="Panel" unique_id=1816297168]
-position = Vector2(706, 393)
-collision_layer = 2
-collision_mask = 9
-script = ExtResource("8_6sspi")
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/enemy2" unique_id=314244065]
-position = Vector2(9.000009, 3.9999952)
-scale = Vector2(0.07112544, 0.07112543)
-texture = ExtResource("9_ccytq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy2" unique_id=1465364815]
-position = Vector2(18.125, 9)
-shape = SubResource("RectangleShape2D_iu7w4")
-
-[node name="Area2D" type="Area2D" parent="Panel/enemy2" unique_id=866259323]
-position = Vector2(9, 4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy2/Area2D" unique_id=348379001]
-position = Vector2(9.46875, 5.25)
-shape = SubResource("RectangleShape2D_6sspi")
-
-[node name="enemy3" type="CharacterBody2D" parent="Panel" unique_id=369304824]
-position = Vector2(464, 309)
-collision_layer = 2
-collision_mask = 9
-script = ExtResource("10_ccytq")
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/enemy3" unique_id=1512401041]
-position = Vector2(-0.9999895, 1.0000052)
-scale = Vector2(0.058531728, 0.058531728)
-texture = ExtResource("11_hkd06")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy3" unique_id=2076901519]
-position = Vector2(-3, 1)
-shape = SubResource("RectangleShape2D_ccytq")
-
-[node name="Area2D" type="Area2D" parent="Panel/enemy3" unique_id=399787618]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/enemy3/Area2D" unique_id=15748947]
-position = Vector2(-3, 1)
-shape = SubResource("RectangleShape2D_hkd06")
-
-[node name="point" type="Marker2D" parent="Panel/enemy3" unique_id=785973338]
-position = Vector2(-3, 1)
 
 [node name="lewa_sciana" type="StaticBody2D" parent="." unique_id=2013252879]
 collision_layer = 8
@@ -230,11 +144,9 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_y08r1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y08r1")
 theme_override_styles/hover = SubResource("StyleBoxTexture_y08r1")
 
-[connection signal="body_entered" from="Panel/enemy/Area2D" to="Panel/enemy" method="BodyCollision"]
-[connection signal="body_exited" from="Panel/enemy/Area2D" to="Panel/enemy" method="BodyCollisionOut"]
+[node name="audio" type="AudioStreamPlayer2D" parent="." unique_id=450773608]
+stream = ExtResource("13_s8u6v")
+autoplay = true
+
 [connection signal="body_entered" from="Panel/player/meleeattackarea" to="Panel/player/meleeattackarea" method="BodyCollision"]
-[connection signal="body_entered" from="Panel/enemy2/Area2D" to="Panel/enemy2" method="BodyCollision"]
-[connection signal="body_exited" from="Panel/enemy2/Area2D" to="Panel/enemy2" method="BodyCollisionOut"]
-[connection signal="body_entered" from="Panel/enemy3/Area2D" to="Panel/enemy3" method="BodyCollision"]
-[connection signal="body_exited" from="Panel/enemy3/Area2D" to="Panel/enemy3" method="BodyCollisionOut"]
 [connection signal="pressed" from="Button" to="." method="pauza"]
