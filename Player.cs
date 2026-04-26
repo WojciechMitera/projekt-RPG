@@ -64,6 +64,13 @@ public partial class Player : CharacterBody2D
 	 * @brief Area used to detect melee attack collisions.
 	 */
 	Area2D meleeattackarrea;
+	private float cooldown1 = 0.3f;
+	private float cooldown2 = 0.6f;
+	private float cooldown3 = 1.0f;
+
+	private float timer1 = 0f;
+	private float timer2 = 0f;
+	private float timer3 = 0f;
 
 	/**
 	 * @brief Called when the node enters the scene tree.
@@ -268,18 +275,25 @@ public partial class Player : CharacterBody2D
 		}
 
 		MoveAndSlide();
+        timer1 -= (float)delta;
+        timer2 -= (float)delta;
+        timer3 -= (float)delta;
+        if (Input.IsActionPressed("use_weapon_1") && timer1 <= 0f)
+        {
+            Shoot();
+            timer1 = cooldown1;
+        }
 
-		if (Input.IsActionJustPressed("use_weapon_1"))
-		{
-			Shoot();
-		}
-		if (Input.IsActionJustPressed("use_weapon_2"))
-		{
-			Shoot2();
-		}
-		if (Input.IsActionJustPressed("use_weapon_3"))
-		{
-			Shoot3();
-		}
-	}
+        if (Input.IsActionPressed("use_weapon_2") && timer2 <= 0f)
+        {
+            Shoot2();
+            timer2 = cooldown2;
+        }
+
+        if (Input.IsActionPressed("use_weapon_3") && timer3 <= 0f)
+        {
+            Shoot3();
+            timer3 = cooldown3;
+        }
+    }
 }
