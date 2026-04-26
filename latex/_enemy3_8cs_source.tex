@@ -1,0 +1,135 @@
+\doxysection{Enemy3.\+cs}
+\label{_enemy3_8cs_source}\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{using\ }Godot;}
+\DoxyCodeLine{00002\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{00003\ \textcolor{keyword}{using\ }System.Drawing;}
+\DoxyCodeLine{00004\ \textcolor{keyword}{using\ }static\ Godot.TextServer;}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }Enemy3\ :\ CharacterBody2D}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \_damage\ =\ 5;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ max\_health\ =\ 0;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ health;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ contact\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ damagetime\ =\ 2.0f;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ respawntime\ =\ 1f;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \ \ \ \ Marker2D\ point;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ PackedScene\ projectileenemytscn\ =\ GD.Load<PackedScene>(\textcolor{stringliteral}{"{}res://projectileenemy.tscn"{}});}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ PackedScene\ enemy3scene;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ Vector2\ spawnposition;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ Speed\ =\ -\/20.0f;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{private}\ CharacterBody2D\ player;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \_Ready()}
+\DoxyCodeLine{00087\ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ health\ =\ max\_health;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ enemy3scene\ =\ GD.Load<PackedScene>(\textcolor{stringliteral}{"{}res://enemy3respawn.tscn"{}});}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ spawnposition\ =\ GetRandomPosition();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ player\ =\ GetNode<CharacterBody2D>(\textcolor{stringliteral}{"{}../player"{}});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ point\ =\ GetNode<Marker2D>(\textcolor{stringliteral}{"{}point"{}});}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ CallDeferred(nameof(Shoot));}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \_PhysicsProcess(\textcolor{keywordtype}{double}\ delta)}
+\DoxyCodeLine{00106\ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (player\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ Vector2\ Direction\ =\ (player.GlobalPosition\ -\/\ GlobalPosition).Normalized();}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ Velocity\ =\ Direction\ *\ Speed;}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ MoveAndSlide();}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ Damage(\textcolor{keywordtype}{int}\ damage)}
+\DoxyCodeLine{00127\ \ \ \ \ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ health\ -\/=\ damage;}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (health\ <=\ 0)}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ CallDeferred(nameof(SpawnEnemy3));}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ QueueFree();}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ GD.Print(health);}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{private}\ async\ \textcolor{keywordtype}{void}\ BodyCollision(Node\ body)}
+\DoxyCodeLine{00148\ \ \ \ \ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (body\ is\ Player\ player)}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ contact\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (contact)}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ ToSignal(GetTree().CreateTimer(damagetime),\ \textcolor{stringliteral}{"{}timeout"{}});}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (contact\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player.Damage(\_damage);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ BodyCollisionOut(Node\ body)}
+\DoxyCodeLine{00171\ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (body\ is\ Player\ player)}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ contact\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ SpawnEnemy3()}
+\DoxyCodeLine{00187\ \ \ \ \ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ var\ enemy3\ =\ enemy3scene.Instantiate<CharacterBody2D>();}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ enemy3.GlobalPosition\ =\ spawnposition;}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ GetParent().AddChild(enemy3);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ GD.Print(\textcolor{stringliteral}{"{}Enemy3\ respawned"{}});}
+\DoxyCodeLine{00193\ \ \ \ \ \}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keyword}{public}\ async\ \textcolor{keywordtype}{void}\ Shoot()}
+\DoxyCodeLine{00204\ \ \ \ \ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ await\ ToSignal(GetTree().CreateTimer(damagetime),\ \textcolor{stringliteral}{"{}timeout"{}});}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (player\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ Projectileenemy\ projectile\ =\ projectileenemytscn.Instantiate<Projectileenemy>();}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ projectile.GlobalPosition\ =\ point.GlobalPosition;}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ Vector2\ direction\ =\ (player.GlobalPosition\ -\/\ point.GlobalPosition).Normalized();}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ projectile.direction\ =\ direction;}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ GetParent().AddChild(projectile);}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keyword}{public}\ Vector2\ GetRandomPosition()}
+\DoxyCodeLine{00230\ \ \ \ \ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\ =\ GD.RandRange(175,\ 975);}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\ =\ GD.RandRange(190,\ 500);}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ Vector2(x,\ y);}
+\DoxyCodeLine{00235\ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \}}
+
+\end{DoxyCode}

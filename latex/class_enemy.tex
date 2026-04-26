@@ -18,8 +18,14 @@ Collaboration diagram for Enemy:\+
 \item 
 override void \textbf{ \+\_\+\+Ready} ()
 \begin{DoxyCompactList}\small\item\em Initializes the enemy. \end{DoxyCompactList}\item 
+override void \textbf{ \+\_\+\+Physics\+Process} (double delta)
+\begin{DoxyCompactList}\small\item\em Handles physics updates. \end{DoxyCompactList}\item 
 void \textbf{ Damage} (int damage)
-\begin{DoxyCompactList}\small\item\em Applies damage to the enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Applies damage to the enemy. \end{DoxyCompactList}\item 
+void \textbf{ Spawn\+Enemy} ()
+\begin{DoxyCompactList}\small\item\em Spawns a new enemy instance. \end{DoxyCompactList}\item 
+Vector2 \textbf{ Get\+Random\+Position} ()
+\begin{DoxyCompactList}\small\item\em Generates a random position within predefined bounds. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -30,7 +36,14 @@ int \textbf{ max\+\_\+health} = 50
 bool \textbf{ contact} = false
 \begin{DoxyCompactList}\small\item\em Indicates whether the enemy is in contact with the player. \end{DoxyCompactList}\item 
 float \textbf{ damagetime} = 1f
-\begin{DoxyCompactList}\small\item\em Time interval between damage ticks while in contact. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Time interval between damage ticks while in contact. \end{DoxyCompactList}\item 
+float \textbf{ respawntime} = 1f
+\begin{DoxyCompactList}\small\item\em Time before the enemy respawns. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const float \textbf{ Speed} = 80.\+0f
+\begin{DoxyCompactList}\small\item\em Movement speed of the enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,20 +55,47 @@ void \textbf{ Body\+Collision\+Out} (Node body)
 \begin{DoxyCompactItemize}
 \item 
 int \textbf{ health}
-\begin{DoxyCompactList}\small\item\em Current health of the enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Current health of the enemy. \end{DoxyCompactList}\item 
+Packed\+Scene \textbf{ enemyscene}
+\begin{DoxyCompactList}\small\item\em Packed scene used to respawn the enemy. \end{DoxyCompactList}\item 
+Vector2 \textbf{ spawnposition}
+\begin{DoxyCompactList}\small\item\em Position where the enemy will respawn. \end{DoxyCompactList}\item 
+Character\+Body2D \textbf{ player}
+\begin{DoxyCompactList}\small\item\em Reference to the player object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Represents an enemy character in the game. 
 
-This class handles enemy behavior such as taking damage, tracking health, and dealing damage to the player upon contact. 
+This class handles enemy behavior such as movement, taking damage, respawning, and dealing damage to the player upon contact. 
 
-Definition at line \textbf{ 11} of file \textbf{ Enemy.\+cs}.
+Definition at line \textbf{ 12} of file \textbf{ Enemy.\+cs}.
 
 
 
 \label{doc-func-members}
 \doxysubsection{Member Function Documentation}
+\index{Enemy@{Enemy}!\_PhysicsProcess@{\_PhysicsProcess}}
+\index{\_PhysicsProcess@{\_PhysicsProcess}!Enemy@{Enemy}}
+\doxysubsubsection{\_PhysicsProcess()}
+{\footnotesize\ttfamily \label{class_enemy_aa1df6763ae3a612f36447340577dcb8e} 
+override void Enemy.\+\_\+\+Physics\+Process (\begin{DoxyParamCaption}\item[{double}]{delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Handles physics updates. 
+
+Moves the enemy towards the player using normalized direction and constant speed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & Time elapsed since last frame. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 88} of file \textbf{ Enemy.\+cs}.
+
 \index{Enemy@{Enemy}!\_Ready@{\_Ready}}
 \index{\_Ready@{\_Ready}!Enemy@{Enemy}}
 \doxysubsubsection{\_Ready()}
@@ -66,9 +106,14 @@ override void Enemy.\+\_\+\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 
 Initializes the enemy. 
 
-Sets the current health to the maximum health value. 
+Sets health, loads the respawn scene, assigns spawn position, and retrieves the player reference.
 
-Definition at line \textbf{ 43} of file \textbf{ Enemy.\+cs}.
+\begin{DoxyNote}{Note}
+Make sure the player node exists at "{}../\+player"{}. 
+\end{DoxyNote}
+
+
+Definition at line \textbf{ 72} of file \textbf{ Enemy.\+cs}.
 
 \index{Enemy@{Enemy}!BodyCollision@{BodyCollision}}
 \index{BodyCollision@{BodyCollision}!Enemy@{Enemy}}
@@ -89,7 +134,7 @@ If the colliding object is a player, the enemy starts dealing damage over time u
 \end{DoxyParams}
 
 
-Definition at line \textbf{ 80} of file \textbf{ Enemy.\+cs}.
+Definition at line \textbf{ 130} of file \textbf{ Enemy.\+cs}.
 
 \index{Enemy@{Enemy}!BodyCollisionOut@{BodyCollisionOut}}
 \index{BodyCollisionOut@{BodyCollisionOut}!Enemy@{Enemy}}
@@ -110,7 +155,7 @@ Stops dealing damage when the player is no longer in contact.
 \end{DoxyParams}
 
 
-Definition at line \textbf{ 103} of file \textbf{ Enemy.\+cs}.
+Definition at line \textbf{ 153} of file \textbf{ Enemy.\+cs}.
 
 \index{Enemy@{Enemy}!Damage@{Damage}}
 \index{Damage@{Damage}!Enemy@{Enemy}}
@@ -122,7 +167,7 @@ void Enemy.\+Damage (\begin{DoxyParamCaption}\item[{int}]{damage}{}\end{DoxyPara
 
 Applies damage to the enemy. 
 
-Reduces the enemy\textquotesingle{}s health by the given amount. If health reaches zero, the enemy is removed from the scene.
+Reduces health and triggers respawn when health reaches zero. The enemy is removed from the scene after spawning a new instance.
 
 
 \begin{DoxyParams}{Parameters}
@@ -131,7 +176,43 @@ Reduces the enemy\textquotesingle{}s health by the given amount. If health reach
 \end{DoxyParams}
 
 
-Definition at line \textbf{ 56} of file \textbf{ Enemy.\+cs}.
+Definition at line \textbf{ 109} of file \textbf{ Enemy.\+cs}.
+
+\index{Enemy@{Enemy}!GetRandomPosition@{GetRandomPosition}}
+\index{GetRandomPosition@{GetRandomPosition}!Enemy@{Enemy}}
+\doxysubsubsection{GetRandomPosition()}
+{\footnotesize\ttfamily \label{class_enemy_a1711d7095bfbad246acc6860dc0e4732} 
+Vector2 Enemy.\+Get\+Random\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generates a random position within predefined bounds. 
+
+\begin{DoxyReturn}{Returns}
+A Vector2 representing a random position. 
+\end{DoxyReturn}
+
+
+Definition at line \textbf{ 183} of file \textbf{ Enemy.\+cs}.
+
+\index{Enemy@{Enemy}!SpawnEnemy@{SpawnEnemy}}
+\index{SpawnEnemy@{SpawnEnemy}!Enemy@{Enemy}}
+\doxysubsubsection{SpawnEnemy()}
+{\footnotesize\ttfamily \label{class_enemy_a3cd0b9b86b82100346344613f57fa01d} 
+void Enemy.\+Spawn\+Enemy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Spawns a new enemy instance. 
+
+Instantiates a new enemy from the packed scene and places it at a predefined spawn position.
+
+\begin{DoxyNote}{Note}
+The scene "{}res:\+/\+/\+enemyrespawn.\+tscn"{} must exist. 
+\end{DoxyNote}
+
+
+Definition at line \textbf{ 169} of file \textbf{ Enemy.\+cs}.
 
 
 
@@ -149,7 +230,7 @@ Damage dealt to the player on contact.
 
 
 
-Definition at line \textbf{ 16} of file \textbf{ Enemy.\+cs}.
+Definition at line \textbf{ 17} of file \textbf{ Enemy.\+cs}.
 
 \index{Enemy@{Enemy}!contact@{contact}}
 \index{contact@{contact}!Enemy@{Enemy}}
@@ -163,7 +244,7 @@ Indicates whether the enemy is in contact with the player.
 
 
 
-Definition at line \textbf{ 31} of file \textbf{ Enemy.\+cs}.
+Definition at line \textbf{ 32} of file \textbf{ Enemy.\+cs}.
 
 \index{Enemy@{Enemy}!damagetime@{damagetime}}
 \index{damagetime@{damagetime}!Enemy@{Enemy}}
@@ -177,7 +258,21 @@ Time interval between damage ticks while in contact.
 
 
 
-Definition at line \textbf{ 36} of file \textbf{ Enemy.\+cs}.
+Definition at line \textbf{ 37} of file \textbf{ Enemy.\+cs}.
+
+\index{Enemy@{Enemy}!enemyscene@{enemyscene}}
+\index{enemyscene@{enemyscene}!Enemy@{Enemy}}
+\doxysubsubsection{enemyscene}
+{\footnotesize\ttfamily \label{class_enemy_a80aa7a7d0284ad323c542ccacd49b3dd} 
+Packed\+Scene Enemy.\+enemyscene\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Packed scene used to respawn the enemy. 
+
+
+
+Definition at line \textbf{ 47} of file \textbf{ Enemy.\+cs}.
 
 \index{Enemy@{Enemy}!health@{health}}
 \index{health@{health}!Enemy@{Enemy}}
@@ -191,7 +286,7 @@ Current health of the enemy.
 
 
 
-Definition at line \textbf{ 26} of file \textbf{ Enemy.\+cs}.
+Definition at line \textbf{ 27} of file \textbf{ Enemy.\+cs}.
 
 \index{Enemy@{Enemy}!max\_health@{max\_health}}
 \index{max\_health@{max\_health}!Enemy@{Enemy}}
@@ -205,7 +300,63 @@ Maximum health of the enemy.
 
 
 
-Definition at line \textbf{ 21} of file \textbf{ Enemy.\+cs}.
+Definition at line \textbf{ 22} of file \textbf{ Enemy.\+cs}.
+
+\index{Enemy@{Enemy}!player@{player}}
+\index{player@{player}!Enemy@{Enemy}}
+\doxysubsubsection{player}
+{\footnotesize\ttfamily \label{class_enemy_a5c25db32b09ce8fab607f79a4b094f25} 
+Character\+Body2D Enemy.\+player\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reference to the player object. 
+
+
+
+Definition at line \textbf{ 62} of file \textbf{ Enemy.\+cs}.
+
+\index{Enemy@{Enemy}!respawntime@{respawntime}}
+\index{respawntime@{respawntime}!Enemy@{Enemy}}
+\doxysubsubsection{respawntime}
+{\footnotesize\ttfamily \label{class_enemy_a9156fe7424e8fc2373ca49c43b71c1c5} 
+float Enemy.\+respawntime = 1f}
+
+
+
+Time before the enemy respawns. 
+
+
+
+Definition at line \textbf{ 42} of file \textbf{ Enemy.\+cs}.
+
+\index{Enemy@{Enemy}!spawnposition@{spawnposition}}
+\index{spawnposition@{spawnposition}!Enemy@{Enemy}}
+\doxysubsubsection{spawnposition}
+{\footnotesize\ttfamily \label{class_enemy_ace68c07a748b0746da0ed090a98b461a} 
+Vector2 Enemy.\+spawnposition\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Position where the enemy will respawn. 
+
+
+
+Definition at line \textbf{ 52} of file \textbf{ Enemy.\+cs}.
+
+\index{Enemy@{Enemy}!Speed@{Speed}}
+\index{Speed@{Speed}!Enemy@{Enemy}}
+\doxysubsubsection{Speed}
+{\footnotesize\ttfamily \label{class_enemy_afb7dff0f942a4905fef8014068a67e7d} 
+const float Enemy.\+Speed = 80.\+0f\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Movement speed of the enemy. 
+
+
+
+Definition at line \textbf{ 57} of file \textbf{ Enemy.\+cs}.
 
 
 

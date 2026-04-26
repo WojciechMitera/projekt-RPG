@@ -4,23 +4,24 @@ using System.Drawing;
 using static Godot.TextServer;
 
 /**
- * @class Enemy
- * @brief Represents an enemy character in the game.
+ * @class Enemy3
+ * @brief Represents a ranged enemy that shoots projectiles at the player.
  * 
- * This class handles enemy behavior such as taking damage,
- * tracking health, and dealing damage to the player upon contact.
+ * This class defines an enemy with very low health that attacks
+ * the player from a distance using projectiles. It also handles
+ * movement, respawning, and contact-based damage.
  */
 public partial class Enemy3 : CharacterBody2D
 {
 	/**
-	 * @brief Damage dealt to the player on contact.
+	 * @brief Amount of damage dealt to the player (if used in other interactions).
 	 */
 	public int _damage = 5;
 
 	/**
 	 * @brief Maximum health of the enemy.
 	 */
-	public int max_health = 30;
+	public int max_health = 15;
 
 	/**
 	 * @brief Current health of the enemy.
@@ -28,59 +29,81 @@ public partial class Enemy3 : CharacterBody2D
 	private int health;
 
 	/**
-	 * @brief Indicates whether the enemy is in contact with the player.
+	 * @brief Time interval (in seconds) between consecutive shots.
 	 */
-	public bool contact = false;
+	public float shootTime = 2f;
 
 	/**
-	 * @brief Time interval between damage ticks while in contact.
+	 * @brief Movement speed of the enemy.
 	 */
-	public float damagetime = 20f;
-
-	public float respawntime = 1f;
-
-	Marker2D point;
-
-	PackedScene projectileenemytscn = GD.Load<PackedScene>("res://projectileenemy.tscn");
-
-	PackedScene enemy3scene;
-	Vector2 spawnposition;
-	public const float Speed = -30.0f;
-	private CharacterBody2D player;
-	//public float mindist = 65f;
+	public const float Speed = -10.0f; 
 
 	/**
-	 * @brief Initializes the enemy.
-	 * 
-	 * Sets the current health to the maximum health value.
+	 * @brief Reference to the player character.
+	 */
+	public CharacterBody2D player;
+
+	/**
+	 * @brief Reference to the wave manager controlling enemy waves.
+	 */
+	public WaveManager waveManager;
+
+	/**
+	 * @brief Scene used to instantiate projectiles.
+	 */
+	private PackedScene projectileScene = GD.Load<PackedScene>("res://projectileenemy.tscn");
+
+	/**
+	 * @brief Marker indicating the projectile spawn point.
+	 */
+	private Marker2D point;
+
+	/**
+	 * @brief Called when the node enters the scene tree.
+	 * Initializes health, gets the shooting point, and starts the shooting loop.
 	 */
 	public override void _Ready()
 	{
 		health = max_health;
-		enemy3scene = GD.Load<PackedScene>("res://enemy3respawn.tscn");
-		spawnposition = GetRandomPosition();
-		player = GetNode<CharacterBody2D>("../player");
 		point = GetNode<Marker2D>("point");
-		CallDeferred(nameof(Shoot));
 
+		CallDeferred(nameof(ShootLoop));
 	}
 
+	/**
+	 * @brief Called every physics frame.
+	 * 
+	 * Controls enemy movement relative to the player:
+	 * - Moves toward the player if too far away
+	 * - Stops when within shooting range
+	 * 
+	 * @param delta Time elapsed since the last frame.
+	 */
 	public override void _PhysicsProcess(double delta)
 	{
 		if (player == null)
-		{
 			return;
+
+		float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
+
+		if (distance > 200)
+		{
+			Vector2 direction = (player.GlobalPosition - GlobalPosition).Normalized();
+			Velocity = direction * Speed;
 		}
-		Vector2 Direction = (player.GlobalPosition - GlobalPosition).Normalized();
-		Velocity = Direction * Speed;
+		else
+		{
+			Velocity = Vector2.Zero;
+		}
+
 		MoveAndSlide();
 	}
 
 	/**
 	 * @brief Applies damage to the enemy.
 	 * 
-	 * Reduces the enemy's health by the given amount.
-	 * If health reaches zero, the enemy is removed from the scene.
+	 * Reduces health and removes the enemy if health reaches zero.
+	 * Notifies the wave manager about enemy death.
 	 * 
 	 * @param damage Amount of damage to apply.
 	 */
@@ -88,99 +111,43 @@ public partial class Enemy3 : CharacterBody2D
 	{
 		health -= damage;
 
-		if (health < 0)
+		if (health <= 0)
 		{
-			health = 0;
-			
-		}
-		else if(health == 0)
-		{
-
-			CallDeferred(nameof(SpawnEnemy3));
-			//SpawnEnemy();
+			waveManager?.OnEnemyDied();
 			QueueFree();
-		} 
-		GD.Print(health);
-	}
-
-	/**
-	 * @brief Handles collision with another body.
-	 * 
-	 * If the colliding object is a player, the enemy starts
-	 * dealing damage over time until the contact ends.
-	 * 
-	 * @param body The colliding node.
-	 */
-	private async void BodyCollision(Node body)
-	{
-		if (body is Player player)
-		{
-			contact = true;
-
-			while (contact)
-			{
-				await ToSignal(GetTree().CreateTimer(damagetime), "timeout");
-
-				if (contact == true)
-					player.Damage(_damage);
-			}
 		}
 	}
 
 	/**
-	 * @brief Handles when a body exits collision.
+	 * @brief Handles continuous shooting behavior.
 	 * 
-	 * Stops dealing damage when the player is no longer in contact.
-	 * 
-	 * @param body The node leaving the collision.
+	 * Periodically creates projectiles directed at the player.
 	 */
-	private void BodyCollisionOut(Node body)
-	{
-		if (body is Player player)
-		{
-			contact = false;
-		}
-	}
-	public void SpawnEnemy3()
-	{
-		//await ToSignal(GetTree().CreateTimer(respawntime), "timeout");
-		var enemy3 = enemy3scene.Instantiate<CharacterBody2D>();
-		enemy3.GlobalPosition = spawnposition;
-		GetParent().AddChild(enemy3);
-		GD.Print("1");
-
-
-	}
-
-	public async void Shoot()
+	public async void ShootLoop()
 	{
 		while (true)
 		{
-			await ToSignal(GetTree().CreateTimer(damagetime), "timeout");
+			await ToSignal(GetTree().CreateTimer(shootTime), "timeout");
 
 			if (player == null)
-			{
-				return;
-			}
+				continue;
 
-			Projectileenemy projectile = projectileenemytscn.Instantiate<Projectileenemy>();
-			projectile.GlobalPosition = point.GlobalPosition;
-
-			Vector2 direction = (player.GlobalPosition - point.GlobalPosition).Normalized();
-			projectile.direction = direction;
-
-			GetParent().AddChild(projectile);
-
-			//GD.Print("strzal");
+			Shoot();
 		}
 	}
 
-	public Vector2 GetRandomPosition()
+	/**
+	 * @brief Spawns and launches a projectile toward the player.
+	 */
+	public void Shoot()
 	{
-		float x = GD.RandRange(175, 975);
-		float y = GD.RandRange(190, 500);
+		var projectile = projectileScene.Instantiate<Projectileenemy>();
 
-		return new Vector2(x, y);
+		projectile.GlobalPosition = point.GlobalPosition;
+
+		Vector2 direction = (player.GlobalPosition - point.GlobalPosition).Normalized();
+		projectile.direction = direction;
+
+		GetParent().AddChild(projectile);
 	}
-
 }

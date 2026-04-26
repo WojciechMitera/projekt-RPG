@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cf10a1yl1eva5"]
+
+[ext_resource type="Script" uid="uid://btkxp3swh73l7" path="res://Ustawienia.cs" id="1_a3sdp"]
+[ext_resource type="Texture2D" uid="uid://cfdly64leh32r" path="res://tloustawienia.png" id="2_1hdjt"]
+[ext_resource type="FontFile" uid="uid://qe6kaif2gfol" path="res://MedievalSharp-Regular.ttf" id="3_wsvst"]
+[ext_resource type="AudioStream" uid="uid://4bgvbcnk1jf5" path="res://Dark Medieval Music - Legacy of the Fallen.mp3" id="4_6yx3w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nukfr"]
+texture = ExtResource("2_1hdjt")
+
+[node name="Ustawienia" type="Control" unique_id=673151903]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a3sdp")
+
+[node name="Panel" type="Panel" parent="." unique_id=40900368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nukfr")
+
+[node name="Label" type="Label" parent="." unique_id=1148536951]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -321.61768
+offset_top = -258.0
+offset_right = 321.61768
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 28
+theme_override_fonts/font = ExtResource("3_wsvst")
+theme_override_font_sizes/font_size = 100
+text = "Ustawienia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="audio" type="AudioStreamPlayer2D" parent="." unique_id=70637223]
+stream = ExtResource("4_6yx3w")
+autoplay = true
+attenuation = 1.1486984
+bus = &"music"
+
+[node name="HSlider" type="HSlider" parent="." unique_id=707552795]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 191.0
+offset_right = 943.0
+offset_bottom = 367.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[connection signal="value_changed" from="HSlider" to="." method="value_changed"]

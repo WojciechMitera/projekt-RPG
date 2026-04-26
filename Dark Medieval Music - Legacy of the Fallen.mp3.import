@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://4bgvbcnk1jf5"
+path="res://.godot/imported/Dark Medieval Music - Legacy of the Fallen.mp3-e4ebeb674485c101f6a81793af7933b7.mp3str"
+
+[deps]
+
+source_file="res://Dark Medieval Music - Legacy of the Fallen.mp3"
+dest_files=["res://.godot/imported/Dark Medieval Music - Legacy of the Fallen.mp3-e4ebeb674485c101f6a81793af7933b7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

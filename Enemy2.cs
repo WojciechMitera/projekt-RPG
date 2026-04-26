@@ -2,16 +2,17 @@ using Godot;
 using System;
 
 /**
- * @class Enemy
- * @brief Represents an enemy character in the game.
+ * @class Enemy2
+ * @brief Represents a stronger enemy variant in the game.
  * 
- * This class handles enemy behavior such as taking damage,
- * tracking health, and dealing damage to the player upon contact.
+ * This class defines a more powerful enemy with increased health,
+ * higher damage, and slower movement. It handles movement,
+ * combat interactions, and respawning logic.
  */
 public partial class Enemy2 : CharacterBody2D
 {
 	/**
-	 * @brief Damage dealt to the player on contact.
+	 * @brief Amount of damage dealt to the player on contact.
 	 */
 	public int _damage = 25;
 
@@ -26,52 +27,61 @@ public partial class Enemy2 : CharacterBody2D
 	private int health;
 
 	/**
-	 * @brief Indicates whether the enemy is in contact with the player.
+	 * @brief Indicates whether the enemy is currently in contact with the player.
 	 */
 	public bool contact = false;
 
 	/**
-	 * @brief Time interval between damage ticks while in contact.
+	 * @brief Time interval (in seconds) between consecutive damage ticks.
 	 */
-	public float damagetime = 1.4f;
-
-	public float respawntime = 1f;
-
-	PackedScene enemy2scene;
-	Vector2 spawnposition;
-	public const float Speed = 0.0f;
-	private CharacterBody2D player;
+	public float damagetime = 0.7f;
 
 	/**
-	 * @brief Initializes the enemy.
-	 * 
-	 * Sets the current health to the maximum health value.
+	 * @brief Movement speed of the enemy.
+	 */
+	public const float Speed = 20.0f; 
+
+	/**
+	 * @brief Reference to the player character.
+	 */
+	public CharacterBody2D player;
+
+	/**
+	 * @brief Reference to the wave manager controlling enemy waves.
+	 */
+	public WaveManager waveManager;
+
+	/**
+	 * @brief Called when the node enters the scene tree.
+	 * Initializes enemy health.
 	 */
 	public override void _Ready()
 	{
 		health = max_health;
-		enemy2scene = GD.Load<PackedScene>("res://enemy2respawn.tscn");
-		spawnposition = GetRandomPosition();
-		player = GetNode<CharacterBody2D>("../player");
-		
 	}
 
+	/**
+	 * @brief Called every physics frame.
+	 * Handles enemy movement toward the player.
+	 * 
+	 * @param delta Time elapsed since the last frame.
+	 */
 	public override void _PhysicsProcess(double delta)
 	{
-		if(player == null)
-		{
+		if (player == null)
 			return;
-		}
-		Vector2 Direction = (player.GlobalPosition - GlobalPosition).Normalized();
-		Velocity = Direction * Speed;
+
+		Vector2 direction = (player.GlobalPosition - GlobalPosition).Normalized();
+		Velocity = direction * Speed;
+
 		MoveAndSlide();
 	}
 
 	/**
 	 * @brief Applies damage to the enemy.
 	 * 
-	 * Reduces the enemy's health by the given amount.
-	 * If health reaches zero, the enemy is removed from the scene.
+	 * Reduces health and removes the enemy if health reaches zero.
+	 * Notifies the wave manager about enemy death.
 	 * 
 	 * @param damage Amount of damage to apply.
 	 */
@@ -79,26 +89,17 @@ public partial class Enemy2 : CharacterBody2D
 	{
 		health -= damage;
 
-		if (health < 0)
+		if (health <= 0)
 		{
-			health = 0;
-			
-		}
-		else if(health == 0)
-		{
-
-			CallDeferred(nameof(SpawnEnemy2));
-			//SpawnEnemy();
+			waveManager?.OnEnemyDied();
 			QueueFree();
-		} 
-		GD.Print(health);
+		}
 	}
 
 	/**
 	 * @brief Handles collision with another body.
 	 * 
-	 * If the colliding object is a player, the enemy starts
-	 * dealing damage over time until the contact ends.
+	 * If the body is a player, starts dealing periodic damage.
 	 * 
 	 * @param body The colliding node.
 	 */
@@ -112,42 +113,24 @@ public partial class Enemy2 : CharacterBody2D
 			{
 				await ToSignal(GetTree().CreateTimer(damagetime), "timeout");
 
-				if (contact == true)
+				if (contact)
 					player.Damage(_damage);
 			}
 		}
 	}
 
 	/**
-	 * @brief Handles when a body exits collision.
+	 * @brief Handles exit from collision with another body.
 	 * 
-	 * Stops dealing damage when the player is no longer in contact.
+	 * Stops dealing damage when the player leaves contact.
 	 * 
-	 * @param body The node leaving the collision.
+	 * @param body The node exiting collision.
 	 */
 	private void BodyCollisionOut(Node body)
 	{
-		if (body is Player player)
+		if (body is Player)
 		{
 			contact = false;
 		}
 	}
-	public void SpawnEnemy2()
-	{
-		//await ToSignal(GetTree().CreateTimer(respawntime), "timeout");
-		var enemy2 = enemy2scene.Instantiate<CharacterBody2D>();
-		enemy2.GlobalPosition = spawnposition;
-		GetParent().AddChild(enemy2);
-		GD.Print("1");
-
-
-	}
-	public Vector2 GetRandomPosition()
-	{
-		float x = GD.RandRange(175, 975);
-		float y = GD.RandRange(190, 500);
-
-		return new Vector2(x, y);
-	}
-
 }
