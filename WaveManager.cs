@@ -9,7 +9,7 @@ public partial class WaveManager : Node2D
 	private PackedScene bossScene = GD.Load<PackedScene>("res://boss.tscn");
 
 	private CharacterBody2D player;
-
+	private Label waveLabel;
 	public int currentWave = 1;
 	public int enemiesToSpawn = 5;
 	private int enemiesAlive = 0;
@@ -19,12 +19,18 @@ public partial class WaveManager : Node2D
 	public override void _Ready()
 	{
 		player = GetNode<CharacterBody2D>("../player");
+		waveLabel = GetNode<Label>("../../CanvasLayer/WaveLabel");
 		StartWave();
 	}
 
 	public void StartWave()
 	{
 		GD.Print("Wave: " + currentWave);
+
+		if (waveLabel != null)
+		{
+			waveLabel.Text = "Fala: " + currentWave;
+		}
 
 		if (currentWave % bossWaveInterval == 0)
 		{
@@ -117,7 +123,7 @@ public partial class WaveManager : Node2D
 		await ToSignal(GetTree().CreateTimer(1.5f), "timeout");
 
 		currentWave++;
-		enemiesToSpawn += 0;
+		enemiesToSpawn += 1;
 
 		StartWave();
 	}
