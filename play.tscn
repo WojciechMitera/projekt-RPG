@@ -50,10 +50,10 @@ script = ExtResource("1_ca36m")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 17.0
-offset_top = 17.0
-offset_right = 1169.0
-offset_bottom = 665.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 1151.0
+offset_bottom = 649.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -91,7 +91,7 @@ scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_yuxfv")
 
 [node name="point" type="Marker2D" parent="Panel/player" unique_id=525506456]
-position = Vector2(4.4000106, 3.2000055)
+position = Vector2(1.8000104, 1.8000056)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="sprite_player" type="Sprite2D" parent="Panel/player" unique_id=1125746900]
@@ -152,10 +152,10 @@ autoplay = true
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1465244810]
 
 [node name="WaveLabel" type="Label" parent="CanvasLayer" unique_id=1358961998]
-offset_left = 375.0
-offset_top = 37.0
-offset_right = 525.0
-offset_bottom = 79.0
+offset_left = 351.0
+offset_top = 23.0
+offset_right = 501.0
+offset_bottom = 65.0
 theme_override_fonts/font = ExtResource("9_iu7w4")
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1

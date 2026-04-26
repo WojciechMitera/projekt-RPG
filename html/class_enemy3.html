@@ -5,11 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>roguelike 2D documentation: Enemy3 Class Reference</title>
+<title>roguelikedocumentation: Enemy3 Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -23,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">roguelike 2D documentation
+   <div id="projectname">roguelikedocumentation
    </div>
   </td>
  </tr>
@@ -42,11 +45,27 @@ $(function() { codefold.init(); });
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_enemy3.html','','class_enemy3-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,16 +87,7 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="class_enemy3-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Enemy3 Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -87,74 +97,50 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Enemy3:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_enemy3__inherit__graph.png" border="0" usemap="#a_enemy3_inherit__map" loading="lazy" alt="Inheritance graph"/></div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for Enemy3:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_enemy3__coll__graph.png" border="0" usemap="#a_enemy3_coll__map" loading="lazy" alt="Collaboration graph"/></div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+ <div class="center">
+  <img src="class_enemy3.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3ca1a5933fa8bc58bb8d19d31a06c730" id="r_a3ca1a5933fa8bc58bb8d19d31a06c730"><td class="memItemLeft">override void&#160;</td><td class="memItemRight"><a class="el" href="#a3ca1a5933fa8bc58bb8d19d31a06c730">_Ready</a> ()</td></tr>
-<tr class="memdesc:a3ca1a5933fa8bc58bb8d19d31a06c730"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the enemy.  <br /></td></tr>
+<tr class="memdesc:a3ca1a5933fa8bc58bb8d19d31a06c730"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the node enters the scene tree.  <br /></td></tr>
 <tr class="memitem:a8b2df609b2c119184206082443324ba9" id="r_a8b2df609b2c119184206082443324ba9"><td class="memItemLeft">override void&#160;</td><td class="memItemRight"><a class="el" href="#a8b2df609b2c119184206082443324ba9">_PhysicsProcess</a> (double delta)</td></tr>
-<tr class="memdesc:a8b2df609b2c119184206082443324ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles physics updates.  <br /></td></tr>
+<tr class="memdesc:a8b2df609b2c119184206082443324ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles movement and distance-based behavior.  <br /></td></tr>
 <tr class="memitem:ac201aba7b7950174867f0bb3d2f64381" id="r_ac201aba7b7950174867f0bb3d2f64381"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac201aba7b7950174867f0bb3d2f64381">Damage</a> (int damage)</td></tr>
 <tr class="memdesc:ac201aba7b7950174867f0bb3d2f64381"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies damage to the enemy.  <br /></td></tr>
-<tr class="memitem:a1d2bb30b4a0895ce3cc21e5b6b6be2a5" id="r_a1d2bb30b4a0895ce3cc21e5b6b6be2a5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1d2bb30b4a0895ce3cc21e5b6b6be2a5">SpawnEnemy3</a> ()</td></tr>
-<tr class="memdesc:a1d2bb30b4a0895ce3cc21e5b6b6be2a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spawns a new instance of <a class="el" href="class_enemy3.html" title="Represents a ranged enemy that shoots projectiles at the player.">Enemy3</a>.  <br /></td></tr>
-<tr class="memitem:ab5f9d70c429f2fad45673303f4806ed0" id="r_ab5f9d70c429f2fad45673303f4806ed0"><td class="memItemLeft">async void&#160;</td><td class="memItemRight"><a class="el" href="#ab5f9d70c429f2fad45673303f4806ed0">Shoot</a> ()</td></tr>
-<tr class="memdesc:ab5f9d70c429f2fad45673303f4806ed0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Continuously shoots projectiles at the player.  <br /></td></tr>
-<tr class="memitem:a3eb54c2aa5d99fcab1b48b0de422c307" id="r_a3eb54c2aa5d99fcab1b48b0de422c307"><td class="memItemLeft">Vector2&#160;</td><td class="memItemRight"><a class="el" href="#a3eb54c2aa5d99fcab1b48b0de422c307">GetRandomPosition</a> ()</td></tr>
-<tr class="memdesc:a3eb54c2aa5d99fcab1b48b0de422c307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a random position within predefined bounds.  <br /></td></tr>
+<tr class="memitem:a183b791c61fa624c8378ffba5ad49aa9" id="r_a183b791c61fa624c8378ffba5ad49aa9"><td class="memItemLeft">async void&#160;</td><td class="memItemRight"><a class="el" href="#a183b791c61fa624c8378ffba5ad49aa9">ShootLoop</a> ()</td></tr>
+<tr class="memdesc:a183b791c61fa624c8378ffba5ad49aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Continuously handles shooting logic.  <br /></td></tr>
+<tr class="memitem:ae1a91ccebbc746526c941a9773c3ce1e" id="r_ae1a91ccebbc746526c941a9773c3ce1e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae1a91ccebbc746526c941a9773c3ce1e">Shoot</a> ()</td></tr>
+<tr class="memdesc:ae1a91ccebbc746526c941a9773c3ce1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spawns and fires a projectile toward the player.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:afdcbc9bacca5ee8cec8416f4ee7ec420" id="r_afdcbc9bacca5ee8cec8416f4ee7ec420"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#afdcbc9bacca5ee8cec8416f4ee7ec420">_damage</a> = 5</td></tr>
-<tr class="memdesc:afdcbc9bacca5ee8cec8416f4ee7ec420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Damage dealt to the player on contact.  <br /></td></tr>
-<tr class="memitem:a130dfdac3fb232c2c8447fbe86002697" id="r_a130dfdac3fb232c2c8447fbe86002697"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a130dfdac3fb232c2c8447fbe86002697">max_health</a> = 0</td></tr>
-<tr class="memdesc:a130dfdac3fb232c2c8447fbe86002697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum health of the enemy.  <br /></td></tr>
-<tr class="memitem:a66cda471490e3babfd6dd2f3fc07dad4" id="r_a66cda471490e3babfd6dd2f3fc07dad4"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a66cda471490e3babfd6dd2f3fc07dad4">contact</a> = false</td></tr>
-<tr class="memdesc:a66cda471490e3babfd6dd2f3fc07dad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the enemy is in contact with the player.  <br /></td></tr>
-<tr class="memitem:a931b671376ed145bb3ef4d7164a485ea" id="r_a931b671376ed145bb3ef4d7164a485ea"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a931b671376ed145bb3ef4d7164a485ea">damagetime</a> = 2.0f</td></tr>
-<tr class="memdesc:a931b671376ed145bb3ef4d7164a485ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time interval between damage ticks and shooting.  <br /></td></tr>
-<tr class="memitem:ae055dba985bec552fada11e0e3aef9a8" id="r_ae055dba985bec552fada11e0e3aef9a8"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ae055dba985bec552fada11e0e3aef9a8">respawntime</a> = 1f</td></tr>
-<tr class="memdesc:ae055dba985bec552fada11e0e3aef9a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time before the enemy respawns.  <br /></td></tr>
+<tr class="memitem:afdcbc9bacca5ee8cec8416f4ee7ec420" id="r_afdcbc9bacca5ee8cec8416f4ee7ec420"><td class="memItemLeft"><a id="afdcbc9bacca5ee8cec8416f4ee7ec420" name="afdcbc9bacca5ee8cec8416f4ee7ec420"></a>
+int&#160;</td><td class="memItemRight"><b>_damage</b> = 5</td></tr>
+<tr class="memdesc:afdcbc9bacca5ee8cec8416f4ee7ec420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Damage dealt to the player (used by projectiles or contact logic). <br /></td></tr>
+<tr class="memitem:a130dfdac3fb232c2c8447fbe86002697" id="r_a130dfdac3fb232c2c8447fbe86002697"><td class="memItemLeft"><a id="a130dfdac3fb232c2c8447fbe86002697" name="a130dfdac3fb232c2c8447fbe86002697"></a>
+int&#160;</td><td class="memItemRight"><b>max_health</b> = 15</td></tr>
+<tr class="memdesc:a130dfdac3fb232c2c8447fbe86002697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum health of the enemy. <br /></td></tr>
+<tr class="memitem:a3a5ed625b2168dda7aeb6014377d876e" id="r_a3a5ed625b2168dda7aeb6014377d876e"><td class="memItemLeft"><a id="a3a5ed625b2168dda7aeb6014377d876e" name="a3a5ed625b2168dda7aeb6014377d876e"></a>
+float&#160;</td><td class="memItemRight"><b>shootTime</b> = 2f</td></tr>
+<tr class="memdesc:a3a5ed625b2168dda7aeb6014377d876e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time interval between shots. <br /></td></tr>
+<tr class="memitem:a0985bca383712529ae283db88b0a4f9d" id="r_a0985bca383712529ae283db88b0a4f9d"><td class="memItemLeft"><a id="a0985bca383712529ae283db88b0a4f9d" name="a0985bca383712529ae283db88b0a4f9d"></a>
+CharacterBody2D&#160;</td><td class="memItemRight"><b>player</b></td></tr>
+<tr class="memdesc:a0985bca383712529ae283db88b0a4f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the player object. <br /></td></tr>
+<tr class="memitem:a8dc4b73fb425d4f6f6f2e170ef11f809" id="r_a8dc4b73fb425d4f6f6f2e170ef11f809"><td class="memItemLeft"><a id="a8dc4b73fb425d4f6f6f2e170ef11f809" name="a8dc4b73fb425d4f6f6f2e170ef11f809"></a>
+<a class="el" href="class_wave_manager.html">WaveManager</a>&#160;</td><td class="memItemRight"><b>waveManager</b></td></tr>
+<tr class="memdesc:a8dc4b73fb425d4f6f6f2e170ef11f809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the wave manager controlling enemy waves. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a0dc06b83e446fa89e11e7d721d39d1e2" id="r_a0dc06b83e446fa89e11e7d721d39d1e2"><td class="memItemLeft">const float&#160;</td><td class="memItemRight"><a class="el" href="#a0dc06b83e446fa89e11e7d721d39d1e2">Speed</a> = -20.0f</td></tr>
-<tr class="memdesc:a0dc06b83e446fa89e11e7d721d39d1e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Movement speed of the enemy (negative for retreating behavior).  <br /></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a0f72196667ce0eb3b2c2c34181099181" id="r_a0f72196667ce0eb3b2c2c34181099181"><td class="memItemLeft">async void&#160;</td><td class="memItemRight"><a class="el" href="#a0f72196667ce0eb3b2c2c34181099181">BodyCollision</a> (Node body)</td></tr>
-<tr class="memdesc:a0f72196667ce0eb3b2c2c34181099181"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles collision with another body.  <br /></td></tr>
-<tr class="memitem:a5c140dfb8bbc8d479eb7a1f7a9213fea" id="r_a5c140dfb8bbc8d479eb7a1f7a9213fea"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5c140dfb8bbc8d479eb7a1f7a9213fea">BodyCollisionOut</a> (Node body)</td></tr>
-<tr class="memdesc:a5c140dfb8bbc8d479eb7a1f7a9213fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles when a body exits collision.  <br /></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a3c650011539955cdd8be1d58daad1e62" id="r_a3c650011539955cdd8be1d58daad1e62"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a3c650011539955cdd8be1d58daad1e62">health</a></td></tr>
-<tr class="memdesc:a3c650011539955cdd8be1d58daad1e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current health of the enemy.  <br /></td></tr>
-<tr class="memitem:ad9052e1b446805371895d47799250efe" id="r_ad9052e1b446805371895d47799250efe"><td class="memItemLeft">Marker2D&#160;</td><td class="memItemRight"><a class="el" href="#ad9052e1b446805371895d47799250efe">point</a></td></tr>
-<tr class="memdesc:ad9052e1b446805371895d47799250efe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marker used as the projectile spawn point.  <br /></td></tr>
-<tr class="memitem:aeca1a99f9761cfa0fe1b4e7c7cee1c29" id="r_aeca1a99f9761cfa0fe1b4e7c7cee1c29"><td class="memItemLeft">PackedScene&#160;</td><td class="memItemRight"><a class="el" href="#aeca1a99f9761cfa0fe1b4e7c7cee1c29">projectileenemytscn</a> = GD.Load&lt;PackedScene&gt;(&quot;res://projectileenemy.tscn&quot;)</td></tr>
-<tr class="memdesc:aeca1a99f9761cfa0fe1b4e7c7cee1c29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Packed scene for enemy projectiles.  <br /></td></tr>
-<tr class="memitem:ae1b848d78685e91ed4dfa93fa9cb713e" id="r_ae1b848d78685e91ed4dfa93fa9cb713e"><td class="memItemLeft">PackedScene&#160;</td><td class="memItemRight"><a class="el" href="#ae1b848d78685e91ed4dfa93fa9cb713e">enemy3scene</a></td></tr>
-<tr class="memdesc:ae1b848d78685e91ed4dfa93fa9cb713e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Packed scene used to respawn this enemy.  <br /></td></tr>
-<tr class="memitem:af063dd54dac322ed02feff60200d2199" id="r_af063dd54dac322ed02feff60200d2199"><td class="memItemLeft">Vector2&#160;</td><td class="memItemRight"><a class="el" href="#af063dd54dac322ed02feff60200d2199">spawnposition</a></td></tr>
-<tr class="memdesc:af063dd54dac322ed02feff60200d2199"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position where the enemy will respawn.  <br /></td></tr>
-<tr class="memitem:a0985bca383712529ae283db88b0a4f9d" id="r_a0985bca383712529ae283db88b0a4f9d"><td class="memItemLeft">CharacterBody2D&#160;</td><td class="memItemRight"><a class="el" href="#a0985bca383712529ae283db88b0a4f9d">player</a></td></tr>
-<tr class="memdesc:a0985bca383712529ae283db88b0a4f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the player object.  <br /></td></tr>
+<tr class="memitem:a0dc06b83e446fa89e11e7d721d39d1e2" id="r_a0dc06b83e446fa89e11e7d721d39d1e2"><td class="memItemLeft"><a id="a0dc06b83e446fa89e11e7d721d39d1e2" name="a0dc06b83e446fa89e11e7d721d39d1e2"></a>
+const float&#160;</td><td class="memItemRight"><b>Speed</b> = -10.0f</td></tr>
+<tr class="memdesc:a0dc06b83e446fa89e11e7d721d39d1e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Movement speed of the enemy (negative for backward movement behavior). <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a ranged enemy that shoots projectiles at the player. </p>
-<p>This class defines an enemy with very low health that attacks the player from a distance using projectiles. It also handles movement, respawning, and contact-based damage. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00014">14</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
+<p>This enemy maintains distance from the player, moves only when far enough, and periodically shoots projectiles. It also interacts with the wave system when defeated. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a8b2df609b2c119184206082443324ba9" name="a8b2df609b2c119184206082443324ba9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8b2df609b2c119184206082443324ba9">&#9670;&#160;</a></span>_PhysicsProcess()</h2>
@@ -179,16 +165,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Handles physics updates. </p>
-<p>Moves the enemy relative to the player. Negative speed causes movement away from the player.</p>
+<p>Handles movement and distance-based behavior. </p>
+<p>The enemy moves toward the player only if they are outside a defined distance threshold. Otherwise, it stays idle.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">delta</td><td>Time elapsed since last frame. </td></tr>
+    <tr><td class="paramname">delta</td><td>Time elapsed since last frame (in seconds). </td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00105">105</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
 
 </div>
 </div>
@@ -215,87 +199,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initializes the enemy. </p>
-<p>Sets health, loads scenes, assigns spawn position, retrieves player and marker references, and starts shooting.</p>
-<dl class="section note"><dt>Note</dt><dd>Make sure required nodes exist:<ul>
-<li>"../player"</li>
-<li>"point" </li>
-</ul>
-</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00086">86</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="a0f72196667ce0eb3b2c2c34181099181" name="a0f72196667ce0eb3b2c2c34181099181"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f72196667ce0eb3b2c2c34181099181">&#9670;&#160;</a></span>BodyCollision()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">async void Enemy3.BodyCollision </td>
-          <td>(</td>
-          <td class="paramtype">Node</td>          <td class="paramname"><span class="paramname"><em>body</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Handles collision with another body. </p>
-<p>If the colliding object is a player, the enemy starts dealing damage over time until the contact ends.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">body</td><td>The colliding node. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00147">147</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="a5c140dfb8bbc8d479eb7a1f7a9213fea" name="a5c140dfb8bbc8d479eb7a1f7a9213fea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c140dfb8bbc8d479eb7a1f7a9213fea">&#9670;&#160;</a></span>BodyCollisionOut()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Enemy3.BodyCollisionOut </td>
-          <td>(</td>
-          <td class="paramtype">Node</td>          <td class="paramname"><span class="paramname"><em>body</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Handles when a body exits collision. </p>
-<p>Stops dealing damage when the player is no longer in contact.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">body</td><td>The node leaving the collision. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00170">170</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
+<p>Called when the node enters the scene tree. </p>
+<p>Initializes health, retrieves required nodes, and starts shooting loop.</p>
+<dl class="section note"><dt>Note</dt><dd>Requires a child node named "point" (Marker2D). </dd></dl>
 
 </div>
 </div>
@@ -323,20 +229,19 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Applies damage to the enemy. </p>
-<p>Reduces health and triggers respawn when health reaches zero. The enemy is removed from the scene after spawning a new instance.</p>
+<p>Reduces health and notifies the wave manager when the enemy dies. If health reaches zero, the enemy is removed from the scene.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">damage</td><td>Amount of damage to apply. </td></tr>
+    <tr><td class="paramname">damage</td><td>Amount of damage to apply.</td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00126">126</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>Calls <a class="el" href="class_wave_manager.html#a0fbd541cbff61468b9e78bfa9a84f1b3" title="Called when an enemy dies.">WaveManager.OnEnemyDied()</a> if assigned. </dd></dl>
 
 </div>
 </div>
-<a id="a3eb54c2aa5d99fcab1b48b0de422c307" name="a3eb54c2aa5d99fcab1b48b0de422c307"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3eb54c2aa5d99fcab1b48b0de422c307">&#9670;&#160;</a></span>GetRandomPosition()</h2>
+<a id="ae1a91ccebbc746526c941a9773c3ce1e" name="ae1a91ccebbc746526c941a9773c3ce1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1a91ccebbc746526c941a9773c3ce1e">&#9670;&#160;</a></span>Shoot()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -345,7 +250,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Vector2 Enemy3.GetRandomPosition </td>
+          <td class="memname">void Enemy3.Shoot </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -358,15 +263,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Generates a random position within predefined bounds. </p>
-<dl class="section return"><dt>Returns</dt><dd>A Vector2 representing a random position. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00229">229</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
+<p>Spawns and fires a projectile toward the player. </p>
+<p>Instantiates a projectile, sets its position and direction, and adds it to the scene tree. </p>
 
 </div>
 </div>
-<a id="ab5f9d70c429f2fad45673303f4806ed0" name="ab5f9d70c429f2fad45673303f4806ed0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5f9d70c429f2fad45673303f4806ed0">&#9670;&#160;</a></span>Shoot()</h2>
+<a id="a183b791c61fa624c8378ffba5ad49aa9" name="a183b791c61fa624c8378ffba5ad49aa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a183b791c61fa624c8378ffba5ad49aa9">&#9670;&#160;</a></span>ShootLoop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -375,7 +278,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">async void Enemy3.Shoot </td>
+          <td class="memname">async void Enemy3.ShootLoop </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -388,326 +291,30 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Continuously shoots projectiles at the player. </p>
-<p>Creates projectile instances at a fixed time interval and directs them toward the player's current position.</p>
-<dl class="section note"><dt>Note</dt><dd>Requires a valid Marker2D ("point") as spawn origin. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00203">203</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="a1d2bb30b4a0895ce3cc21e5b6b6be2a5" name="a1d2bb30b4a0895ce3cc21e5b6b6be2a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d2bb30b4a0895ce3cc21e5b6b6be2a5">&#9670;&#160;</a></span>SpawnEnemy3()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Enemy3.SpawnEnemy3 </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Spawns a new instance of <a class="el" href="class_enemy3.html" title="Represents a ranged enemy that shoots projectiles at the player.">Enemy3</a>. </p>
-<p>Instantiates a new enemy from the packed scene and places it at a predefined spawn position.</p>
-<dl class="section note"><dt>Note</dt><dd>The scene "res://enemy3respawn.tscn" must exist. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00186">186</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="afdcbc9bacca5ee8cec8416f4ee7ec420" name="afdcbc9bacca5ee8cec8416f4ee7ec420"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afdcbc9bacca5ee8cec8416f4ee7ec420">&#9670;&#160;</a></span>_damage</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Enemy3._damage = 5</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Damage dealt to the player on contact. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00019">19</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="a66cda471490e3babfd6dd2f3fc07dad4" name="a66cda471490e3babfd6dd2f3fc07dad4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66cda471490e3babfd6dd2f3fc07dad4">&#9670;&#160;</a></span>contact</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Enemy3.contact = false</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Indicates whether the enemy is in contact with the player. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00034">34</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="a931b671376ed145bb3ef4d7164a485ea" name="a931b671376ed145bb3ef4d7164a485ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a931b671376ed145bb3ef4d7164a485ea">&#9670;&#160;</a></span>damagetime</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Enemy3.damagetime = 2.0f</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Time interval between damage ticks and shooting. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00039">39</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="ae1b848d78685e91ed4dfa93fa9cb713e" name="ae1b848d78685e91ed4dfa93fa9cb713e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1b848d78685e91ed4dfa93fa9cb713e">&#9670;&#160;</a></span>enemy3scene</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">PackedScene Enemy3.enemy3scene</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Packed scene used to respawn this enemy. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00059">59</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="a3c650011539955cdd8be1d58daad1e62" name="a3c650011539955cdd8be1d58daad1e62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c650011539955cdd8be1d58daad1e62">&#9670;&#160;</a></span>health</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Enemy3.health</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Current health of the enemy. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00029">29</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="a130dfdac3fb232c2c8447fbe86002697" name="a130dfdac3fb232c2c8447fbe86002697"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a130dfdac3fb232c2c8447fbe86002697">&#9670;&#160;</a></span>max_health</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Enemy3.max_health = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Maximum health of the enemy. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00024">24</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="a0985bca383712529ae283db88b0a4f9d" name="a0985bca383712529ae283db88b0a4f9d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0985bca383712529ae283db88b0a4f9d">&#9670;&#160;</a></span>player</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">CharacterBody2D Enemy3.player</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reference to the player object. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00074">74</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="ad9052e1b446805371895d47799250efe" name="ad9052e1b446805371895d47799250efe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9052e1b446805371895d47799250efe">&#9670;&#160;</a></span>point</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Marker2D Enemy3.point</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Marker used as the projectile spawn point. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00049">49</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="aeca1a99f9761cfa0fe1b4e7c7cee1c29" name="aeca1a99f9761cfa0fe1b4e7c7cee1c29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeca1a99f9761cfa0fe1b4e7c7cee1c29">&#9670;&#160;</a></span>projectileenemytscn</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">PackedScene Enemy3.projectileenemytscn = GD.Load&lt;PackedScene&gt;(&quot;res://projectileenemy.tscn&quot;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Packed scene for enemy projectiles. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00054">54</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="ae055dba985bec552fada11e0e3aef9a8" name="ae055dba985bec552fada11e0e3aef9a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae055dba985bec552fada11e0e3aef9a8">&#9670;&#160;</a></span>respawntime</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Enemy3.respawntime = 1f</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Time before the enemy respawns. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00044">44</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="af063dd54dac322ed02feff60200d2199" name="af063dd54dac322ed02feff60200d2199"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af063dd54dac322ed02feff60200d2199">&#9670;&#160;</a></span>spawnposition</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Vector2 Enemy3.spawnposition</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Position where the enemy will respawn. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00064">64</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
-
-</div>
-</div>
-<a id="a0dc06b83e446fa89e11e7d721d39d1e2" name="a0dc06b83e446fa89e11e7d721d39d1e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0dc06b83e446fa89e11e7d721d39d1e2">&#9670;&#160;</a></span>Speed</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const float Enemy3.Speed = -20.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Movement speed of the enemy (negative for retreating behavior). </p>
-
-<p class="definition">Definition at line <a class="el" href="_enemy3_8cs_source.html#l00069">69</a> of file <a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a>.</p>
+<p>Continuously handles shooting logic. </p>
+<p>Repeats shooting at fixed intervals as long as the enemy exists and the player is available. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_enemy3_8cs_source.html">Enemy3.cs</a></li>
+<li><b>Enemy3.cs</b></li>
 </ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1
-</small></address>
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_enemy3.html">Enemy3</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
 </body>
 </html>

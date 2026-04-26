@@ -7,147 +7,155 @@ using static Godot.TextServer;
  * @class Enemy3
  * @brief Represents a ranged enemy that shoots projectiles at the player.
  * 
- * This class defines an enemy with very low health that attacks
- * the player from a distance using projectiles. It also handles
- * movement, respawning, and contact-based damage.
+ * This enemy maintains distance from the player, moves only when far enough,
+ * and periodically shoots projectiles. It also interacts with the wave system
+ * when defeated.
  */
 public partial class Enemy3 : CharacterBody2D
 {
-	/**
-	 * @brief Amount of damage dealt to the player (if used in other interactions).
+    /**
+	 * @brief Damage dealt to the player (used by projectiles or contact logic).
 	 */
-	public int _damage = 5;
+    public int _damage = 5;
 
-	/**
+    /**
 	 * @brief Maximum health of the enemy.
 	 */
-	public int max_health = 15;
+    public int max_health = 15;
 
-	/**
+    /**
 	 * @brief Current health of the enemy.
 	 */
-	private int health;
+    private int health;
 
-	/**
-	 * @brief Time interval (in seconds) between consecutive shots.
+    /**
+	 * @brief Time interval between shots.
 	 */
-	public float shootTime = 2f;
+    public float shootTime = 2f;
 
-	/**
-	 * @brief Movement speed of the enemy.
+    /**
+	 * @brief Movement speed of the enemy (negative for backward movement behavior).
 	 */
-	public const float Speed = -10.0f; 
+    public const float Speed = -10.0f;
 
-	/**
-	 * @brief Reference to the player character.
+    /**
+	 * @brief Reference to the player object.
 	 */
-	public CharacterBody2D player;
+    public CharacterBody2D player;
 
-	/**
+    /**
 	 * @brief Reference to the wave manager controlling enemy waves.
 	 */
-	public WaveManager waveManager;
+    public WaveManager waveManager;
 
-	/**
-	 * @brief Scene used to instantiate projectiles.
+    /**
+	 * @brief Packed scene used to spawn projectiles.
 	 */
-	private PackedScene projectileScene = GD.Load<PackedScene>("res://projectileenemy.tscn");
+    private PackedScene projectileScene = GD.Load<PackedScene>("res://projectileenemy.tscn");
 
-	/**
-	 * @brief Marker indicating the projectile spawn point.
+    /**
+	 * @brief Marker used as projectile spawn position.
 	 */
-	private Marker2D point;
+    private Marker2D point;
 
-	/**
+    /**
 	 * @brief Called when the node enters the scene tree.
-	 * Initializes health, gets the shooting point, and starts the shooting loop.
-	 */
-	public override void _Ready()
-	{
-		health = max_health;
-		point = GetNode<Marker2D>("point");
-
-		CallDeferred(nameof(ShootLoop));
-	}
-
-	/**
-	 * @brief Called every physics frame.
 	 * 
-	 * Controls enemy movement relative to the player:
-	 * - Moves toward the player if too far away
-	 * - Stops when within shooting range
+	 * Initializes health, retrieves required nodes, and starts shooting loop.
 	 * 
-	 * @param delta Time elapsed since the last frame.
+	 * @note Requires a child node named "point" (Marker2D).
 	 */
-	public override void _PhysicsProcess(double delta)
-	{
-		if (player == null)
-			return;
+    public override void _Ready()
+    {
+        health = max_health;
+        point = GetNode<Marker2D>("point");
 
-		float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
+        CallDeferred(nameof(ShootLoop));
+    }
 
-		if (distance > 200)
-		{
-			Vector2 direction = (player.GlobalPosition - GlobalPosition).Normalized();
-			Velocity = direction * Speed;
-		}
-		else
-		{
-			Velocity = Vector2.Zero;
-		}
+    /**
+	 * @brief Handles movement and distance-based behavior.
+	 * 
+	 * The enemy moves toward the player only if they are outside a defined
+	 * distance threshold. Otherwise, it stays idle.
+	 * 
+	 * @param delta Time elapsed since last frame (in seconds).
+	 */
+    public override void _PhysicsProcess(double delta)
+    {
+        if (player == null)
+            return;
 
-		MoveAndSlide();
-	}
+        float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
 
-	/**
+        if (distance > 200)
+        {
+            Vector2 direction = (player.GlobalPosition - GlobalPosition).Normalized();
+            Velocity = direction * Speed;
+        }
+        else
+        {
+            Velocity = Vector2.Zero;
+        }
+
+        MoveAndSlide();
+    }
+
+    /**
 	 * @brief Applies damage to the enemy.
 	 * 
-	 * Reduces health and removes the enemy if health reaches zero.
-	 * Notifies the wave manager about enemy death.
+	 * Reduces health and notifies the wave manager when the enemy dies.
+	 * If health reaches zero, the enemy is removed from the scene.
 	 * 
 	 * @param damage Amount of damage to apply.
-	 */
-	public void Damage(int damage)
-	{
-		health -= damage;
-
-		if (health <= 0)
-		{
-			waveManager?.OnEnemyDied();
-			QueueFree();
-		}
-	}
-
-	/**
-	 * @brief Handles continuous shooting behavior.
 	 * 
-	 * Periodically creates projectiles directed at the player.
+	 * @note Calls WaveManager.OnEnemyDied() if assigned.
 	 */
-	public async void ShootLoop()
-	{
-		while (true)
-		{
-			await ToSignal(GetTree().CreateTimer(shootTime), "timeout");
+    public void Damage(int damage)
+    {
+        health -= damage;
 
-			if (player == null)
-				continue;
+        if (health <= 0)
+        {
+            waveManager?.OnEnemyDied();
+            QueueFree();
+        }
+    }
 
-			Shoot();
-		}
-	}
-
-	/**
-	 * @brief Spawns and launches a projectile toward the player.
+    /**
+	 * @brief Continuously handles shooting logic.
+	 * 
+	 * Repeats shooting at fixed intervals as long as the enemy exists
+	 * and the player is available.
 	 */
-	public void Shoot()
-	{
-		var projectile = projectileScene.Instantiate<Projectileenemy>();
+    public async void ShootLoop()
+    {
+        while (true)
+        {
+            await ToSignal(GetTree().CreateTimer(shootTime), "timeout");
 
-		projectile.GlobalPosition = point.GlobalPosition;
+            if (player == null)
+                continue;
 
-		Vector2 direction = (player.GlobalPosition - point.GlobalPosition).Normalized();
-		projectile.direction = direction;
+            Shoot();
+        }
+    }
 
-		GetParent().AddChild(projectile);
-	}
+    /**
+	 * @brief Spawns and fires a projectile toward the player.
+	 * 
+	 * Instantiates a projectile, sets its position and direction,
+	 * and adds it to the scene tree.
+	 */
+    public void Shoot()
+    {
+        var projectile = projectileScene.Instantiate<Projectileenemy>();
+
+        projectile.GlobalPosition = point.GlobalPosition;
+
+        Vector2 direction = (player.GlobalPosition - point.GlobalPosition).Normalized();
+        projectile.direction = direction;
+
+        GetParent().AddChild(projectile);
+    }
 }

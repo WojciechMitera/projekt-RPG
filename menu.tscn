@@ -101,4 +101,5 @@ autoplay = true
 attenuation = 1.1486984
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="graj"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="ustawienia"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="wyjdz"]

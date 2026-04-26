@@ -3,34 +3,40 @@ using System;
 
 /**
  * @class Menu
- * @brief Main menu controller.
+ * @brief Controls the main menu interface.
  * 
- * This class handles user interactions in the main menu,
- * such as starting the game or exiting the application.
+ * This class handles navigation between scenes such as starting the game,
+ * opening settings, and exiting the application.
  */
 public partial class Menu : Control
 {
-	/**
+    /**
 	 * @brief Starts the game.
 	 * 
-	 * Changes the current scene to the gameplay scene.
-	 * 
-	 * @note The gameplay scene must exist at:
-	 * "res://play.tscn".
+	 * Switches the current scene to the main gameplay scene.
 	 */
-	private void graj()
-	{
-		GetTree().ChangeSceneToFile("res://play.tscn");
-	}
+    private void graj()
+    {
+        GetTree().ChangeSceneToFile("res://play.tscn");
+    }
 
-	/**
+    /**
+	 * @brief Opens the settings menu.
+	 * 
+	 * Switches the current scene to the settings scene.
+	 */
+    private void ustawienia()
+    {
+        GetTree().ChangeSceneToFile("res://ustawienia.tscn");
+    }
+
+    /**
 	 * @brief Exits the game.
 	 * 
 	 * Closes the application.
 	 */
-	private void wyjdz()
-	{
-		GetTree().Quit();
-	}
-	
+    private void wyjdz()
+    {
+        GetTree().Quit();
+    }
 }

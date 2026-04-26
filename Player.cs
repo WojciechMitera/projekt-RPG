@@ -6,278 +6,280 @@ using static Godot.SkeletonModifier3D;
  * @class Player
  * @brief Controls the player character behavior.
  * 
- * This class handles player movement, shooting, melee attacks,
- * health management, and interaction with enemies. It extends
- * CharacterBody2D to utilize built-in physics-based movement.
+ * This class handles movement, shooting (multiple weapon types),
+ * melee attacks, health management, and interactions with enemies
+ * and the game world.
  */
 public partial class Player : CharacterBody2D
 {
-	/**
-	 * @brief Packed scene used to instantiate the primary projectile.
+    /**
+	 * @brief Packed scene for primary projectile.
 	 */
-	PackedScene projectiletscn = GD.Load<PackedScene>("res://projectile.tscn");
+    PackedScene projectiletscn = GD.Load<PackedScene>("res://projectile.tscn");
 
-	/**
-	 * @brief Packed scene used to instantiate the secondary projectile.
+    /**
+	 * @brief Packed scene for secondary projectile.
 	 */
-	PackedScene projectile2tscn = GD.Load<PackedScene>("res://projectile2.tscn");
+    PackedScene projectile2tscn = GD.Load<PackedScene>("res://projectile2.tscn");
 
-	/**
+    /**
 	 * @brief Movement speed of the player.
 	 */
-	public const float Speed = 180.0f;
+    public const float Speed = 180.0f;
 
-	/**
-	 * @brief Maximum health value of the player.
+    /**
+	 * @brief Maximum health of the player.
 	 */
-	[Export]
-	public int max_health = 100;
+    [Export]
+    public int max_health = 100;
 
-	/**
-	 * @brief Current health value of the player.
+    /**
+	 * @brief Current health of the player.
 	 */
-	private int health;
+    private int health;
 
-	/**
+    /**
 	 * @brief Damage dealt by melee attacks.
 	 */
-	public int meleedamage = 8;
+    public int meleedamage = 8;
 
-	/**
+    /**
 	 * @brief Reference to the UI health bar.
 	 */
-	private ProgressBar healthbar;
+    private ProgressBar healthbar;
 
-	/**
-	 * @brief Marker indicating where projectiles spawn.
+    /**
+	 * @brief Projectile spawn point.
 	 */
-	Marker2D point;
+    Marker2D point;
 
-	/**
-	 * @brief Reference to the player node.
-	 * 
-	 * @note May be redundant depending on scene structure.
+    /**
+	 * @brief Reference to player node.
 	 */
-	CharacterBody2D _player;
+    CharacterBody2D _player;
 
-	/**
-	 * @brief Area used to detect melee attack collisions.
+    /**
+	 * @brief Area used for melee attack detection.
 	 */
-	Area2D meleeattackarrea;
-	private float cooldown1 = 0.3f;
-	private float cooldown2 = 0.6f;
-	private float cooldown3 = 1.0f;
+    Area2D meleeattackarrea;
 
-	private float timer1 = 0f;
-	private float timer2 = 0f;
-	private float timer3 = 0f;
+    /**
+	 * @brief Cooldown for weapon 1.
+	 */
+    private float cooldown1 = 0.3f;
 
-	/**
+    /**
+	 * @brief Cooldown for weapon 2.
+	 */
+    private float cooldown2 = 0.6f;
+
+    /**
+	 * @brief Cooldown for weapon 3.
+	 */
+    private float cooldown3 = 1.0f;
+
+    /**
+	 * @brief Internal timer for weapon 1.
+	 */
+    private float timer1 = 0f;
+
+    /**
+	 * @brief Internal timer for weapon 2.
+	 */
+    private float timer2 = 0f;
+
+    /**
+	 * @brief Internal timer for weapon 3.
+	 */
+    private float timer3 = 0f;
+
+    /**
 	 * @brief Called when the node enters the scene tree.
 	 * 
-	 * Initializes player health, UI references, and required nodes.
-	 * 
-	 * @note Required nodes:
-	 * - "../bar" (ProgressBar)
-	 * - "point" (Marker2D)
-	 * - "../player" (CharacterBody2D)
-	 * - "meleeattackarea" (Area2D)
+	 * Initializes health, UI references, and important nodes.
 	 */
-	public override void _Ready()
-	{
-		health = max_health;
-		healthbar = GetNode<ProgressBar>("../bar");
-		point = GetNode<Marker2D>("point");
-		_player = GetNode<CharacterBody2D>("../player");
-		meleeattackarrea = GetNode<Area2D>("meleeattackarea");
-		meleeattackarrea.Monitoring = false;
-	}
+    public override void _Ready()
+    {
+        health = max_health;
+        healthbar = GetNode<ProgressBar>("../bar");
+        point = GetNode<Marker2D>("point");
+        _player = GetNode<CharacterBody2D>("../player");
+        meleeattackarrea = GetNode<Area2D>("meleeattackarea");
+        meleeattackarrea.Monitoring = false;
+    }
 
-	/**
+    /**
 	 * @brief Applies damage to the player.
 	 * 
-	 * Reduces the player's health. If health reaches zero,
-	 * the game switches to the pause (game over) scene.
+	 * Reduces health and switches to game over scene when health reaches zero.
 	 * 
 	 * @param damage Amount of damage to apply.
 	 * 
-	 * @note Scene "res://pauza.tscn" must exist.
+	 * @note Scene "res://pauza.tscn" is used as game over screen.
 	 */
-	public void Damage(int damage)
-	{
-		health -= damage;
+    public void Damage(int damage)
+    {
+        health -= damage;
 
-		if (health <= 0)
-		{
-			GetTree().CallDeferred("change_scene_to_file", "res://pauza.tscn");
-			GD.Print("Game Over");
-		}
+        if (health <= 0)
+        {
+            GetTree().CallDeferred("change_scene_to_file", "res://pauza.tscn");
+        }
 
-		healthbar.Value = health;
-		GD.Print(health);
-	}
+        healthbar.Value = health;
+    }
 
-	/**
-	 * @brief Shoots a single projectile toward the mouse position.
-	 * 
-	 * Instantiates a projectile and assigns its direction
-	 * based on the cursor position.
+    /**
+	 * @brief Fires a single projectile towards the mouse position.
 	 */
-	public void Shoot()
-	{
-		Projectile projectile = projectiletscn.Instantiate<Projectile>();
-		projectile.GlobalPosition = point.GlobalPosition;
+    public void Shoot()
+    {
+        Projectile projectile = projectiletscn.Instantiate<Projectile>();
+        projectile.GlobalPosition = point.GlobalPosition;
 
-		Vector2 direction = (GetGlobalMousePosition() - point.GlobalPosition).Normalized();
-		projectile.direction = direction;
+        Vector2 direction = (GetGlobalMousePosition() - point.GlobalPosition).Normalized();
+        projectile.direction = direction;
 
-		GetParent().AddChild(projectile);
-	}
+        GetParent().AddChild(projectile);
+    }
 
-	/**
-	 * @brief Shoots multiple projectiles in a spread pattern.
-	 * 
-	 * Fires three projectiles: one straight and two slightly rotated
-	 * to create a spread shot effect.
+    /**
+	 * @brief Fires a spread of 3 projectiles.
 	 */
-	public void Shoot2()
-	{
-		Vector2 direction = (GetGlobalMousePosition() - point.GlobalPosition).Normalized();
-		float spread = 0.2f;
+    public void Shoot2()
+    {
+        Vector2 direction = (GetGlobalMousePosition() - point.GlobalPosition).Normalized();
+        float spread = 0.2f;
 
-		Vector2[] directions =
-		{
-			direction,
-			direction.Rotated(spread),
-			direction.Rotated(-spread)
-		};
+        Vector2[] directions =
+        {
+            direction,
+            direction.Rotated(spread),
+            direction.Rotated(-spread)
+        };
 
-		foreach (var dir in directions)
-		{
-			Projectile2 projectile = projectile2tscn.Instantiate<Projectile2>();
-			projectile.GlobalPosition = point.GlobalPosition;
-			projectile.direction = dir;
+        foreach (var dir in directions)
+        {
+            Projectile2 projectile = projectile2tscn.Instantiate<Projectile2>();
+            projectile.GlobalPosition = point.GlobalPosition;
+            projectile.direction = dir;
 
-			GetParent().AddChild(projectile);
-		}
-	}
-	public void Shoot3()
-	{
-		Vector2 direction = (GetGlobalMousePosition() - point.GlobalPosition).Normalized();
-		float spread = 0.7f;
+            GetParent().AddChild(projectile);
+        }
+    }
 
-		Vector2[] directions =
-		{
-			direction,
-			direction.Rotated(spread),
-			direction.Rotated(-spread),
+    /**
+	 * @brief Fires a wide shotgun-style spread of projectiles.
+	 */
+    public void Shoot3()
+    {
+        Vector2 direction = (GetGlobalMousePosition() - point.GlobalPosition).Normalized();
+        float spread = 0.7f;
 
-			direction.Rotated(-spread * 2),
-			direction.Rotated(spread * 2),
+        Vector2[] directions =
+        {
+            direction,
+            direction.Rotated(spread),
+            direction.Rotated(-spread),
+            direction.Rotated(-spread * 2),
+            direction.Rotated(spread * 2),
+            direction.Rotated(spread * 3),
+            direction.Rotated(-spread * 3),
+            direction.Rotated(spread * 4),
+            direction.Rotated(-spread * 4),
+            direction.Rotated(spread * 5),
+            direction.Rotated(-spread * 5)
+        };
 
-			
-			direction.Rotated(spread * 3),
-			direction.Rotated(-spread * 3),
+        foreach (var dir in directions)
+        {
+            Projectile2 projectile = projectile2tscn.Instantiate<Projectile2>();
+            projectile.GlobalPosition = point.GlobalPosition;
+            projectile.direction = dir;
 
-		   
-			direction.Rotated(spread * 4),
-			direction.Rotated(-spread * 4),
+            GetParent().AddChild(projectile);
+        }
+    }
 
-			direction.Rotated(spread * 5),
-			direction.Rotated(-spread * 5)
-		};
-
-		foreach (var dir in directions)
-		{
-			Projectile2 projectile = projectile2tscn.Instantiate<Projectile2>();
-			projectile.GlobalPosition = point.GlobalPosition;
-			projectile.direction = dir;
-
-			GetParent().AddChild(projectile);
-		}
-	}
-
-	/**
+    /**
 	 * @brief Performs a melee attack.
 	 * 
-	 * Temporarily enables the melee collision area to detect
-	 * and damage nearby enemies.
+	 * Temporarily enables melee hitbox for detecting enemies.
 	 */
-	public async void Meleeattack()
-	{
-		meleeattackarrea.Monitoring = true;
-		GD.Print("Melee ON");
+    public async void Meleeattack()
+    {
+        meleeattackarrea.Monitoring = true;
 
-		await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
+        await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
 
-		meleeattackarrea.Monitoring = false;
-		GD.Print("Melee OFF");
-	}
+        meleeattackarrea.Monitoring = false;
+    }
 
-	/**
-	 * @brief Handles collision with enemy bodies during melee attack.
+    /**
+	 * @brief Handles melee collision with enemies.
 	 * 
-	 * Detects enemy types and applies melee damage accordingly.
+	 * Applies melee damage depending on enemy type.
 	 * 
-	 * @param body The colliding node.
+	 * @param body The collided node.
 	 */
-	public void BodyCollision(Node body)
-	{
-		if (body is Enemy enemy)
-		{
-			enemy.Damage(meleedamage);
-			GD.Print("Hit Enemy1");
-		}
-		else if (body is Enemy2 enemy2)
-		{
-			enemy2.Damage(meleedamage);
-		}
-		else if (body is Enemy3 enemy3)
-		{
-			enemy3.Damage(meleedamage);
-		}
-        else if (body is Boss boss) // 🔥 NOWE
+    public void BodyCollision(Node body)
+    {
+        if (body is Enemy enemy)
+        {
+            enemy.Damage(meleedamage);
+        }
+        else if (body is Enemy2 enemy2)
+        {
+            enemy2.Damage(meleedamage);
+        }
+        else if (body is Enemy3 enemy3)
+        {
+            enemy3.Damage(meleedamage);
+        }
+        else if (body is Boss boss)
         {
             boss.Damage(meleedamage);
         }
     }
 
-	/**
-	 * @brief Handles player movement and input every physics frame.
+    /**
+	 * @brief Handles movement, input, and weapon cooldowns.
 	 * 
-	 * Processes directional input, updates velocity, changes player sprite
-	 * based on movement direction, and handles weapon input.
+	 * Processes player movement, sprite direction changes,
+	 * and weapon firing with cooldown system.
 	 * 
 	 * @param delta Time elapsed since last frame (in seconds).
 	 */
-	public override void _PhysicsProcess(double delta)
-	{
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		var sprite = GetNode<Sprite2D>("sprite_player");
+    public override void _PhysicsProcess(double delta)
+    {
+        Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        var sprite = GetNode<Sprite2D>("sprite_player");
 
-		if (direction != Vector2.Zero)
-		{
-			direction = direction.Normalized();
-			Velocity = direction * Speed;
+        if (direction != Vector2.Zero)
+        {
+            direction = direction.Normalized();
+            Velocity = direction * Speed;
 
-			if (direction.X > 0)
-			{
-				sprite.Texture = GD.Load<Texture2D>("res://player.png");
-			}
-			else if (direction.X < 0)
-			{
-				sprite.Texture = GD.Load<Texture2D>("res://player2.png");
-			}
-		}
-		else
-		{
-			Velocity = Vector2.Zero;
-		}
+            if (direction.X > 0)
+            {
+                sprite.Texture = GD.Load<Texture2D>("res://player.png");
+            }
+            else if (direction.X < 0)
+            {
+                sprite.Texture = GD.Load<Texture2D>("res://player2.png");
+            }
+        }
+        else
+        {
+            Velocity = Vector2.Zero;
+        }
 
-		MoveAndSlide();
+        MoveAndSlide();
+
         timer1 -= (float)delta;
         timer2 -= (float)delta;
         timer3 -= (float)delta;
+
         if (Input.IsActionPressed("use_weapon_1") && timer1 <= 0f)
         {
             Shoot();

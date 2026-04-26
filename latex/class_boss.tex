@@ -1,0 +1,96 @@
+\doxysection{Boss Class Reference}
+\hypertarget{class_boss}{}\label{class_boss}\index{Boss@{Boss}}
+
+
+Represents the main boss enemy in the game.  
+
+
+Inheritance diagram for Boss:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_boss}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \doxymbox{\hyperlink{class_boss_a7175ae50fb253d578381c396fdd4331b}{\+\_\+\+Physics\+Process}} (double delta)
+\begin{DoxyCompactList}\small\item\em Handles physics-\/based movement every frame. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_boss_a591a70c30faa004981561b4571273614}{Damage}} (int dmg)
+\begin{DoxyCompactList}\small\item\em Applies damage to the boss. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_boss_a26253b8253395eade8de8b72e99dd85b}\label{class_boss_a26253b8253395eade8de8b72e99dd85b} 
+int {\bfseries health} = 300
+\begin{DoxyCompactList}\small\item\em Current health of the boss. \end{DoxyCompactList}\item 
+\Hypertarget{class_boss_a6c688fd6a15ad48ef786525dbb424319}\label{class_boss_a6c688fd6a15ad48ef786525dbb424319} 
+float {\bfseries speed} = 60
+\begin{DoxyCompactList}\small\item\em Movement speed of the boss. \end{DoxyCompactList}\item 
+\Hypertarget{class_boss_ac159ac601045ba744b02a163620d749c}\label{class_boss_ac159ac601045ba744b02a163620d749c} 
+bool {\bfseries contact} = false
+\begin{DoxyCompactList}\small\item\em Indicates whether the boss is in contact with the player. \end{DoxyCompactList}\item 
+\Hypertarget{class_boss_ad29ab0a90a271105f5e0d6dea10d1f2e}\label{class_boss_ad29ab0a90a271105f5e0d6dea10d1f2e} 
+int {\bfseries \+\_\+damage} = 30
+\begin{DoxyCompactList}\small\item\em Damage dealt to the player on contact. \end{DoxyCompactList}\item 
+\Hypertarget{class_boss_a41a44900cfb2712160d889945d6b7a2e}\label{class_boss_a41a44900cfb2712160d889945d6b7a2e} 
+float {\bfseries damagetime} = 0.\+8f
+\begin{DoxyCompactList}\small\item\em Time interval between damage ticks while in contact. \end{DoxyCompactList}\item 
+\Hypertarget{class_boss_a9d1e2a3a6d4cd11c98687b3138542cff}\label{class_boss_a9d1e2a3a6d4cd11c98687b3138542cff} 
+Character\+Body2D {\bfseries player}
+\begin{DoxyCompactList}\small\item\em Reference to the player character. \end{DoxyCompactList}\item 
+\Hypertarget{class_boss_a40cec5a83857d5929c312df504aac6c4}\label{class_boss_a40cec5a83857d5929c312df504aac6c4} 
+\doxymbox{\hyperlink{class_wave_manager}{Wave\+Manager}} {\bfseries wave\+Manager}
+\begin{DoxyCompactList}\small\item\em Reference to the wave manager controlling game progression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the main boss enemy in the game. 
+
+This class handles boss behavior such as movement towards the player, health management, dealing contact damage, and triggering the win state when defeated. 
+
+\label{doc-func-members}
+\Hypertarget{class_boss_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_boss_a7175ae50fb253d578381c396fdd4331b}\index{Boss@{Boss}!\_PhysicsProcess@{\_PhysicsProcess}}
+\index{\_PhysicsProcess@{\_PhysicsProcess}!Boss@{Boss}}
+\doxysubsubsection{\texorpdfstring{\_PhysicsProcess()}{\_PhysicsProcess()}}
+{\footnotesize\ttfamily \label{class_boss_a7175ae50fb253d578381c396fdd4331b} 
+override void Boss.\+\_\+\+Physics\+Process (\begin{DoxyParamCaption}\item[{double}]{delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Handles physics-\/based movement every frame. 
+
+Moves the boss towards the player using normalized direction and constant speed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & Time elapsed since last frame (in seconds). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_boss_a591a70c30faa004981561b4571273614}\index{Boss@{Boss}!Damage@{Damage}}
+\index{Damage@{Damage}!Boss@{Boss}}
+\doxysubsubsection{\texorpdfstring{Damage()}{Damage()}}
+{\footnotesize\ttfamily \label{class_boss_a591a70c30faa004981561b4571273614} 
+void Boss.\+Damage (\begin{DoxyParamCaption}\item[{int}]{dmg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Applies damage to the boss. 
+
+Reduces health and triggers the win condition when health reaches zero.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dmg} & Amount of damage to apply.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Calls \doxylink{class_wave_manager_adfaada1f895aa8cf4f01ecbca3ef90ef}{Wave\+Manager.\+Game\+Won()} if assigned. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+Boss.\+cs\end{DoxyCompactItemize}

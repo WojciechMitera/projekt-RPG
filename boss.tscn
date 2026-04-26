@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://c7wi55b6ycuv7"]
 
-[ext_resource type="Texture2D" uid="uid://fh8tijc388cm" path="res://enemy3.png" id="1_0bnu1"]
 [ext_resource type="Script" uid="uid://c0risum1vk8al" path="res://Boss.cs" id="1_6xxrv"]
+[ext_resource type="Texture2D" uid="uid://d3r8vsa7obvda" path="res://bosss.png" id="2_6xxrv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iu7w4"]
-size = Vector2(106, 72)
+size = Vector2(125, 153)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sspi"]
-size = Vector2(110, 76)
+size = Vector2(129, 157)
 
 [node name="boss" type="CharacterBody2D" unique_id=2076462777]
 position = Vector2(674, 329)
@@ -16,19 +16,19 @@ collision_mask = 9
 script = ExtResource("1_6xxrv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1870721438]
-position = Vector2(13.892485, 11.670501)
-scale = Vector2(0.09447482, 0.09758289)
-texture = ExtResource("1_0bnu1")
+position = Vector2(22.999996, 12.999993)
+scale = Vector2(0.271301, 0.2547024)
+texture = ExtResource("2_6xxrv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2118019158]
-position = Vector2(24, 16)
+position = Vector2(29.5, 33.5)
 shape = SubResource("RectangleShape2D_iu7w4")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=291245261]
 position = Vector2(9, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=626177861]
-position = Vector2(15, 12)
+position = Vector2(20.5, 29.5)
 shape = SubResource("RectangleShape2D_6sspi")
 
 [connection signal="body_entered" from="Area2D" to="." method="BodyCollision"]

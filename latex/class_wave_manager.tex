@@ -1,0 +1,159 @@
+\doxysection{Wave\+Manager Class Reference}
+\hypertarget{class_wave_manager}{}\label{class_wave_manager}\index{WaveManager@{WaveManager}}
+
+
+Controls enemy wave spawning and game progression.  
+
+
+Inheritance diagram for Wave\+Manager:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_wave_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \doxymbox{\hyperlink{class_wave_manager_a4b500dfe98194b126b2cbfcd2496abf5}{\+\_\+\+Ready}} ()
+\begin{DoxyCompactList}\small\item\em Called when the node enters the scene tree. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wave_manager_a5a75692210e1a1122bdb1e26cac5c320}{Start\+Wave}} ()
+\begin{DoxyCompactList}\small\item\em Starts the current wave. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wave_manager_a1e910308a8991aaf714e1dfd6805ed20}{Spawn\+Enemy}} ()
+\begin{DoxyCompactList}\small\item\em Spawns a normal enemy. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wave_manager_a741876013f6a94d1093c072d988ba660}{Spawn\+Boss}} ()
+\begin{DoxyCompactList}\small\item\em Spawns a boss enemy. \end{DoxyCompactList}\item 
+Packed\+Scene \doxymbox{\hyperlink{class_wave_manager_af6f37001552de0da081696b4a76b0af7}{Get\+Random\+Enemy}} ()
+\begin{DoxyCompactList}\small\item\em Returns a randomly selected enemy scene. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wave_manager_a0fbd541cbff61468b9e78bfa9a84f1b3}{On\+Enemy\+Died}} ()
+\begin{DoxyCompactList}\small\item\em Called when an enemy dies. \end{DoxyCompactList}\item 
+async void \doxymbox{\hyperlink{class_wave_manager_af330d803c4a3c2ba1094f3aca1672a0e}{Next\+Wave}} ()
+\begin{DoxyCompactList}\small\item\em Starts the next wave after a short delay. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wave_manager_adfaada1f895aa8cf4f01ecbca3ef90ef}{Game\+Won}} ()
+\begin{DoxyCompactList}\small\item\em Ends the game with a win state. \end{DoxyCompactList}\item 
+Vector2 \doxymbox{\hyperlink{class_wave_manager_ad3ec3eddc3a3db9139f675de97bcdb4e}{Get\+Random\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Generates a random spawn position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_wave_manager_ad2efb576ad141e28ca095b8800fc0a46}\label{class_wave_manager_ad2efb576ad141e28ca095b8800fc0a46} 
+int {\bfseries current\+Wave} = 1
+\begin{DoxyCompactList}\small\item\em Current wave index. \end{DoxyCompactList}\item 
+\Hypertarget{class_wave_manager_af81bec27e01badaf740e480b1482aa10}\label{class_wave_manager_af81bec27e01badaf740e480b1482aa10} 
+int {\bfseries enemies\+To\+Spawn} = 3
+\begin{DoxyCompactList}\small\item\em Number of enemies spawned per wave. \end{DoxyCompactList}\item 
+\Hypertarget{class_wave_manager_a1f09ac55c915ccec82433f0587ef0493}\label{class_wave_manager_a1f09ac55c915ccec82433f0587ef0493} 
+int {\bfseries boss\+Wave\+Interval} = 5
+\begin{DoxyCompactList}\small\item\em Interval of waves that spawn a boss. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controls enemy wave spawning and game progression. 
+
+This class manages waves of enemies, including normal enemy waves, boss waves, wave progression, and game completion logic. 
+
+\label{doc-func-members}
+\Hypertarget{class_wave_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_wave_manager_a4b500dfe98194b126b2cbfcd2496abf5}\index{WaveManager@{WaveManager}!\_Ready@{\_Ready}}
+\index{\_Ready@{\_Ready}!WaveManager@{WaveManager}}
+\doxysubsubsection{\texorpdfstring{\_Ready()}{\_Ready()}}
+{\footnotesize\ttfamily \label{class_wave_manager_a4b500dfe98194b126b2cbfcd2496abf5} 
+override void Wave\+Manager.\+\_\+\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Called when the node enters the scene tree. 
+
+Initializes references and starts the first wave. \Hypertarget{class_wave_manager_adfaada1f895aa8cf4f01ecbca3ef90ef}\index{WaveManager@{WaveManager}!GameWon@{GameWon}}
+\index{GameWon@{GameWon}!WaveManager@{WaveManager}}
+\doxysubsubsection{\texorpdfstring{GameWon()}{GameWon()}}
+{\footnotesize\ttfamily \label{class_wave_manager_adfaada1f895aa8cf4f01ecbca3ef90ef} 
+void Wave\+Manager.\+Game\+Won (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ends the game with a win state. 
+
+Switches to the end/\+game over scene. \Hypertarget{class_wave_manager_af6f37001552de0da081696b4a76b0af7}\index{WaveManager@{WaveManager}!GetRandomEnemy@{GetRandomEnemy}}
+\index{GetRandomEnemy@{GetRandomEnemy}!WaveManager@{WaveManager}}
+\doxysubsubsection{\texorpdfstring{GetRandomEnemy()}{GetRandomEnemy()}}
+{\footnotesize\ttfamily \label{class_wave_manager_af6f37001552de0da081696b4a76b0af7} 
+Packed\+Scene Wave\+Manager.\+Get\+Random\+Enemy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a randomly selected enemy scene. 
+
+Uses probability-\/based selection to choose enemy type.
+
+\begin{DoxyReturn}{Returns}
+Packed\+Scene representing selected enemy type. 
+\end{DoxyReturn}
+\Hypertarget{class_wave_manager_ad3ec3eddc3a3db9139f675de97bcdb4e}\index{WaveManager@{WaveManager}!GetRandomPosition@{GetRandomPosition}}
+\index{GetRandomPosition@{GetRandomPosition}!WaveManager@{WaveManager}}
+\doxysubsubsection{\texorpdfstring{GetRandomPosition()}{GetRandomPosition()}}
+{\footnotesize\ttfamily \label{class_wave_manager_ad3ec3eddc3a3db9139f675de97bcdb4e} 
+Vector2 Wave\+Manager.\+Get\+Random\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generates a random spawn position. 
+
+\begin{DoxyReturn}{Returns}
+Random 2D position within predefined bounds. 
+\end{DoxyReturn}
+\Hypertarget{class_wave_manager_af330d803c4a3c2ba1094f3aca1672a0e}\index{WaveManager@{WaveManager}!NextWave@{NextWave}}
+\index{NextWave@{NextWave}!WaveManager@{WaveManager}}
+\doxysubsubsection{\texorpdfstring{NextWave()}{NextWave()}}
+{\footnotesize\ttfamily \label{class_wave_manager_af330d803c4a3c2ba1094f3aca1672a0e} 
+async void Wave\+Manager.\+Next\+Wave (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Starts the next wave after a short delay. 
+
+Increases wave difficulty and spawns new enemies. \Hypertarget{class_wave_manager_a0fbd541cbff61468b9e78bfa9a84f1b3}\index{WaveManager@{WaveManager}!OnEnemyDied@{OnEnemyDied}}
+\index{OnEnemyDied@{OnEnemyDied}!WaveManager@{WaveManager}}
+\doxysubsubsection{\texorpdfstring{OnEnemyDied()}{OnEnemyDied()}}
+{\footnotesize\ttfamily \label{class_wave_manager_a0fbd541cbff61468b9e78bfa9a84f1b3} 
+void Wave\+Manager.\+On\+Enemy\+Died (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Called when an enemy dies. 
+
+Decreases alive enemy count and starts next wave if cleared. \Hypertarget{class_wave_manager_a741876013f6a94d1093c072d988ba660}\index{WaveManager@{WaveManager}!SpawnBoss@{SpawnBoss}}
+\index{SpawnBoss@{SpawnBoss}!WaveManager@{WaveManager}}
+\doxysubsubsection{\texorpdfstring{SpawnBoss()}{SpawnBoss()}}
+{\footnotesize\ttfamily \label{class_wave_manager_a741876013f6a94d1093c072d988ba660} 
+void Wave\+Manager.\+Spawn\+Boss (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Spawns a boss enemy. 
+
+Assigns player and wave manager references to the boss. \Hypertarget{class_wave_manager_a1e910308a8991aaf714e1dfd6805ed20}\index{WaveManager@{WaveManager}!SpawnEnemy@{SpawnEnemy}}
+\index{SpawnEnemy@{SpawnEnemy}!WaveManager@{WaveManager}}
+\doxysubsubsection{\texorpdfstring{SpawnEnemy()}{SpawnEnemy()}}
+{\footnotesize\ttfamily \label{class_wave_manager_a1e910308a8991aaf714e1dfd6805ed20} 
+void Wave\+Manager.\+Spawn\+Enemy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Spawns a normal enemy. 
+
+Randomly selects enemy type and assigns player and wave manager references. \Hypertarget{class_wave_manager_a5a75692210e1a1122bdb1e26cac5c320}\index{WaveManager@{WaveManager}!StartWave@{StartWave}}
+\index{StartWave@{StartWave}!WaveManager@{WaveManager}}
+\doxysubsubsection{\texorpdfstring{StartWave()}{StartWave()}}
+{\footnotesize\ttfamily \label{class_wave_manager_a5a75692210e1a1122bdb1e26cac5c320} 
+void Wave\+Manager.\+Start\+Wave (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Starts the current wave. 
+
+Spawns normal enemies or a boss depending on wave number. Updates UI and enemy counters accordingly. 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+Wave\+Manager.\+cs\end{DoxyCompactItemize}

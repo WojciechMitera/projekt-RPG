@@ -31,4 +31,4 @@ position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_hkd06")
 
 [node name="point" type="Marker2D" parent="." unique_id=1127263784]
-position = Vector2(25, 0)
+position = Vector2(15, 2)

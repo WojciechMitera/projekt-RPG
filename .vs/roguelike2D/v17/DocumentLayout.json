@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\ustawienia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:ustawienia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\play.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:play.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\pauza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:pauza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\wavemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:wavemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\projectileenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:projectileenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\projectile2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,8 +35,32 @@
       "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\ustawienia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:ustawienia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\enemy3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:enemy3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\enemy2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:enemy2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|c:\\users\\wmite\\onedrive\\dokumenty\\roguelike-2d\\node2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A7404A6-F54E-4BB6-8AD1-43163F08FF7E}|roguelike2D.csproj|solutionrelative:node2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,93 +70,202 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Enemy.cs",
-              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Enemy.cs",
-              "RelativeDocumentMoniker": "Enemy.cs",
-              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Enemy.cs",
-              "RelativeToolTip": "Enemy.cs",
-              "ViewState": "AgIAAHEAAAAAAAAAAAAIwIMAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T18:22:53.462Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Projectile2.cs",
-              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Projectile2.cs",
-              "RelativeDocumentMoniker": "Projectile2.cs",
-              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Projectile2.cs",
-              "RelativeToolTip": "Projectile2.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAQwEQAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T18:22:13.499Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Projectile.cs",
-              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Projectile.cs",
-              "RelativeDocumentMoniker": "Projectile.cs",
-              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Projectile.cs",
-              "RelativeToolTip": "Projectile.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAgwEMAAAACAAAAAAAAAA==",
+              "Title": "Projectileenemy.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Projectileenemy.cs",
+              "RelativeDocumentMoniker": "Projectileenemy.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Projectileenemy.cs",
+              "RelativeToolTip": "Projectileenemy.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAUwEEAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T18:22:07.078Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WaveManager.cs",
-              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\WaveManager.cs",
-              "RelativeDocumentMoniker": "WaveManager.cs",
-              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\WaveManager.cs",
-              "RelativeToolTip": "WaveManager.cs",
-              "ViewState": "AgIAAGcAAAAAAAAAAAAcwH0AAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T18:21:46.48Z",
+              "WhenOpened": "2026-04-26T20:10:03.636Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Play.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Play.cs",
+              "RelativeDocumentMoniker": "Play.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Play.cs",
+              "RelativeToolTip": "Play.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:07:55.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Pauza.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Pauza.cs",
+              "RelativeDocumentMoniker": "Pauza.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Pauza.cs",
+              "RelativeToolTip": "Pauza.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:07:48.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Enemy3.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Enemy3.cs",
+              "RelativeDocumentMoniker": "Enemy3.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Enemy3.cs",
+              "RelativeToolTip": "Enemy3.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAUwI0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:07:14.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Enemy2.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Enemy2.cs",
+              "RelativeDocumentMoniker": "Enemy2.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Enemy2.cs",
+              "RelativeToolTip": "Enemy2.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAUwHgAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:04:44.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Enemy.cs",
+              "RelativeDocumentMoniker": "Enemy.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Enemy.cs",
+              "RelativeToolTip": "Enemy.cs",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAUwHkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T18:22:53.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Projectile2.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Projectile2.cs",
+              "RelativeDocumentMoniker": "Projectile2.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Projectile2.cs",
+              "RelativeToolTip": "Projectile2.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAUwFUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T18:22:13.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Projectile.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Projectile.cs",
+              "RelativeDocumentMoniker": "Projectile.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Projectile.cs",
+              "RelativeToolTip": "Projectile.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAUwFEAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T18:22:07.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Player.cs",
               "RelativeDocumentMoniker": "Player.cs",
               "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Player.cs",
               "RelativeToolTip": "Player.cs",
-              "ViewState": "AgIAAAMBAAAAAAAAAAAUwBkBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAOEAAAAAAAAAAADwvywBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-26T18:21:29.431Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 12,
               "Title": "Boss.cs",
               "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Boss.cs",
               "RelativeDocumentMoniker": "Boss.cs",
               "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Boss.cs",
               "RelativeToolTip": "Boss.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAswBUAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAUwGgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T17:37:42.335Z"
+              "WhenOpened": "2026-04-26T17:37:42.335Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Ustawienia.cs",
               "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Ustawienia.cs",
               "RelativeDocumentMoniker": "Ustawienia.cs",
               "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Ustawienia.cs",
               "RelativeToolTip": "Ustawienia.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T17:12:48.601Z"
+              "WhenOpened": "2026-04-26T17:12:48.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WaveManager.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\WaveManager.cs",
+              "RelativeDocumentMoniker": "WaveManager.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\WaveManager.cs",
+              "RelativeToolTip": "WaveManager.cs",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAkwNEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T18:21:46.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Bullet.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Bullet.cs",
+              "RelativeDocumentMoniker": "Bullet.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Bullet.cs",
+              "RelativeToolTip": "Bullet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:04:25.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Menu.cs",
+              "RelativeDocumentMoniker": "Menu.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Menu.cs",
+              "RelativeToolTip": "Menu.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAUwBcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:07:38.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Node2d.cs",
+              "DocumentMoniker": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Node2d.cs",
+              "RelativeDocumentMoniker": "Node2d.cs",
+              "ToolTip": "C:\\Users\\wmite\\OneDrive\\Dokumenty\\roguelike-2d\\Node2d.cs",
+              "RelativeToolTip": "Node2d.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:07:46.246Z",
+              "EditorCaption": ""
             }
           ]
         }

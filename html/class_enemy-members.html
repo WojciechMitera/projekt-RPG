@@ -5,11 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>roguelike 2D documentation: Member List</title>
+<title>roguelikedocumentation: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -23,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">roguelike 2D documentation
+   <div id="projectname">roguelikedocumentation
    </div>
   </td>
  </tr>
@@ -42,11 +45,27 @@ $(function() { codefold.init(); });
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_enemy.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,8 +87,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
   <div class="headertitle"><div class="title">Enemy Member List</div></div>
 </div><!--header-->
@@ -80,25 +97,21 @@ $(function() {
   <tr class="even"><td class="entry"><a class="el" href="class_enemy.html#a03548fcfc16c707feaffbe5aefc7771c">_damage</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_enemy.html#aa1df6763ae3a612f36447340577dcb8e">_PhysicsProcess</a>(double delta)</td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_enemy.html#a637bd267c02af30ad5af52c55dbf1439">_Ready</a>()</td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_enemy.html#a1dc47f66ebdceaec6d433a1944ae9b17">BodyCollision</a>(Node body)</td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">private</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_enemy.html#afb0969624619ae4a0b6a69b87ecf8882">BodyCollisionOut</a>(Node body)</td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">private</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_enemy.html#ab4c22d05f33acea6bfb605b2028d2e25">contact</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_enemy.html#aa7454d9f2e3cc9af8121260931ead3fb">Damage</a>(int damage)</td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_enemy.html#ac201e4454a4204a9dd416c452a224de4">damagetime</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_enemy.html#a80aa7a7d0284ad323c542ccacd49b3dd">enemyscene</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_enemy.html#a1711d7095bfbad246acc6860dc0e4732">GetRandomPosition</a>()</td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_enemy.html#a0c22e3b96d3c5a4d5b278188b5ba3cfb">health</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_enemy.html#a7c180503e8cfa140284158cb8e116e29">max_health</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_enemy.html#a5c25db32b09ce8fab607f79a4b094f25">player</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_enemy.html#a9156fe7424e8fc2373ca49c43b71c1c5">respawntime</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_enemy.html#a3cd0b9b86b82100346344613f57fa01d">SpawnEnemy</a>()</td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_enemy.html#ace68c07a748b0746da0ed090a98b461a">spawnposition</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_enemy.html#a7c180503e8cfa140284158cb8e116e29">max_health</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_enemy.html#a5c25db32b09ce8fab607f79a4b094f25">player</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_enemy.html#afb7dff0f942a4905fef8014068a67e7d">Speed</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_enemy.html#a240645bd40d2b72883690f256c95f482">waveManager</a></td><td class="entry"><a class="el" href="class_enemy.html">Enemy</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1
-</small></address>
 </div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,57 +1,51 @@
 \doxysection{Projectile2 Class Reference}
-\label{class_projectile2}\index{Projectile2@{Projectile2}}
+\hypertarget{class_projectile2}{}\label{class_projectile2}\index{Projectile2@{Projectile2}}
 
 
 Represents a fast-\/moving projectile variant.  
 
 
-
-
-Inheritance diagram for Projectile2:\+
-% FIG 0
-
-
-Collaboration diagram for Projectile2:\+
-% FIG 1
+Inheritance diagram for Projectile2:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_projectile2}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-override void \textbf{ \+\_\+\+Physics\+Process} (double delta)
+override void \doxymbox{\hyperlink{class_projectile2_a1ace1e0cd7af0d9145273da422cb9b5d}{\+\_\+\+Physics\+Process}} (double delta)
 \begin{DoxyCompactList}\small\item\em Updates projectile movement every physics frame. \end{DoxyCompactList}\item 
-async void \textbf{ Destroy} (float time)
+async void \doxymbox{\hyperlink{class_projectile2_a4c31fd3132ecb36f180bfbdd7e127169}{Destroy}} (float time)
 \begin{DoxyCompactList}\small\item\em Destroys the projectile after a delay. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-int \textbf{ \+\_\+damage} = 5
+\Hypertarget{class_projectile2_a7d9bdbb436a48a7b098c10f482f2c553}\label{class_projectile2_a7d9bdbb436a48a7b098c10f482f2c553} 
+int {\bfseries \+\_\+damage} = 5
 \begin{DoxyCompactList}\small\item\em Damage dealt to enemies on hit. \end{DoxyCompactList}\item 
-float \textbf{ \+\_\+time} = 0.\+01f
+\Hypertarget{class_projectile2_aa6abce3493a0ab988f14c4f9cb1668a5}\label{class_projectile2_aa6abce3493a0ab988f14c4f9cb1668a5} 
+float {\bfseries \+\_\+time} = 0.\+01f
 \begin{DoxyCompactList}\small\item\em Lifetime before automatic destruction (in seconds). \end{DoxyCompactList}\item 
-float \textbf{ speed} = 500
+\Hypertarget{class_projectile2_ac730366f653ed0bf32eaa00ccfd55e7e}\label{class_projectile2_ac730366f653ed0bf32eaa00ccfd55e7e} 
+float {\bfseries speed} = 500
 \begin{DoxyCompactList}\small\item\em Movement speed of the projectile. \end{DoxyCompactList}\item 
-Vector2 \textbf{ direction}
+\Hypertarget{class_projectile2_af08ab3f79b1079226645f28101a3f3c4}\label{class_projectile2_af08ab3f79b1079226645f28101a3f3c4} 
+Vector2 {\bfseries direction}
 \begin{DoxyCompactList}\small\item\em Normalized direction vector of the projectile. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Private Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-void \textbf{ Body\+Collision2} (Node body)
-\begin{DoxyCompactList}\small\item\em Handles collision with another body. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Represents a fast-\/moving projectile variant. 
 
-This class defines a lighter, faster projectile that deals less damage but travels at higher speed. It handles movement, collision detection, and automatic destruction. 
-
-Definition at line \textbf{ 12} of file \textbf{ Projectile2.\+cs}.
-
-
+This class defines a faster but weaker projectile used by the player. It handles movement, collision detection with enemies, damage application, and automatic destruction after a short lifetime. 
 
 \label{doc-func-members}
+\Hypertarget{class_projectile2_doc-func-members}
 \doxysubsection{Member Function Documentation}
-\index{Projectile2@{Projectile2}!\_PhysicsProcess@{\_PhysicsProcess}}
+\Hypertarget{class_projectile2_a1ace1e0cd7af0d9145273da422cb9b5d}\index{Projectile2@{Projectile2}!\_PhysicsProcess@{\_PhysicsProcess}}
 \index{\_PhysicsProcess@{\_PhysicsProcess}!Projectile2@{Projectile2}}
-\doxysubsubsection{\_PhysicsProcess()}
+\doxysubsubsection{\texorpdfstring{\_PhysicsProcess()}{\_PhysicsProcess()}}
 {\footnotesize\ttfamily \label{class_projectile2_a1ace1e0cd7af0d9145273da422cb9b5d} 
 override void Projectile2.\+\_\+\+Physics\+Process (\begin{DoxyParamCaption}\item[{double}]{delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -59,43 +53,16 @@ override void Projectile2.\+\_\+\+Physics\+Process (\begin{DoxyParamCaption}\ite
 
 Updates projectile movement every physics frame. 
 
-Moves the projectile in the assigned direction with constant velocity.
+Moves the projectile in the assigned direction with constant speed.
 
 
 \begin{DoxyParams}{Parameters}
 {\em delta} & Time elapsed since last frame (in seconds). \\
 \hline
 \end{DoxyParams}
-
-
-Definition at line \textbf{ 83} of file \textbf{ Projectile2.\+cs}.
-
-\index{Projectile2@{Projectile2}!BodyCollision2@{BodyCollision2}}
-\index{BodyCollision2@{BodyCollision2}!Projectile2@{Projectile2}}
-\doxysubsubsection{BodyCollision2()}
-{\footnotesize\ttfamily \label{class_projectile2_a0facde8ad745bf7ee833e3d4e1e1c834} 
-void Projectile2.\+Body\+Collision2 (\begin{DoxyParamCaption}\item[{Node}]{body}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
-
-
-
-Handles collision with another body. 
-
-Applies damage to enemies and destroys the projectile on impact. Also destroys the projectile when it collides with environment surfaces such as walls, floor, or ceiling.
-
-If no immediate collision condition is met, the projectile is scheduled for delayed destruction.
-
-
-\begin{DoxyParams}{Parameters}
-{\em body} & The node that the projectile collided with. \\
-\hline
-\end{DoxyParams}
-
-
-Definition at line \textbf{ 46} of file \textbf{ Projectile2.\+cs}.
-
-\index{Projectile2@{Projectile2}!Destroy@{Destroy}}
+\Hypertarget{class_projectile2_a4c31fd3132ecb36f180bfbdd7e127169}\index{Projectile2@{Projectile2}!Destroy@{Destroy}}
 \index{Destroy@{Destroy}!Projectile2@{Projectile2}}
-\doxysubsubsection{Destroy()}
+\doxysubsubsection{\texorpdfstring{Destroy()}{Destroy()}}
 {\footnotesize\ttfamily \label{class_projectile2_a4c31fd3132ecb36f180bfbdd7e127169} 
 async void Projectile2.\+Destroy (\begin{DoxyParamCaption}\item[{float}]{time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -112,70 +79,6 @@ Waits for the specified time and then removes the projectile from the scene.
 \end{DoxyParams}
 
 
-Definition at line \textbf{ 97} of file \textbf{ Projectile2.\+cs}.
-
-
-
-\label{doc-variable-members}
-\doxysubsection{Member Data Documentation}
-\index{Projectile2@{Projectile2}!\_damage@{\_damage}}
-\index{\_damage@{\_damage}!Projectile2@{Projectile2}}
-\doxysubsubsection{\_damage}
-{\footnotesize\ttfamily \label{class_projectile2_a7d9bdbb436a48a7b098c10f482f2c553} 
-int Projectile2.\+\_\+damage = 5}
-
-
-
-Damage dealt to enemies on hit. 
-
-
-
-Definition at line \textbf{ 17} of file \textbf{ Projectile2.\+cs}.
-
-\index{Projectile2@{Projectile2}!\_time@{\_time}}
-\index{\_time@{\_time}!Projectile2@{Projectile2}}
-\doxysubsubsection{\_time}
-{\footnotesize\ttfamily \label{class_projectile2_aa6abce3493a0ab988f14c4f9cb1668a5} 
-float Projectile2.\+\_\+time = 0.\+01f}
-
-
-
-Lifetime before automatic destruction (in seconds). 
-
-
-
-Definition at line \textbf{ 22} of file \textbf{ Projectile2.\+cs}.
-
-\index{Projectile2@{Projectile2}!direction@{direction}}
-\index{direction@{direction}!Projectile2@{Projectile2}}
-\doxysubsubsection{direction}
-{\footnotesize\ttfamily \label{class_projectile2_af08ab3f79b1079226645f28101a3f3c4} 
-Vector2 Projectile2.\+direction}
-
-
-
-Normalized direction vector of the projectile. 
-
-
-
-Definition at line \textbf{ 32} of file \textbf{ Projectile2.\+cs}.
-
-\index{Projectile2@{Projectile2}!speed@{speed}}
-\index{speed@{speed}!Projectile2@{Projectile2}}
-\doxysubsubsection{speed}
-{\footnotesize\ttfamily \label{class_projectile2_ac730366f653ed0bf32eaa00ccfd55e7e} 
-float Projectile2.\+speed = 500}
-
-
-
-Movement speed of the projectile. 
-
-
-
-Definition at line \textbf{ 27} of file \textbf{ Projectile2.\+cs}.
-
-
-
 The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
 \item 
-\textbf{ Projectile2.\+cs}\end{DoxyCompactItemize}
+Projectile2.\+cs\end{DoxyCompactItemize}

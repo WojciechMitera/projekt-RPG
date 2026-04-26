@@ -5,11 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>roguelike 2D documentation: Projectileenemy Class Reference</title>
+<title>roguelikedocumentation: Projectileenemy Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -23,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">roguelike 2D documentation
+   <div id="projectname">roguelikedocumentation
    </div>
   </td>
  </tr>
@@ -42,11 +45,27 @@ $(function() { codefold.init(); });
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
 $(function() {
-  initMenu('',true,false,'search.php','Search',false);
+  initMenu('',true,false,'search.php','Search',true);
   $(function() { init_search(); });
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_projectileenemy.html','','class_projectileenemy-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,14 +87,7 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
-<div id="doc-content">
 <div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="class_projectileenemy-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Projectileenemy Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -85,13 +97,9 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Projectileenemy:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_projectileenemy__inherit__graph.png" border="0" usemap="#a_projectileenemy_inherit__map" loading="lazy" alt="Inheritance graph"/></div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for Projectileenemy:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_projectileenemy__coll__graph.png" border="0" usemap="#a_projectileenemy_coll__map" loading="lazy" alt="Collaboration graph"/></div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+ <div class="center">
+  <img src="class_projectileenemy.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -102,25 +110,22 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0959db52331af51c33e5e96e5567f54d" id="r_a0959db52331af51c33e5e96e5567f54d"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a0959db52331af51c33e5e96e5567f54d">_damage</a> = 10</td></tr>
-<tr class="memdesc:a0959db52331af51c33e5e96e5567f54d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Damage dealt to the player on hit.  <br /></td></tr>
-<tr class="memitem:aae679c06f08991a520d57d3f9c44fb5a" id="r_aae679c06f08991a520d57d3f9c44fb5a"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#aae679c06f08991a520d57d3f9c44fb5a">_time</a> = 0.01f</td></tr>
-<tr class="memdesc:aae679c06f08991a520d57d3f9c44fb5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lifetime before automatic destruction (in seconds).  <br /></td></tr>
-<tr class="memitem:abcac185211fe94f7c7f6d60f7582b0ba" id="r_abcac185211fe94f7c7f6d60f7582b0ba"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#abcac185211fe94f7c7f6d60f7582b0ba">speed</a> = 300</td></tr>
-<tr class="memdesc:abcac185211fe94f7c7f6d60f7582b0ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Movement speed of the projectile.  <br /></td></tr>
-<tr class="memitem:a3bdd5d0607c520dc6174b9a82e2c329b" id="r_a3bdd5d0607c520dc6174b9a82e2c329b"><td class="memItemLeft">Vector2&#160;</td><td class="memItemRight"><a class="el" href="#a3bdd5d0607c520dc6174b9a82e2c329b">direction</a></td></tr>
-<tr class="memdesc:a3bdd5d0607c520dc6174b9a82e2c329b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalized direction vector of the projectile.  <br /></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a41950176c22cc2e6f5bd9fbd8706e960" id="r_a41950176c22cc2e6f5bd9fbd8706e960"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a41950176c22cc2e6f5bd9fbd8706e960">BodyCollision2</a> (Node body)</td></tr>
-<tr class="memdesc:a41950176c22cc2e6f5bd9fbd8706e960"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles collision with another body.  <br /></td></tr>
+<tr class="memitem:a0959db52331af51c33e5e96e5567f54d" id="r_a0959db52331af51c33e5e96e5567f54d"><td class="memItemLeft"><a id="a0959db52331af51c33e5e96e5567f54d" name="a0959db52331af51c33e5e96e5567f54d"></a>
+int&#160;</td><td class="memItemRight"><b>_damage</b> = 10</td></tr>
+<tr class="memdesc:a0959db52331af51c33e5e96e5567f54d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Damage dealt to the player on hit. <br /></td></tr>
+<tr class="memitem:aae679c06f08991a520d57d3f9c44fb5a" id="r_aae679c06f08991a520d57d3f9c44fb5a"><td class="memItemLeft"><a id="aae679c06f08991a520d57d3f9c44fb5a" name="aae679c06f08991a520d57d3f9c44fb5a"></a>
+float&#160;</td><td class="memItemRight"><b>_time</b> = 0.01f</td></tr>
+<tr class="memdesc:aae679c06f08991a520d57d3f9c44fb5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lifetime before automatic destruction (in seconds). <br /></td></tr>
+<tr class="memitem:abcac185211fe94f7c7f6d60f7582b0ba" id="r_abcac185211fe94f7c7f6d60f7582b0ba"><td class="memItemLeft"><a id="abcac185211fe94f7c7f6d60f7582b0ba" name="abcac185211fe94f7c7f6d60f7582b0ba"></a>
+float&#160;</td><td class="memItemRight"><b>speed</b> = 300</td></tr>
+<tr class="memdesc:abcac185211fe94f7c7f6d60f7582b0ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Movement speed of the projectile. <br /></td></tr>
+<tr class="memitem:a3bdd5d0607c520dc6174b9a82e2c329b" id="r_a3bdd5d0607c520dc6174b9a82e2c329b"><td class="memItemLeft"><a id="a3bdd5d0607c520dc6174b9a82e2c329b" name="a3bdd5d0607c520dc6174b9a82e2c329b"></a>
+Vector2&#160;</td><td class="memItemRight"><b>direction</b></td></tr>
+<tr class="memdesc:a3bdd5d0607c520dc6174b9a82e2c329b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalized direction vector of the projectile. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a projectile fired by enemies. </p>
-<p>This class handles movement, collision detection, damage application to the player, and automatic destruction. </p>
-
-<p class="definition">Definition at line <a class="el" href="_projectileenemy_8cs_source.html#l00011">11</a> of file <a class="el" href="_projectileenemy_8cs_source.html">Projectileenemy.cs</a>.</p>
+<p>This class handles movement, collision detection with the player, damage application, and automatic destruction after a short lifetime. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a7498912db947d58425cb9340ea743e25" name="a7498912db947d58425cb9340ea743e25"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7498912db947d58425cb9340ea743e25">&#9670;&#160;</a></span>_PhysicsProcess()</h2>
@@ -146,52 +151,13 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Updates projectile movement every physics frame. </p>
-<p>Moves the projectile in the assigned direction with constant velocity.</p>
+<p>Moves the projectile in the assigned direction with constant speed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">delta</td><td>Time elapsed since last frame (in seconds). </td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_projectileenemy_8cs_source.html#l00071">71</a> of file <a class="el" href="_projectileenemy_8cs_source.html">Projectileenemy.cs</a>.</p>
-
-</div>
-</div>
-<a id="a41950176c22cc2e6f5bd9fbd8706e960" name="a41950176c22cc2e6f5bd9fbd8706e960"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41950176c22cc2e6f5bd9fbd8706e960">&#9670;&#160;</a></span>BodyCollision2()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Projectileenemy.BodyCollision2 </td>
-          <td>(</td>
-          <td class="paramtype">Node</td>          <td class="paramname"><span class="paramname"><em>body</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Handles collision with another body. </p>
-<p>Applies damage to the player when hit. Also destroys the projectile when it collides with environment surfaces such as walls, floor, or ceiling.</p>
-<p>If no immediate collision condition is met, the projectile is scheduled for delayed destruction.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">body</td><td>The node that the projectile collided with. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_projectileenemy_8cs_source.html#l00045">45</a> of file <a class="el" href="_projectileenemy_8cs_source.html">Projectileenemy.cs</a>.</p>
 
 </div>
 </div>
@@ -227,91 +193,27 @@ Private Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_projectileenemy_8cs_source.html#l00085">85</a> of file <a class="el" href="_projectileenemy_8cs_source.html">Projectileenemy.cs</a>.</p>
-
-</div>
-</div>
-<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="a0959db52331af51c33e5e96e5567f54d" name="a0959db52331af51c33e5e96e5567f54d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0959db52331af51c33e5e96e5567f54d">&#9670;&#160;</a></span>_damage</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Projectileenemy._damage = 10</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Damage dealt to the player on hit. </p>
-
-<p class="definition">Definition at line <a class="el" href="_projectileenemy_8cs_source.html#l00016">16</a> of file <a class="el" href="_projectileenemy_8cs_source.html">Projectileenemy.cs</a>.</p>
-
-</div>
-</div>
-<a id="aae679c06f08991a520d57d3f9c44fb5a" name="aae679c06f08991a520d57d3f9c44fb5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae679c06f08991a520d57d3f9c44fb5a">&#9670;&#160;</a></span>_time</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Projectileenemy._time = 0.01f</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Lifetime before automatic destruction (in seconds). </p>
-
-<p class="definition">Definition at line <a class="el" href="_projectileenemy_8cs_source.html#l00021">21</a> of file <a class="el" href="_projectileenemy_8cs_source.html">Projectileenemy.cs</a>.</p>
-
-</div>
-</div>
-<a id="a3bdd5d0607c520dc6174b9a82e2c329b" name="a3bdd5d0607c520dc6174b9a82e2c329b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bdd5d0607c520dc6174b9a82e2c329b">&#9670;&#160;</a></span>direction</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Vector2 Projectileenemy.direction</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Normalized direction vector of the projectile. </p>
-
-<p class="definition">Definition at line <a class="el" href="_projectileenemy_8cs_source.html#l00031">31</a> of file <a class="el" href="_projectileenemy_8cs_source.html">Projectileenemy.cs</a>.</p>
-
-</div>
-</div>
-<a id="abcac185211fe94f7c7f6d60f7582b0ba" name="abcac185211fe94f7c7f6d60f7582b0ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abcac185211fe94f7c7f6d60f7582b0ba">&#9670;&#160;</a></span>speed</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Projectileenemy.speed = 300</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Movement speed of the projectile. </p>
-
-<p class="definition">Definition at line <a class="el" href="_projectileenemy_8cs_source.html#l00026">26</a> of file <a class="el" href="_projectileenemy_8cs_source.html">Projectileenemy.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_projectileenemy_8cs_source.html">Projectileenemy.cs</a></li>
+<li><b>Projectileenemy.cs</b></li>
 </ul>
 </div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1
-</small></address>
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_projectileenemy.html">Projectileenemy</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
 </body>
 </html>
